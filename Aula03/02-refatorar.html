@@ -1,0 +1,75 @@
+<!--
+  ============================================================================
+  PRATICA 1 - REFATORANDO A SOPA DE DIVS
+  Desenvolvimento Front-end para Web | CEUNSP | Aula 03 | 40 minutos
+
+  Este e o CODIGO DE PARTIDA. Ele funciona no navegador e mostra o conteudo
+  certo - e mesmo assim esta errado. A sua tarefa e a versao semantica.
+
+  REQUISITOS OBRIGATORIOS
+  1. Nenhuma <div> pode sobrar, exceto por motivo real de layout - e voce
+     precisa saber justificar.
+  2. A pagina deve ter exatamente um <h1> e nenhum nivel de titulo pulado.
+  3. Use <header>, <nav>, <main>, <article>, <aside> e <footer> ao menos
+     uma vez cada.
+  4. Troque as classes que apenas imitam significado (.titulo, .negrito)
+     pelas tags corretas.
+  5. Acrescente <time> na data do post e <figure> com <figcaption> na imagem.
+  6. Corrija tambem o que estiver errado fora da semantica (a imagem sem alt,
+     por exemplo).
+  7. Zero erro no validador da W3C ao final.
+
+  CRITERIO DE SUCESSO
+  Zero erro em validator.w3.org e nenhuma <div> que voce nao saiba justificar.
+  Confira o sumario da pagina no HeadingsMap: um unico h1, sem nivel pulado.
+
+  (Pode apagar este comentario ao entregar a sua versao.)
+  ============================================================================
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog do Curso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topo">
+  <div class="titulo-site" style="color:aqua">Blogvdgsdfgsdfgdo Curso</div>
+  <div class="menu">
+    <div class="item"><a href="#">Inicio</a></div>
+    <div class="item"><a href="#">Posts</a></div>
+    <div class="item"><a href="#">Sobre</a></div>
+  </div>
+</div>
+
+<div class="conteudo">
+  <div class="titulo-secao">Ultimos posts</div>
+  <div class="post">
+    <div class="titulo-post">Semantica em HTML5</div>
+    <div class="data">26/08/2026</div>
+
+    <div class="imagem">
+      <img src="img/post.png">
+      <div class="legenda">Estrutura da pagina</div>
+    </div>
+    <div class="texto">
+      <span class="negrito">Atencao:</span> a tag
+      certa muda o significado.
+    </div>
+  </div>
+</div>
+
+<div class="lateral">
+  <div class="titulo-lateral">Veja tambem</div>
+  <div><a href="#">Acessibilidade</a></div>
+</div>
+
+<div class="rodape">
+  <div>Contato: blog@exemplo.com</div>
+  <div>&copy; 2026</div>
+</div>
+
+</body>
+</html>

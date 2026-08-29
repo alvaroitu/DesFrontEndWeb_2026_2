@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia de tags HTML5 - Aulas 02 e 03</title>
+  <meta name="description" content="Referencia visual tag por tag das Aulas 02 e 03 de Desenvolvimento Front-end para Web - CEUNSP">
+  <meta name="author" content="Prof. Alvaro Augusto Pereira">
+  <style>
+    :root{
+      --tinta:#16181d;
+      --tinta-fraca:#5b6270;
+      --fundo:#ffffff;
+      --papel:#f6f7f9;
+      --linha:#dfe3ea;
+      --azul:#1b4fa0;
+      --azul-claro:#e8effa;
+      --verde:#1d7a4d;
+      --vermelho:#b3261e;
+      --amarelo:#fff3c4;
+      --raio:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:17px;
+      line-height:1.55;
+      color:var(--tinta);
+      background:var(--fundo);
+    }
+    code,pre,kbd,samp{font-family:Consolas,"Courier New",monospace}
+
+    /* ---------- cabecalho ---------- */
+    header.topo{
+      background:var(--tinta);
+      color:#fff;
+      padding:22px 32px;
+    }
+    header.topo h1{margin:0;font-size:1.6rem}
+    header.topo p{margin:4px 0 0;color:#b9c0cc;font-size:.95rem}
+
+    nav.indice{
+      position:sticky;top:0;z-index:20;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      padding:10px 32px;
+    }
+    nav.indice ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+    nav.indice a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--azul);
+      background:#fff;
+      border:1px solid var(--linha);
+      border-radius:99px;
+      padding:3px 12px;
+      font-size:.82rem;
+    }
+    nav.indice a:hover{background:var(--azul-claro)}
+
+    main{padding:0 32px 80px}
+    section.grupo{margin:44px 0 0}
+    section.grupo > h2{
+      font-size:1.35rem;
+      margin:0 0 4px;
+      padding-bottom:8px;
+      border-bottom:3px solid var(--azul);
+    }
+    section.grupo > p.dica{margin:0 0 18px;color:var(--tinta-fraca);font-size:.95rem}
+
+    /* ---------- cartao de tag ---------- */
+    article.tag{
+      border:1px solid var(--linha);
+      border-radius:var(--raio);
+      margin:0 0 16px;
+      overflow:hidden;
+      background:#fff;
+    }
+    article.tag > h3{
+      margin:0;
+      padding:10px 16px;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      font-size:1.05rem;
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    article.tag > h3 .nome{
+      color:var(--azul);
+      font-family:Consolas,"Courier New",monospace;
+      font-size:1.1rem;
+    }
+    article.tag > h3 .sentido{
+      font-weight:400;
+      font-size:.9rem;
+      color:var(--tinta-fraca);
+    }
+    .corpo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    @media (max-width:900px){.corpo{grid-template-columns:1fr}}
+    .codigo,.resultado{padding:14px 16px}
+    .codigo{background:#1e2229;border-right:1px solid var(--linha)}
+    .codigo pre{
+      margin:0;
+      color:#e6e9ef;
+      font-size:.86rem;
+      line-height:1.5;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .rotulo{
+      display:block;
+      font-size:.68rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      color:var(--tinta-fraca);
+    }
+    .codigo .rotulo{color:#8b93a1}
+    .resultado > *:not(.rotulo):first-of-type{margin-top:0}
+    .nota{
+      margin:0;
+      padding:10px 16px;
+      background:var(--amarelo);
+      border-top:1px solid var(--linha);
+      font-size:.88rem;
+    }
+    .nota strong{color:#7a5c00}
+
+    /* ---------- comparativos ---------- */
+    .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+    @media (max-width:900px){.par{grid-template-columns:1fr}}
+    .caixa{border:1px solid var(--linha);border-radius:var(--raio);padding:14px 16px}
+    .caixa.certo{border-left:5px solid var(--verde)}
+    .caixa.errado{border-left:5px solid var(--vermelho)}
+    .caixa h4{margin:0 0 8px;font-size:.95rem}
+    .caixa.certo h4{color:var(--verde)}
+    .caixa.errado h4{color:var(--vermelho)}
+    .caixa pre{margin:0;font-size:.84rem;white-space:pre-wrap;background:var(--papel);padding:10px;border-radius:6px}
+
+    /* ---------- mapa da pagina ---------- */
+    .mapa{border:2px dashed var(--azul);border-radius:var(--raio);padding:12px;margin:0 0 16px}
+    .mapa .bloco{
+      border:1px solid var(--azul);
+      background:var(--azul-claro);
+      border-radius:6px;
+      padding:8px 10px;
+      margin:6px 0;
+      font-family:Consolas,monospace;
+      font-size:.86rem;
+    }
+    .mapa .bloco small{display:block;font-family:"Segoe UI",sans-serif;color:var(--tinta-fraca);font-size:.78rem}
+    .mapa .lado{display:grid;grid-template-columns:2fr 1fr;gap:8px}
+    @media (max-width:760px){.mapa .lado{grid-template-columns:1fr}}
+    .mapa .aninhado{margin-left:16px;background:#fff}
+
+    /* ---------- tabela de landmarks ---------- */
+    table.landmarks{border-collapse:collapse;width:100%;font-size:.9rem}
+    table.landmarks caption{text-align:left;font-weight:600;padding-bottom:8px}
+    table.landmarks th,table.landmarks td{border:1px solid var(--linha);padding:7px 10px;text-align:left}
+    table.landmarks thead{background:var(--papel)}
+    table.landmarks td:first-child{font-family:Consolas,monospace;color:var(--azul)}
+
+    /* ---------- modo foco ---------- */
+    .barra-foco{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      display:flex;gap:6px;align-items:center;
+      background:var(--tinta);color:#fff;
+      padding:8px 12px;border-radius:99px;
+      box-shadow:0 4px 14px rgba(0,0,0,.28);
+      font-size:.85rem;
+    }
+    .barra-foco button{
+      font:inherit;cursor:pointer;
+      background:#333a45;color:#fff;border:0;border-radius:6px;padding:4px 10px;
+    }
+    .barra-foco button:hover{background:var(--azul)}
+    article.tag.destacada{
+      outline:4px solid var(--azul);
+      outline-offset:3px;
+      scroll-margin-top:96px;
+    }
+
+    /* demos isoladas */
+    .demo-tabela{border-collapse:collapse;font-size:.88rem}
+    .demo-tabela caption{font-weight:600;padding-bottom:6px}
+    .demo-tabela th,.demo-tabela td{border:1px solid var(--linha);padding:5px 9px}
+    .demo-tabela th{background:var(--papel)}
+    footer.rodape{
+      background:var(--papel);
+      border-top:1px solid var(--linha);
+      padding:18px 32px;
+      font-size:.85rem;
+      color:var(--tinta-fraca);
+    }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <h1>Referencia de tags HTML5 &mdash; tag por tag</h1>
+  <p>Desenvolvimento Front-end para Web &nbsp;|&nbsp; CEUNSP &nbsp;|&nbsp; Aulas 02 e 03 &nbsp;|&nbsp; Prof. Alvaro Augusto Pereira</p>
+</header>
+
+<nav class="indice" aria-label="Indice dos grupos de tags">
+  <ul>
+    <li><a href="#g1">1. Estrutura</a></li>
+    <li><a href="#g2">2. head</a></li>
+    <li><a href="#g3">3. Anatomia</a></li>
+    <li><a href="#g4">4. Comentarios e entidades</a></li>
+    <li><a href="#g5">5. id e class</a></li>
+    <li><a href="#g6">6. Titulos</a></li>
+    <li><a href="#g7">7. Texto</a></li>
+    <li><a href="#g8">8. Listas</a></li>
+    <li><a href="#g9">9. Tabelas</a></li>
+    <li><a href="#g10">10. Links</a></li>
+    <li><a href="#g11">11. Imagens</a></li>
+    <li><a href="#g12">12. div e span</a></li>
+    <li><a href="#g13">13. Estruturais</a></li>
+    <li><a href="#g14">14. Semantica em linha</a></li>
+    <li><a href="#g15">15. Interativos nativos</a></li>
+    <li><a href="#g16">16. Landmarks</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ==================== 1 ==================== -->
+<section class="grupo" id="g1">
+  <h2>1. Estrutura do documento</h2>
+  <p class="dica">O esqueleto que se repete em toda pagina. No VS Code, <code>!</code> + Tab (Emmet) gera tudo isto.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;!DOCTYPE html&gt;</span> <span class="sentido">nao e tag: e instrucao para o navegador</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!DOCTYPE html&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">O que muda</span>
+        <p><strong>Com DOCTYPE:</strong> standards mode &mdash; o navegador aplica as regras atuais do padrao.</p>
+        <p><strong>Sem DOCTYPE:</strong> quirks mode &mdash; o navegador imita bugs dos anos 1990 e o calculo de largura e altura muda.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Detalhe:</strong> primeirissima linha do arquivo, sem nada antes. Nao tem fechamento e nao diferencia maiusculas de minusculas.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;html lang&gt;</span> <span class="sentido">raiz do documento e idioma do conteudo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;html lang="pt-BR"&gt;
+  ...
+&lt;/html&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Para que serve</span>
+        <p>O atributo <code>lang="pt-BR"</code> diz ao leitor de tela em que idioma pronunciar o texto e liga o corretor ortografico correto do navegador.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;head&gt;</span> e <span class="nome">&lt;body&gt;</span> <span class="sentido">o invisivel e o visivel</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport"
+          content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Minha primeira pagina&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/estilo.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Ola, mundo!&lt;/h1&gt;
+    &lt;p&gt;Este e o conteudo visivel da pagina.&lt;/p&gt;
+
+    &lt;script src="js/script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Divisao de papeis</span>
+        <p><code>&lt;head&gt;</code> &mdash; metadados. Titulo da aba, charset, icone, links para CSS e fontes. <strong>Nada aparece na tela.</strong></p>
+        <p><code>&lt;body&gt;</code> &mdash; todo o conteudo que o usuario ve: textos, imagens, listas, tabelas. Scripts no final do body.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Erro de pagina em branco:</strong> conteudo escrito dentro do <code>&lt;head&gt;</code> por engano.</p>
+  </article>
+</section>
+
+<!-- ==================== 2 ==================== -->
+<section class="grupo" id="g2">
+  <h2>2. Dentro do &lt;head&gt;</h2>
+  <p class="dica">Pequenos detalhes com grande impacto. Nenhum deles aparece na tela &mdash; todos aparecem no resultado.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;meta charset&gt;</span> <span class="sentido">codificacao de caracteres</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;meta charset="UTF-8"&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Sintoma quando falta</span>
+        <p>A palavra <code>informacoes</code> com cedilha e til aparece como <code>informa&Atilde;&sect;&Atilde;&micro;es</code>.</p>
+        <p>O arquivo tambem precisa estar <em>salvo</em> em UTF-8 &mdash; nao basta declarar.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;meta name="viewport"&gt;</span> <span class="sentido">adapta a pagina ao celular</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;meta name="viewport"
+      content="width=device-width, initial-scale=1.0"&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Sintoma quando falta</span>
+        <p>No celular o site aparece &quot;miniaturizado&quot;, como se fosse a versao de computador reduzida. E a base do design responsivo.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;title&gt;</span> <span class="sentido">nome do documento</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;title&gt;Portfolio de Ana Souza&lt;/title&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Onde aparece</span>
+        <p>Texto da aba do navegador, nome no favorito e titulo azul no resultado do Google. Unico e descritivo por pagina.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;meta name&gt;</span> e <span class="nome">&lt;link&gt;</span> <span class="sentido">descricao, autor, icone e CSS</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;meta name="description"
+      content="Portfolio de projetos web do aluno X"&gt;
+&lt;meta name="author" content="Seu Nome"&gt;
+&lt;link rel="icon" href="img/favicon.ico"&gt;
+&lt;link rel="stylesheet" href="css/estilo.css"&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Para que serve cada um</span>
+        <p><code>description</code> &mdash; o texto cinza abaixo do titulo no Google.</p>
+        <p><code>rel="icon"</code> &mdash; o iconezinho da aba.</p>
+        <p><code>rel="stylesheet"</code> &mdash; liga a folha de estilo. Fora do <code>&lt;head&gt;</code>, o CSS nao e aplicado.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;script&gt;</span> <span class="sentido">vincula ou embute JavaScript</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;script src="js/script.js"&gt;&lt;/script&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Convencao</span>
+        <p>No final do <code>&lt;body&gt;</code>, para que o HTML ja esteja carregado quando o script rodar. Mesmo com <code>src</code>, a tag precisa ser fechada.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 3 ==================== -->
+<section class="grupo" id="g3">
+  <h2>3. Anatomia da tag, aninhamento e elementos vazios</h2>
+  <p class="dica">A gramatica do HTML: como uma tag e formada, em que ordem ela fecha e quais nunca fecham.</p>
+
+  <article class="tag">
+    <h3><span class="nome">Anatomia de uma tag</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;a href="contato.html" target="_blank"&gt;Fale conosco&lt;/a&gt;
+ |   |         |               |            |         |
+ |   |         |               |            |         +-- fechamento
+ |   |         |               |            +-- conteudo
+ |   |         |               +-- valor do atributo
+ |   |         +-- valor do atributo
+ |   +-- nome do atributo
+ +-- nome do elemento</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Regras</span>
+        <p>O fechamento repete o nome precedido de barra: <code>&lt;/a&gt;</code>.</p>
+        <p>Atributos so existem na tag de <strong>abertura</strong>, separados por espaco, com valores entre aspas duplas.</p>
+        <p>Nomes de tags e atributos em minusculas &mdash; boa pratica, nao obrigacao.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">Elementos vazios</span> <span class="sentido">void elements: nao tem conteudo e nao se fecham</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;br&gt;      quebra de linha
+&lt;hr&gt;      linha divisoria horizontal
+&lt;img&gt;     imagem
+&lt;input&gt;   campo de formulario
+&lt;meta&gt;    metadado no head
+&lt;link&gt;    vinculo com arquivo externo
+
+&lt;br /&gt;    heranca do XHTML - tambem valida</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Por que nao fecham</span>
+        <p>Nao existe conteudo entre abertura e fechamento: a informacao esta toda nos atributos.</p>
+        <p>Escrever <code>&lt;/br&gt;</code> e erro comum e desnecessario.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Todos os demais exigem fechamento.</strong> Esquecer um <code>&lt;/div&gt;</code> quebra o layout inteiro &mdash; e o navegador nao avisa.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">Aninhamento e indentacao</span> <span class="sentido">quem abre por ultimo fecha primeiro</span></h3>
+    <div class="par" style="margin:14px 16px">
+      <div class="caixa certo">
+        <h4>CERTO</h4>
+<pre>&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Front-end&lt;/strong&gt;&lt;/li&gt;
+    &lt;li&gt;Back-end&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Texto com &lt;em&gt;enfase&lt;/em&gt; no meio.&lt;/p&gt;</pre>
+      </div>
+      <div class="caixa errado">
+        <h4>ERRADO</h4>
+<pre>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Front-end&lt;/li&gt;&lt;/strong&gt;
+&lt;li&gt;Back-end
+&lt;/ul&gt;
+
+&lt;p&gt;Texto com &lt;em&gt;enfase no meio.&lt;/p&gt;&lt;/em&gt;</pre>
+      </div>
+    </div>
+    <p class="nota"><strong>No VS Code:</strong> Shift+Alt+F formata e indenta o documento inteiro. Indentacao nao muda o resultado no navegador &mdash; muda a sua vida.</p>
+  </article>
+</section>
+
+<!-- ==================== 4 ==================== -->
+<section class="grupo" id="g4">
+  <h2>4. Comentarios e entidades HTML</h2>
+  <p class="dica">Escrevendo o que o navegador nao deve interpretar.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;!-- comentario --&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!-- Comentario de uma linha --&gt;
+
+&lt;!--
+  Comentario que ocupa
+  varias linhas seguidas
+--&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <!-- este comentario nao aparece -->
+        <p>Nada. O comentario nao e renderizado.</p>
+        <p><strong>Mas vai inteiro no codigo-fonte:</strong> qualquer visitante le com Ctrl+U. Senha, token e dado de aluno nunca entram em comentario.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">Entidades</span> <span class="sentido">caracteres que o HTML reserva para si</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&amp;lt;div&amp;gt;      mostra os sinais de menor e maior
+&amp;amp;           o proprio &amp; literal
+&amp;nbsp;         espaco que nao quebra a linha
+&amp;quot;         aspas duplas
+&amp;copy;  &amp;reg;  &amp;hellip;  &amp;mdash;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p>Para escrever &lt;div&gt; na tela</p>
+        <p>Boo &amp; Cia &copy; 2026</p>
+        <p>Nome&nbsp;Sobrenome (nao quebra a linha)</p>
+        <p>Ele disse &quot;ola&quot; e saiu&hellip;</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 5 ==================== -->
+<section class="grupo" id="g5">
+  <h2>5. Atributos globais: id e class</h2>
+  <p class="dica">Os dois ganchos que o CSS e o JavaScript vao usar. Hoje eles ainda nao fazem nada visivel.</p>
+
+  <article class="tag">
+    <h3><span class="nome">id</span> e <span class="nome">class</span> <span class="sentido">identidade unica x grupo reutilizavel</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;h1 id="titulo-principal"&gt;Bem-vindo&lt;/h1&gt;
+
+&lt;p class="destaque"&gt;Paragrafo importante.&lt;/p&gt;
+&lt;p class="destaque texto-grande"&gt;Duas classes.&lt;/p&gt;
+
+&lt;div id="rodape" class="caixa escura"&gt;...&lt;/div&gt;
+
+&lt;a href="#titulo-principal"&gt;Voltar ao topo&lt;/a&gt;
+
+&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">A diferenca que importa</span>
+        <p><code>id</code> &mdash; um unico elemento na pagina inteira. Serve de ancora: <code>href="#id"</code>.</p>
+        <p><code>class</code> &mdash; repete em quantos elementos quiser; um elemento aceita varias classes.</p>
+        <p>Outros globais: <code>title</code>, <code>lang</code>, <code>hidden</code>, <code>style</code> e os personalizados <code>data-*</code>.</p>
+        <p>Passe o mouse: <abbr title="HyperText Markup Language">HTML</abbr></p>
+      </div>
+    </div>
+    <p class="nota"><strong>Valores:</strong> minusculas, com hifen e sem acento &mdash; <code>caixa-destaque</code>, nunca <code>Caixa Destaque</code>.</p>
+  </article>
+</section>
+
+<!-- ==================== 6 ==================== -->
+<section class="grupo" id="g6">
+  <h2>6. Titulos: &lt;h1&gt; a &lt;h6&gt;</h2>
+  <p class="dica">Hierarquia, nao tamanho de fonte.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;h1&gt;</span> &hellip; <span class="nome">&lt;h6&gt;</span> <span class="sentido">o sumario que a pagina desenha sozinha</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;h1&gt;Titulo principal da pagina&lt;/h1&gt;
+    &lt;h2&gt;Secao&lt;/h2&gt;
+        &lt;h3&gt;Subsecao&lt;/h3&gt;
+            &lt;h4&gt;Detalhe&lt;/h4&gt;
+
+&lt;!-- h5 e h6 existem, mas sao raros --&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <div style="font-size:.9em">
+          <div style="font-size:2em;font-weight:700;margin:0 0 4px">Titulo principal da pagina</div>
+          <div style="font-size:1.5em;font-weight:700;margin:0 0 4px 12px">Secao</div>
+          <div style="font-size:1.17em;font-weight:700;margin:0 0 4px 24px">Subsecao</div>
+          <div style="font-size:1em;font-weight:700;margin:0 0 4px 36px">Detalhe</div>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>As regras:</strong> um unico <code>&lt;h1&gt;</code> por pagina; nunca pule niveis (de h2 va para h3, nunca direto para h4); o nivel vem do significado, nunca do tamanho da letra. Erro classico: usar <code>&lt;h1&gt;</code> em todos os titulos porque &quot;ficou maior&quot;.</p>
+  </article>
+</section>
+
+<!-- ==================== 7 ==================== -->
+<section class="grupo" id="g7">
+  <h2>7. Paragrafos e formatacao de texto</h2>
+  <p class="dica">O conteudo que sustenta a pagina.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;p&gt;</span>, <span class="nome">&lt;br&gt;</span> e <span class="nome">&lt;hr&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;p&gt;Primeiro paragrafo do texto.&lt;/p&gt;
+&lt;p&gt;Segundo paragrafo.&lt;/p&gt;
+
+&lt;p&gt;Linha um&lt;br&gt;Linha dois na mesma tag p&lt;/p&gt;
+
+&lt;hr&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p>Primeiro paragrafo do texto.</p>
+        <p>Segundo paragrafo.</p>
+        <p>Linha um<br>Linha dois na mesma tag p</p>
+        <hr>
+      </div>
+    </div>
+    <p class="nota"><strong>Gambiarra a evitar:</strong> varios <code>&lt;br&gt;</code> seguidos para &quot;dar espaco&quot; ou <code>&lt;p&gt;</code> vazio como espacador. Espacamento e responsabilidade do CSS.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;strong&gt;</span>, <span class="nome">&lt;em&gt;</span>, <span class="nome">&lt;b&gt;</span> e <span class="nome">&lt;i&gt;</span> <span class="sentido">significado x aparencia</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;p&gt;Texto com &lt;strong&gt;destaque forte&lt;/strong&gt;
+   e uma &lt;em&gt;enfase&lt;/em&gt; no meio da frase.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Negrito sem significado&lt;/b&gt; e
+   &lt;i&gt;italico sem significado&lt;/i&gt;.&lt;/p&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p>Texto com <strong>destaque forte</strong> e uma <em>enfase</em> no meio da frase.</p>
+        <p><b>Negrito sem significado</b> e <i>italico sem significado</i>.</p>
+        <p style="color:var(--tinta-fraca);font-size:.9em">Na tela sao identicos. Para o leitor de tela, nao.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Nota:</strong> leitores de tela mudam a entonacao em <code>&lt;strong&gt;</code> e <code>&lt;em&gt;</code>. Em <code>&lt;b&gt;</code> e <code>&lt;i&gt;</code> nao mudam nada &mdash; e o usuario nao fica sabendo.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;blockquote&gt;</span>, <span class="nome">&lt;sub&gt;</span>, <span class="nome">&lt;sup&gt;</span>, <span class="nome">&lt;small&gt;</span>, <span class="nome">&lt;mark&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;blockquote&gt;Citacao recuada de outra fonte.&lt;/blockquote&gt;
+
+&lt;p&gt;Formula: H&lt;sub&gt;2&lt;/sub&gt;O e potencia: x&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Texto secundario&lt;/small&gt; e
+   &lt;mark&gt;trecho marcado&lt;/mark&gt;&lt;/p&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <blockquote style="margin:0 0 10px;padding-left:14px;border-left:4px solid var(--linha);color:var(--tinta-fraca)">Citacao recuada de outra fonte.</blockquote>
+        <p>Formula: H<sub>2</sub>O e potencia: x<sup>2</sup></p>
+        <p><small>Texto secundario</small> e <mark>trecho marcado</mark></p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 8 ==================== -->
+<section class="grupo" id="g8">
+  <h2>8. Listas: &lt;ul&gt;, &lt;ol&gt; e &lt;dl&gt;</h2>
+  <p class="dica">Tres tipos para tres situacoes.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;ul&gt;</span> + <span class="nome">&lt;li&gt;</span> <span class="sentido">a ordem dos itens nao importa</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        <p style="font-size:.9em;color:var(--tinta-fraca)">Caracteristicas, tecnologias, beneficios.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;ol&gt;</span> + <span class="nome">&lt;li&gt;</span> <span class="sentido">a ordem importa</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;ol&gt;
+  &lt;li&gt;Registrar dominio&lt;/li&gt;
+  &lt;li&gt;Criar as paginas&lt;/li&gt;
+  &lt;li&gt;Publicar&lt;/li&gt;
+&lt;/ol&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <ol><li>Registrar dominio</li><li>Criar as paginas</li><li>Publicar</li></ol>
+        <p style="font-size:.9em;color:var(--tinta-fraca)">Passo a passo, ranking, cronograma.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;dl&gt;</span> + <span class="nome">&lt;dt&gt;</span> + <span class="nome">&lt;dd&gt;</span> <span class="sentido">termo e descricao</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;dl&gt;
+  &lt;dt&gt;HTTP&lt;/dt&gt;
+  &lt;dd&gt;Protocolo da Web&lt;/dd&gt;
+  &lt;dt&gt;DNS&lt;/dt&gt;
+  &lt;dd&gt;Traduz nome em IP&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <dl style="margin:0">
+          <dt style="font-weight:700">HTTP</dt><dd>Protocolo da Web</dd>
+          <dt style="font-weight:700">DNS</dt><dd>Traduz nome em IP</dd>
+        </dl>
+        <p style="font-size:.9em;color:var(--tinta-fraca)">Glossario, FAQ, ficha tecnica.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Lembrete:</strong> listas podem ser aninhadas (um <code>&lt;ul&gt;</code> inteiro dentro de um <code>&lt;li&gt;</code>) e menus de navegacao sao, quase sempre, um <code>&lt;ul&gt;</code> estilizado pelo CSS.</p>
+  </article>
+</section>
+
+<!-- ==================== 9 ==================== -->
+<section class="grupo" id="g9">
+  <h2>9. Tabelas</h2>
+  <p class="dica">Para dados tabulares &mdash; nunca para layout.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;table&gt;</span> e a familia completa</h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;table&gt;
+  &lt;caption&gt;Notas do semestre&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Disciplina&lt;/th&gt;&lt;th&gt;A1&lt;/th&gt;&lt;th&gt;A2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Front-end&lt;/td&gt;&lt;td&gt;4,5&lt;/td&gt;&lt;td&gt;5,0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Media do semestre&lt;/td&gt;&lt;td&gt;9,5&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <table class="demo-tabela">
+          <caption>Notas do semestre</caption>
+          <thead><tr><th>Disciplina</th><th>A1</th><th>A2</th></tr></thead>
+          <tbody>
+            <tr><td>Front-end</td><td>4,5</td><td>5,0</td></tr>
+            <tr><td colspan="2">Media do semestre</td><td>9,5</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.9em;margin-top:10px">
+          <code>&lt;caption&gt;</code> legenda &nbsp;|&nbsp;
+          <code>&lt;thead&gt; &lt;tbody&gt; &lt;tfoot&gt;</code> secoes &nbsp;|&nbsp;
+          <code>&lt;tr&gt;</code> linha &nbsp;|&nbsp;
+          <code>&lt;th&gt;</code> cabecalho &nbsp;|&nbsp;
+          <code>&lt;td&gt;</code> celula &nbsp;|&nbsp;
+          <code>colspan</code> mescla colunas &nbsp;|&nbsp;
+          <code>rowspan</code> mescla linhas
+        </p>
+      </div>
+    </div>
+    <p class="nota"><strong>Historico:</strong> ate os anos 2000 sites eram montados com tabelas invisiveis. Hoje isso e erro grave: layout se faz com CSS (Flexbox e Grid, Unidade 2).</p>
+  </article>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="grupo" id="g10">
+  <h2>10. Links: o elemento &lt;a&gt;</h2>
+  <p class="dica">O hipertexto que deu nome ao HTML.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;a href&gt;</span> <span class="sentido">um destino para cada situacao</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;a href="contato.html"&gt;Contato&lt;/a&gt;
+&lt;a href="https://ceunsp.edu.br"&gt;CEUNSP&lt;/a&gt;
+
+&lt;a href="https://ceunsp.edu.br" target="_blank"
+   rel="noopener"&gt;Abrir em nova aba&lt;/a&gt;
+
+&lt;a href="#rodape"&gt;Ir para o rodape&lt;/a&gt;
+&lt;div id="rodape"&gt;...&lt;/div&gt;
+
+&lt;a href="mailto:prof@ceunsp.edu.br"&gt;Enviar e-mail&lt;/a&gt;
+&lt;a href="tel:+551140028922"&gt;Ligar&lt;/a&gt;
+&lt;a href="docs/edital.pdf" download&gt;Baixar PDF&lt;/a&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Atributos e acessibilidade</span>
+        <p><code>href</code> destino &nbsp;|&nbsp; <code>target="_blank"</code> nova aba &nbsp;|&nbsp; <code>rel="noopener"</code> seguranca &nbsp;|&nbsp; <code>download</code> forca o download.</p>
+        <div class="par" style="margin-top:10px">
+          <div class="caixa errado"><h4>EVITE</h4><p style="margin:0;font-size:.9em">Saiba mais, <a href="#g10">clique aqui</a></p></div>
+          <div class="caixa certo"><h4>PREFIRA</h4><p style="margin:0;font-size:.9em"><a href="#g10">Baixe o edital em PDF</a></p></div>
+        </div>
+        <p style="font-size:.9em;color:var(--tinta-fraca);margin-top:8px">O texto do link deve dizer o destino: e assim que o leitor de tela lista os links da pagina.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="grupo" id="g11">
+  <h2>11. Imagens: &lt;img&gt;, &lt;figure&gt; e &lt;figcaption&gt;</h2>
+  <p class="dica">Peso, acessibilidade e formato.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;img&gt;</span> <span class="sentido">src e alt sao o par obrigatorio</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;img src="img/logo.png" alt="Logotipo do CEUNSP"&gt;
+
+&lt;img src="img/campus.jpg"
+     alt="Fachada do campus ao entardecer"
+     width="600" height="400"&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">alt e obrigatorio</span>
+        <p>Descreve a imagem para o leitor de tela e aparece se a imagem nao carregar. Imagem puramente decorativa: <code>alt=""</code>.</p>
+        <p style="font-size:.9em"><strong>Formatos:</strong> JPG fotos &nbsp;|&nbsp; PNG transparencia &nbsp;|&nbsp; SVG logos e icones &nbsp;|&nbsp; WEBP menor peso.</p>
+        <p style="font-size:.9em"><code>width</code> e <code>height</code> no HTML evitam que o layout &quot;pule&quot; enquanto a imagem carrega.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Cuidado:</strong> nunca use uma foto de 5 MB da camera direto no site &mdash; redimensione e comprima antes.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;figure&gt;</span> + <span class="nome">&lt;figcaption&gt;</span> <span class="sentido">liga a legenda ao que ela descreve</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;figure&gt;
+  &lt;img src="img/grafico.png"
+       alt="Grafico de uso de navegadores"&gt;
+  &lt;figcaption&gt;Fonte: StatCounter, 2026.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <figure style="margin:0;border:1px solid var(--linha);border-radius:8px;padding:10px;display:inline-block">
+          <div style="width:220px;height:110px;background:var(--azul-claro);border:1px dashed var(--azul);display:flex;align-items:center;justify-content:center;color:var(--azul);font-size:.85rem">[ imagem com alt ]</div>
+          <figcaption style="font-size:.85rem;color:var(--tinta-fraca);margin-top:6px">Fonte: StatCounter, 2026.</figcaption>
+        </figure>
+        <p style="font-size:.9em;margin-top:10px"><strong>A legenda nao substitui o alt.</strong> Sao informacoes diferentes: o alt descreve, a legenda contextualiza.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Nota:</strong> <code>&lt;figure&gt;</code> serve tambem para trecho de codigo, grafico e video &mdash; nao apenas para imagem.</p>
+  </article>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="grupo" id="g12">
+  <h2>12. Os nao semanticos: &lt;div&gt; e &lt;span&gt;</h2>
+  <p class="dica">Generico nao e sinonimo de errado. A regra: so escolha <code>&lt;div&gt;</code>/<code>&lt;span&gt;</code> depois de procurar uma tag semantica.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;div&gt;</span> e <span class="nome">&lt;span&gt;</span> <span class="sentido">caixa generica de bloco e caixa generica em linha</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!-- CERTO: agrupamento apenas para layout --&gt;
+&lt;div class="grade-produtos"&gt;
+  &lt;article&gt;...&lt;/article&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/div&gt;
+
+&lt;!-- CERTO: trecho em linha apenas para estilo --&gt;
+&lt;p&gt;Total: &lt;span class="preco"&gt;R$ 90,00&lt;/span&gt;&lt;/p&gt;
+
+&lt;!-- ERRADO: ja existe tag propria para isso --&gt;
+&lt;div class="titulo"&gt;Sobre nos&lt;/div&gt;   --&gt;  &lt;h2&gt;
+&lt;span class="forte"&gt;Cuidado&lt;/span&gt;    --&gt;  &lt;strong&gt;
+&lt;div class="menu"&gt;...&lt;/div&gt;           --&gt;  &lt;nav&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Regra de ouro</span>
+        <p><code>&lt;div&gt;</code> e bloco; <code>&lt;span&gt;</code> e em linha. Sao o gancho natural do Flexbox e do Grid.</p>
+        <p>Nao tem significado &mdash; e as vezes e exatamente isso que se quer.</p>
+        <p><strong>Obsoletos, nunca use:</strong> <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;big&gt;</code>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Proporcao:</strong> um projeto bem escrito continua tendo <code>&lt;div&gt;</code>. A diferenca esta na quantidade &mdash; dezenas em vez de centenas, e sempre por motivo declarado de layout.</p>
+  </article>
+
+  <div class="par">
+    <div class="caixa errado">
+      <h4>NAO SEMANTICO</h4>
+<pre>&lt;div class="alerta"&gt;Prazo hoje!&lt;/div&gt;
+&lt;div class="titulo"&gt;Sobre o curso&lt;/div&gt;
+&lt;span class="negrito"&gt;Atencao&lt;/span&gt;
+&lt;div class="lista"&gt;
+  &lt;div&gt;Item&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+    <div class="caixa certo">
+      <h4>SEMANTICO</h4>
+<pre>&lt;strong&gt;Prazo hoje!&lt;/strong&gt;
+&lt;h2&gt;Sobre o curso&lt;/h2&gt;
+&lt;em&gt;Atencao&lt;/em&gt;
+&lt;ul&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="grupo" id="g13">
+  <h2>13. Os elementos estruturais do HTML5</h2>
+  <p class="dica">Sete tags que descrevem o esqueleto de qualquer pagina. Nenhuma delas muda um pixel &mdash; todas mudam o significado.</p>
+
+  <div class="mapa" aria-label="Mapa de uma pagina semantica">
+    <div class="bloco">&lt;header&gt;<small>logotipo, titulo do site, cabecalho da pagina</small></div>
+    <div class="bloco aninhado">&lt;nav&gt;<small>menu principal de navegacao</small></div>
+    <div class="lado">
+      <div>
+        <div class="bloco">&lt;main&gt;<small>conteudo principal &mdash; um so por pagina</small>
+          <div class="bloco aninhado" style="margin-top:8px">&lt;section&gt;<small>bloco tematico, com titulo proprio</small>
+            <div class="bloco aninhado" style="margin-top:8px">&lt;article&gt;<small>faz sentido sozinho: post, noticia, produto</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="bloco" style="align-self:start">&lt;aside&gt;<small>conteudo relacionado e dispensavel: barra lateral, &quot;veja tambem&quot;, publicidade</small></div>
+    </div>
+    <div class="bloco">&lt;footer&gt;<small>contato, creditos, mapa do site</small></div>
+  </div>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;header&gt;</span>, <span class="nome">&lt;nav&gt;</span> e <span class="nome">&lt;footer&gt;</span> <span class="sentido">o que emoldura o conteudo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;header&gt;
+  &lt;h1&gt;Portfolio de Ana Souza&lt;/h1&gt;
+  &lt;p&gt;Desenvolvedora front-end&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="projetos.html"&gt;Projetos&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="contato.html"&gt;Contato&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&amp;copy; 2026 Ana Souza&lt;/p&gt;
+  &lt;address&gt;ana@exemplo.com.br&lt;/address&gt;
+&lt;/footer&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Quando usar cada um</span>
+        <p><code>&lt;header&gt;</code> &mdash; cabecalho de um contexto. Pode haver mais de um por pagina.</p>
+        <p><code>&lt;nav&gt;</code> &mdash; so para blocos principais de navegacao. Nao precisa envolver todo link.</p>
+        <p><code>&lt;footer&gt;</code> &mdash; rodape do contexto em que esta: creditos, contato, mapa do site.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>&lt;header&gt; nao e &lt;head&gt;:</strong> <code>&lt;head&gt;</code> guarda metadados invisiveis no topo do arquivo; <code>&lt;header&gt;</code> e conteudo visivel no topo de uma secao. Erro que sempre aparece na correcao: <code>&lt;nav&gt;</code> envolvendo um unico link no meio de um paragrafo.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;main&gt;</span>, <span class="nome">&lt;section&gt;</span> e <span class="nome">&lt;article&gt;</span> <span class="sentido">o miolo da pagina</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;main&gt;
+  &lt;h1&gt;Blog da turma&lt;/h1&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;Ultimos posts&lt;/h2&gt;
+
+    &lt;article&gt;
+      &lt;h3&gt;Semantica em HTML5&lt;/h3&gt;
+      &lt;p&gt;Publicado em
+         &lt;time datetime="2026-08-26"&gt;26/08/2026&lt;/time&gt;&lt;/p&gt;
+      &lt;p&gt;Texto completo do post...&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;article&gt;
+      &lt;h3&gt;Flexbox na pratica&lt;/h3&gt;
+      &lt;p&gt;Outro post independente...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Quando usar cada um</span>
+        <p><code>&lt;main&gt;</code> &mdash; conteudo principal e <strong>unico</strong> da pagina. Fora dele: header, nav, aside, footer.</p>
+        <p><code>&lt;section&gt;</code> &mdash; bloco tematico. <strong>Exige titulo proprio</strong> (h2, h3...).</p>
+        <p><code>&lt;article&gt;</code> &mdash; faz sentido sozinho, fora da pagina: post, noticia, comentario, produto.</p>
+        <p style="background:var(--azul-claro);padding:8px;border-radius:6px;font-size:.92em"><strong>Teste do feed:</strong> se o trecho pudesse ser publicado isolado, compartilhado por link proprio ou aparecer num RSS sem perder sentido, e <code>&lt;article&gt;</code>. Caso contrario, e <code>&lt;section&gt;</code>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Sinal de alerta:</strong> <code>&lt;section&gt;</code> sem titulo e o indicio mais confiavel de que ali cabia um <code>&lt;div&gt;</code>.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;aside&gt;</span>, <span class="nome">&lt;time&gt;</span> e <span class="nome">&lt;address&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;aside&gt;
+  &lt;h2&gt;Veja tambem&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Acessibilidade na web&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;Inscricoes ate
+   &lt;time datetime="2026-04-30"&gt;30 de abril&lt;/time&gt;.&lt;/p&gt;
+
+&lt;address&gt;
+  &lt;a href="mailto:ana@exemplo.com"&gt;ana@exemplo.com&lt;/a&gt;
+&lt;/address&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Quando usar cada um</span>
+        <p><code>&lt;aside&gt;</code> &mdash; relacionado, porem dispensavel. <strong>Nao</strong> e sinonimo de &quot;coluna da direita&quot;.</p>
+        <p><code>&lt;time&gt;</code> &mdash; <code>datetime</code> em ISO (AAAA-MM-DD); o texto visivel pode ser livre.</p>
+        <p><code>&lt;address&gt;</code> &mdash; contato do autor ou do site. Nao serve para qualquer endereco postal citado no meio do texto.</p>
+        <p style="font-size:.9em;color:var(--tinta-fraca)">Resultado na tela: inscricoes ate <time datetime="2026-04-30">30 de abril</time>.</p>
+        <address style="font-size:.9em;color:var(--tinta-fraca)">ana@exemplo.com &mdash; o navegador exibe em italico por padrao.</address>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">section, article ou div?</span> <span class="sentido">tres perguntas que resolvem quase todos os casos</span></h3>
+    <div style="padding:16px">
+      <p style="margin:0 0 10px"><strong>1.</strong> Este trecho faria sentido publicado sozinho, fora da pagina?<br>
+      <span style="color:var(--verde)">SIM &rarr; <code>&lt;article&gt;</code></span> &nbsp;&nbsp; NAO &rarr; siga para a 2</p>
+      <p style="margin:0 0 10px"><strong>2.</strong> Este trecho tem tema proprio, com um titulo que voce conseguiria escrever?<br>
+      <span style="color:var(--verde)">SIM &rarr; <code>&lt;section&gt;</code></span> &nbsp;&nbsp; NAO &rarr; siga para a 3</p>
+      <p style="margin:0 0 10px"><strong>3.</strong> O agrupamento existe apenas para posicionar ou estilizar com CSS?<br>
+      <span style="color:var(--verde)">SIM &rarr; <code>&lt;div&gt;</code></span> &nbsp;&nbsp; NAO &rarr; reveja: talvez seja header, nav, aside ou footer</p>
+      <p style="margin:0;color:var(--tinta-fraca);font-size:.92em">Nenhuma das tres? Provavelmente aquele trecho nao precisa de container nenhum.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 14 ==================== -->
+<section class="grupo" id="g14">
+  <h2>14. Semantica dentro do paragrafo</h2>
+  <p class="dica">Elementos em linha que carregam significado.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;mark&gt;</span>, <span class="nome">&lt;abbr&gt;</span>, <span class="nome">&lt;q&gt;</span>, <span class="nome">&lt;cite&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;p&gt;Trecho &lt;mark&gt;realcado na busca&lt;/mark&gt; do usuario.&lt;/p&gt;
+&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;&lt;/p&gt;
+&lt;p&gt;Ele disse &lt;q&gt;vou validar depois&lt;/q&gt; e nao validou.&lt;/p&gt;
+
+&lt;blockquote cite="https://www.w3.org/TR/html5/"&gt;
+  &lt;p&gt;HTML e a linguagem de marcacao da Web.&lt;/p&gt;
+  &lt;footer&gt;&amp;mdash; &lt;cite&gt;W3C, HTML5&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p>Trecho <mark>realcado na busca</mark> do usuario.</p>
+        <p><abbr title="HyperText Markup Language" style="border-bottom:1px dotted">HTML</abbr> (passe o mouse)</p>
+        <p>Ele disse <q>vou validar depois</q> e nao validou.</p>
+        <blockquote cite="https://www.w3.org/TR/html5/" style="margin:0;padding-left:14px;border-left:4px solid var(--linha)">
+          <p style="margin:0">HTML e a linguagem de marcacao da Web.</p>
+          <footer style="font-size:.88em;color:var(--tinta-fraca)">&mdash; <cite>W3C, HTML5</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+    <p class="nota"><strong>Nota:</strong> <code>&lt;mark&gt;</code> e para o que e relevante <em>agora</em> (resultado de busca), nao para grifar por decoracao.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;code&gt;</span>, <span class="nome">&lt;kbd&gt;</span>, <span class="nome">&lt;samp&gt;</span>, <span class="nome">&lt;del&gt;</span>, <span class="nome">&lt;ins&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;p&gt;Tecle &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;U&lt;/kbd&gt; e rode
+   &lt;code&gt;document.title&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Saida: &lt;samp&gt;404 Not Found&lt;/samp&gt;&lt;/p&gt;
+
+&lt;p&gt;Revisao: &lt;del&gt;antigo&lt;/del&gt; &lt;ins&gt;novo&lt;/ins&gt;&lt;/p&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p>Tecle <kbd style="border:1px solid var(--linha);border-radius:4px;padding:1px 5px;background:var(--papel)">Ctrl</kbd>+<kbd style="border:1px solid var(--linha);border-radius:4px;padding:1px 5px;background:var(--papel)">U</kbd> e rode <code style="background:var(--papel);padding:1px 5px;border-radius:4px">document.title</code>.</p>
+        <p>Saida: <samp>404 Not Found</samp></p>
+        <p>Revisao: <del>antigo</del> <ins>novo</ins></p>
+        <p style="font-size:.9em;color:var(--tinta-fraca)"><code>&lt;code&gt;</code> trecho de codigo &nbsp;|&nbsp; <code>&lt;kbd&gt;</code> tecla &nbsp;|&nbsp; <code>&lt;samp&gt;</code> saida do sistema &nbsp;|&nbsp; <code>&lt;del&gt;</code> e <code>&lt;ins&gt;</code> revisao de texto.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 15 ==================== -->
+<section class="grupo" id="g15">
+  <h2>15. Semantica interativa: nativo antes de JavaScript</h2>
+  <p class="dica">Comportamento pronto, acessivel, sem uma linha de script.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;details&gt;</span> + <span class="nome">&lt;summary&gt;</span> <span class="sentido">FAQ que abre e fecha sozinho</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;details&gt;
+  &lt;summary&gt;O que e semantica em HTML?&lt;/summary&gt;
+  &lt;p&gt;E o uso de tags cujo nome descreve o conteudo.&lt;/p&gt;
+&lt;/details&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela &mdash; clique e depois navegue com Tab</span>
+        <details style="border:1px solid var(--linha);border-radius:8px;padding:10px">
+          <summary style="cursor:pointer;font-weight:600">O que e semantica em HTML?</summary>
+          <p style="margin:8px 0 0">E o uso de tags cujo nome descreve o conteudo.</p>
+        </details>
+        <p style="font-size:.9em;color:var(--tinta-fraca);margin-top:8px">Acessivel por teclado de fabrica. Zero JavaScript.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;progress&gt;</span> e <span class="nome">&lt;meter&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;progress value="7" max="12"&gt;7 de 12 aulas&lt;/progress&gt;
+
+&lt;meter value="0.8" min="0" max="1"&gt;80%&lt;/meter&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado na tela</span>
+        <p><progress value="7" max="12">7 de 12 aulas</progress> &nbsp; <code>progress</code>: tarefa em andamento</p>
+        <p><meter value="0.8" min="0" max="1">80%</meter> &nbsp; <code>meter</code>: medida dentro de uma faixa</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;button&gt;</span> x <span class="nome">&lt;a&gt;</span> x <span class="nome">&lt;div onclick&gt;</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;button type="button"&gt;Executa uma acao&lt;/button&gt;
+&lt;a href="pagina.html"&gt;Leva para outro lugar&lt;/a&gt;
+
+&lt;!-- ERRADO --&gt;
+&lt;div onclick="fazAlgo()"&gt;Parece um botao&lt;/div&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Teste com a tecla Tab</span>
+        <p><button type="button" style="font:inherit;padding:5px 12px;border-radius:6px;border:1px solid var(--linha);cursor:pointer">Executa uma acao</button> &nbsp; <a href="#g15">Leva para outro lugar</a></p>
+        <p style="font-size:.9em"><code>&lt;a&gt;</code> navega &nbsp;|&nbsp; <code>&lt;button&gt;</code> age &nbsp;|&nbsp; <code>&lt;div onclick&gt;</code> nao recebe foco pelo teclado e nao responde a Enter e Espaco.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Regra:</strong> todo elemento nativo ja vem com foco, navegacao por teclado e anuncio corretos. Recriar isso com <code>&lt;div&gt;</code> custa mais codigo e quase sempre sai pior.</p>
+  </article>
+</section>
+
+<!-- ==================== 16 ==================== -->
+<section class="grupo" id="g16">
+  <h2>16. Landmarks: acessibilidade sem esforco extra</h2>
+  <p class="dica">Cada elemento estrutural ja e um ponto de navegacao para o leitor de tela.</p>
+
+  <table class="landmarks">
+    <caption>Landmark implicito de cada elemento HTML5</caption>
+    <thead>
+      <tr><th>Elemento HTML5</th><th>Landmark implicito</th><th>O leitor de tela anuncia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt;header&gt;</td><td>banner</td><td>&quot;banner&quot;</td></tr>
+      <tr><td>&lt;nav&gt;</td><td>navigation</td><td>&quot;navegacao&quot;</td></tr>
+      <tr><td>&lt;main&gt;</td><td>main</td><td>&quot;principal&quot;</td></tr>
+      <tr><td>&lt;aside&gt;</td><td>complementary</td><td>&quot;complementar&quot;</td></tr>
+      <tr><td>&lt;footer&gt;</td><td>contentinfo</td><td>&quot;informacoes do conteudo&quot;</td></tr>
+      <tr><td>&lt;form&gt;</td><td>form</td><td>&quot;formulario&quot;</td></tr>
+      <tr><td>&lt;section&gt;</td><td>region (com titulo)</td><td>&quot;regiao + titulo da secao&quot;</td></tr>
+      <tr><td>&lt;article&gt;</td><td>article</td><td>&quot;artigo&quot;</td></tr>
+    </tbody>
+  </table>
+
+  <article class="tag" style="margin-top:16px">
+    <h3><span class="nome">Consequencias praticas</span></h3>
+    <div style="padding:14px 16px">
+      <ul style="margin:0;padding-left:20px">
+        <li>Escrever <code>&lt;div role="navigation"&gt;</code> faz o mesmo que <code>&lt;nav&gt;</code> &mdash; com mais codigo e mais chance de erro.</li>
+        <li>Primeira regra do ARIA: nao use ARIA se existe um elemento HTML nativo que ja faz aquilo.</li>
+        <li><code>&lt;header&gt;</code> e <code>&lt;footer&gt;</code> so valem como landmark quando estao no nivel do <code>&lt;body&gt;</code>.</li>
+        <li><code>&lt;section&gt;</code> so vira landmark quando tem titulo acessivel: mais um motivo para nunca deixa-la sem <code>&lt;h2&gt;</code>.</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+</main>
+
+<div class="barra-foco" role="group" aria-label="Navegacao tag por tag">
+  <button type="button" id="anterior" aria-label="Tag anterior">&larr;</button>
+  <span id="contador">tag 0 / 0</span>
+  <button type="button" id="proxima" aria-label="Proxima tag">&rarr;</button>
+</div>
+
+<footer class="rodape">
+  Desenvolvimento Front-end para Web &mdash; CEUNSP. Material de apoio das Aulas 02 e 03.
+  Referencia oficial: <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML">MDN Web Docs</a> &nbsp;|&nbsp;
+  Validador: <a href="https://validator.w3.org">validator.w3.org</a>
+</footer>
+
+<script>
+  // Navegacao tag por tag: setas do teclado ou botoes no canto inferior direito.
+  (function () {
+    var cartoes = Array.prototype.slice.call(document.querySelectorAll('article.tag'));
+    var contador = document.getElementById('contador');
+    var atual = -1;
+
+    function ir(passo) {
+      if (atual >= 0) cartoes[atual].classList.remove('destacada');
+      atual = Math.max(0, Math.min(cartoes.length - 1, atual + passo));
+      var alvo = cartoes[atual];
+      alvo.classList.add('destacada');
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      contador.textContent = 'tag ' + (atual + 1) + ' / ' + cartoes.length;
+    }
+
+    contador.textContent = 'tag 0 / ' + cartoes.length;
+    document.getElementById('proxima').addEventListener('click', function () { ir(1); });
+    document.getElementById('anterior').addEventListener('click', function () { ir(-1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); ir(-1); }
+    });
+  })();
+</script>
+
+</body>
+</html>
