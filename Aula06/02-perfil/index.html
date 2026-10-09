@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Souza - Desenvolvedora Front-end</title>
+  <!-- um unico link: o main.css importa os modulos -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <div class="container">
+      <h1 class="cabecalho__nome">Ana Souza</h1>
+      <p class="cabecalho__cargo">Estudante de ADS &middot; Front-end</p>
+      <nav class="menu" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+        <a href="curriculo.pdf">Curriculo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="sobre" class="secao">
+      <h2>Sobre mim</h2>
+      <p>Estou no segundo semestre de Analise e Desenvolvimento de Sistemas e gosto de
+        transformar layout em codigo. Procuro um estagio onde eu possa aprender com um
+        time de verdade.</p>
+      <p class="destaque">Disponivel para estagio a partir do proximo semestre.</p>
+    </section>
+
+    <section id="habilidades" class="secao">
+      <h2>Habilidades</h2>
+      <ul class="habilidades">
+        <li>HTML5 semantico</li>
+        <li>CSS3 e organizacao modular</li>
+        <li>Acessibilidade basica</li>
+        <li>Git e GitHub</li>
+      </ul>
+    </section>
+
+    <section id="projetos" class="secao">
+      <h2>Projetos</h2>
+
+      <article class="card">
+        <h3 class="card__titulo">Cardapio da cantina</h3>
+        <p class="card__texto">Pagina com tabela de precos e formulario de pedido.</p>
+      </article>
+
+      <article class="card card--destaque">
+        <h3 class="card__titulo">Canal Natureza</h3>
+        <p class="card__texto">Player de video proprio e grafico em canvas e SVG.</p>
+      </article>
+
+      <article class="card">
+        <h3 class="card__titulo">Perfil pessoal</h3>
+        <p class="card__texto">Esta pagina: CSS em modulos com variaveis.</p>
+      </article>
+    </section>
+
+    <section id="contato" class="secao">
+      <h2>Contato</h2>
+      <p>Prefiro contato por e-mail; respondo no mesmo dia.</p>
+      <a class="botao" href="mailto:ana@exemplo.com">Enviar e-mail</a>
+      <a class="botao botao--secundario" href="curriculo.pdf">Baixar curriculo</a>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Ana Souza &middot; pagina de exemplo da Aula 06</p>
+  </footer>
+
+</body>
+</html>

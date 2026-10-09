@@ -1,0 +1,90 @@
+/* formulario.css: estilos de formulários */
+
+.formulario {
+  max-width: 600px;
+  margin: var(--espaco-grande) auto;
+}
+
+fieldset {
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio);
+  padding: var(--espaco-grande);
+  margin-bottom: var(--espaco-grande);
+  background: #FAFAFA;
+}
+
+fieldset:last-of-type {
+  margin-bottom: var(--espaco-grande);
+}
+
+legend {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0 var(--espaco-pequeno);
+  color: var(--cor-fundo);
+  background: var(--cor-primaria);
+  padding: 0.5rem 1rem;
+  border-radius: var(--raio);
+  display: inline-block;
+  margin-left: -0.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: var(--espaco-pequeno);
+  font-weight: 600;
+  color: var(--cor-texto);
+  margin-top: var(--espaco);
+}
+
+label::after {
+  content: "";
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: var(--espaco);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: var(--cor-fundo);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+}
+
+input[required]::after {
+  content: " *";
+  color: var(--cor-destaque);
+}
+
+label[for="nome"]::before,
+label[for="email"]::before {
+  content: "";
+  display: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input:invalid {
+  border-color: #d32f2f;
+}
+
+input:valid {
+  border-color: var(--cor-sucesso);
+}

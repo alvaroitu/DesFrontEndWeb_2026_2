@@ -1,0 +1,27 @@
+/* tipografia.css: texto base, titulos e links (a heranca faz o resto) */
+body {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-primaria);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--espaco);
+}
+
+a {
+  color: var(--cor-primaria);
+}
+
+.destaque {
+  color: var(--cor-destaque);
+  font-weight: 600;
+}

@@ -1,0 +1,25 @@
+/* card.css: cartao de projeto; inline-block por enquanto (flex e grid vem na aula 07) */
+.card {
+  display: inline-block;
+  vertical-align: top;
+  width: 17rem;
+  margin: 0 var(--espaco) var(--espaco) 0;
+  padding: calc(var(--espaco) * 1.25);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.card__titulo {
+  font-size: 1.15rem;
+  margin-bottom: calc(var(--espaco) / 2);
+}
+
+.card__texto {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+}
+
+.card--destaque {
+  border: 2px solid var(--cor-destaque);
+}

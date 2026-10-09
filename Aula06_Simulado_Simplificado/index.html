@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Silva — Desenvolvedor Front-End</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="pagina">
+
+  <header class="cabecalho">
+    <strong class="logo">João Silva — Desenvolvedor Front-End</strong>
+    <nav class="menu">
+      <ul class="menu-lista">
+        <li class="menu-item"><a class="menu-link" href="#inicio">Início</a></li>
+        <li class="menu-item"><a class="menu-link" href="#projetos">Projetos</a></li>
+        <li class="menu-item"><a class="menu-link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- SEÇÃO SOBRE -->
+    <section id="inicio" class="sobre">
+      <h2 class="sobre-titulo">Sobre mim</h2>
+
+      <div class="sobre-conteudo">
+        <figure class="sobre-figura">
+          <img class="sobre-foto" src="img/avatar.png"
+               alt="Avatar de João Silva, desenvolvedor front-end"
+               width="200" height="200">
+          <figcaption class="sobre-legenda">João Silva</figcaption>
+        </figure>
+
+        <div class="sobre-texto">
+          <p class="sobre-paragrafo">
+            Sou um desenvolvedor front-end apaixonado por criar interfaces
+            <strong class="destaque">acessíveis e responsivas</strong>. Com experiência em HTML5,
+            CSS3 e JavaScript, trabalho para transformar ideias em realidade na web.
+          </p>
+          <p class="sobre-paragrafo">
+            Minhas habilidades incluem semântica HTML, CSS, Flexbox e Grid,
+            formulários acessíveis e otimização para performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS -->
+    <section id="projetos" class="projetos">
+      <h2 class="projetos-titulo">Meus Projetos</h2>
+
+      <div class="galeria">
+
+        <article class="card">
+          <h3 class="card-titulo">Portfólio Pessoal</h3>
+          <p class="card-texto">Site responsivo com design limpo e navegação intuitiva.</p>
+          <a class="card-botao" href="#">Ver projeto</a>
+        </article>
+
+        <article class="card">
+          <h3 class="card-titulo">E-commerce</h3>
+          <p class="card-texto">Plataforma de vendas com carrinho funcional e busca de produtos.</p>
+          <a class="card-botao" href="#">Ver projeto</a>
+        </article>
+
+        <article class="card">
+          <h3 class="card-titulo">Blog Técnico</h3>
+          <p class="card-texto">Blog sobre desenvolvimento web com artigos bem estruturados.</p>
+          <a class="card-botao" href="#">Ver projeto</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato" class="contato">
+      <h2 class="contato-titulo">Entre em contato</h2>
+      <p class="contato-texto">Preencha o formulário abaixo e entrarei em contato em breve.</p>
+
+      <form class="formulario" action="#" method="POST">
+
+        <fieldset class="grupo">
+          <legend class="grupo-titulo">Seus dados</legend>
+
+          <label class="rotulo" for="nome">Nome completo</label>
+          <input class="campo" type="text" id="nome" name="nome" required
+                 autocomplete="name" maxlength="80">
+
+          <label class="rotulo" for="email">E-mail</label>
+          <input class="campo" type="email" id="email" name="email" required
+                 autocomplete="email">
+
+          <label class="rotulo" for="telefone">Telefone</label>
+          <input class="campo" type="tel" id="telefone" name="telefone"
+                 autocomplete="tel" inputmode="numeric">
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend class="grupo-titulo">Sua mensagem</legend>
+
+          <label class="rotulo" for="mensagem">Sua mensagem aqui (máximo 500 caracteres)</label>
+          <textarea class="campo-mensagem" id="mensagem" name="mensagem" rows="5" maxlength="500"
+                    placeholder="Escreva sua mensagem"></textarea>
+        </fieldset>
+
+        <button class="botao-enviar" type="submit">Enviar mensagem</button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <address class="rodape-endereco">
+      Entre em contato: <a class="rodape-link" href="mailto:joao@email.com">joao@email.com</a>
+    </address>
+    <p class="rodape-texto">&copy; 2026 João Silva. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

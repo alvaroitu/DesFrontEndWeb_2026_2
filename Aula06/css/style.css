@@ -1,0 +1,18 @@
+h1 {
+   
+    background-color: rgb(255 111 0 / 10%);    /* com transparencia          */
+   
+}
+
+h2 {
+    background-color: rgb(255 111 0 / 100%);    /* com transparencia          */
+}
+
+
+p            { background-color: rgb(16, 15, 15); }        /* tipo: todas as <p>        */
+.destaque    { background-color: rgb(27, 27, 244); }          /* classe: class="destaque"  */
+#topo        { background-color: rgb(245, 241, 13); }            /* id: id="topo"             */
+h1, h2, h3   { background-color: rgb(242, 118, 87); }    /* agrupamento: os tres      */
+p.aviso      { background-color: rgb(230, 10, 149); }       /* <p> que tenha a classe    */
+
+

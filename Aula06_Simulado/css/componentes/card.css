@@ -1,0 +1,39 @@
+/* card.css: cards de projetos */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--espaco-grande);
+  background: var(--cor-fundo-claro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-grande);
+  transition: all 0.3s ease;
+  box-shadow: var(--sombra);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: var(--espaco);
+  color: var(--cor-primaria);
+}
+
+.card p {
+  flex: 1;
+  color: #666;
+  margin-bottom: var(--espaco-grande);
+}
+
+.card .botao {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--cor-primaria);
+}
+
+.card:hover h3 {
+  color: var(--cor-destaque);
+}

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia de tags HTML5 - Aula 05: midia, canvas e SVG</title>
+  <meta name="description" content="Referencia visual tag por tag da Aula 05 de Desenvolvimento Front-end para Web - CEUNSP">
+  <meta name="author" content="Prof. Alvaro Augusto Pereira">
+  <style>
+    :root{
+      --tinta:#16181d;
+      --tinta-fraca:#5b6270;
+      --fundo:#ffffff;
+      --papel:#f6f7f9;
+      --linha:#dfe3ea;
+      --azul:#1b4fa0;
+      --azul-claro:#e8effa;
+      --verde:#1d7a4d;
+      --vermelho:#b3261e;
+      --amarelo:#fff3c4;
+      --raio:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:17px;
+      line-height:1.55;
+      color:var(--tinta);
+      background:var(--fundo);
+    }
+    code,pre,kbd,samp{font-family:Consolas,"Courier New",monospace}
+
+    /* ---------- cabecalho ---------- */
+    header.topo{
+      background:var(--tinta);
+      color:#fff;
+      padding:22px 32px;
+    }
+    header.topo h1{margin:0;font-size:1.6rem}
+    header.topo p{margin:4px 0 0;color:#b9c0cc;font-size:.95rem}
+
+    nav.indice{
+      position:sticky;top:0;z-index:20;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      padding:10px 32px;
+    }
+    nav.indice ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+    nav.indice a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--azul);
+      background:#fff;
+      border:1px solid var(--linha);
+      border-radius:99px;
+      padding:3px 12px;
+      font-size:.82rem;
+    }
+    nav.indice a:hover{background:var(--azul-claro)}
+
+    main{padding:0 32px 80px}
+    section.grupo{margin:44px 0 0}
+    section.grupo > h2{
+      font-size:1.35rem;
+      margin:0 0 4px;
+      padding-bottom:8px;
+      border-bottom:3px solid var(--azul);
+    }
+    section.grupo > p.dica{margin:0 0 18px;color:var(--tinta-fraca);font-size:.95rem}
+
+    /* ---------- cartao de tag ---------- */
+    article.tag{
+      border:1px solid var(--linha);
+      border-radius:var(--raio);
+      margin:0 0 16px;
+      overflow:hidden;
+      background:#fff;
+    }
+    article.tag > h3{
+      margin:0;
+      padding:10px 16px;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      font-size:1.05rem;
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    article.tag > h3 .nome{
+      color:var(--azul);
+      font-family:Consolas,"Courier New",monospace;
+      font-size:1.1rem;
+    }
+    article.tag > h3 .sentido{
+      font-weight:400;
+      font-size:.9rem;
+      color:var(--tinta-fraca);
+    }
+    .corpo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    @media (max-width:900px){.corpo{grid-template-columns:1fr}}
+    .codigo,.resultado{padding:14px 16px}
+    .codigo{background:#1e2229;border-right:1px solid var(--linha)}
+    .codigo pre{
+      margin:0;
+      color:#e6e9ef;
+      font-size:.86rem;
+      line-height:1.5;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .rotulo{
+      display:block;
+      font-size:.68rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      color:var(--tinta-fraca);
+    }
+    .codigo .rotulo{color:#8b93a1}
+    .resultado > *:not(.rotulo):first-of-type{margin-top:0}
+    .resultado video,.resultado img,.resultado iframe,.resultado object{max-width:100%}
+    .resultado video{height:auto}
+    .resultado canvas{border:1px solid var(--linha);max-width:100%}
+    .resultado button{
+      font:inherit;font-size:.9rem;cursor:pointer;
+      padding:4px 12px;border-radius:6px;border:1px solid var(--linha);background:#fff;
+    }
+    .resultado button:hover{background:var(--azul-claro)}
+    .nota{
+      margin:0;
+      padding:10px 16px;
+      background:var(--amarelo);
+      border-top:1px solid var(--linha);
+      font-size:.88rem;
+    }
+    .nota strong{color:#7a5c00}
+
+    /* ---------- comparativos ---------- */
+    .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+    @media (max-width:900px){.par{grid-template-columns:1fr}}
+    .caixa{border:1px solid var(--linha);border-radius:var(--raio);padding:14px 16px}
+    .caixa.certo{border-left:5px solid var(--verde)}
+    .caixa.errado{border-left:5px solid var(--vermelho)}
+    .caixa h4{margin:0 0 8px;font-size:.95rem}
+    .caixa.certo h4{color:var(--verde)}
+    .caixa.errado h4{color:var(--vermelho)}
+    .caixa pre{margin:0;font-size:.84rem;white-space:pre-wrap;background:var(--papel);padding:10px;border-radius:6px}
+
+    /* ---------- tabelas de consulta ---------- */
+    table.consulta{border-collapse:collapse;width:100%;font-size:.9rem;margin:0 0 16px}
+    table.consulta caption{text-align:left;font-weight:600;padding-bottom:8px}
+    table.consulta th,table.consulta td{border:1px solid var(--linha);padding:7px 10px;text-align:left;vertical-align:top}
+    table.consulta thead{background:var(--papel)}
+    table.consulta td:first-child{font-family:Consolas,monospace;color:var(--azul)}
+
+    /* ---------- demo SVG estilizado por CSS ---------- */
+    .svg-demo rect{fill:var(--azul);transition:fill .2s}
+    .svg-demo rect:hover{fill:#ff6f00}
+    .icone-tema{color:var(--verde)}
+    .icone-tema:hover{color:var(--vermelho)}
+
+    /* ---------- modo foco ---------- */
+    .barra-foco{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      display:flex;gap:6px;align-items:center;
+      background:var(--tinta);color:#fff;
+      padding:8px 12px;border-radius:99px;
+      box-shadow:0 4px 14px rgba(0,0,0,.28);
+      font-size:.85rem;
+    }
+    .barra-foco button{
+      font:inherit;cursor:pointer;
+      background:#333a45;color:#fff;border:0;border-radius:6px;padding:4px 10px;
+    }
+    .barra-foco button:hover{background:var(--azul)}
+    article.tag.destacada{
+      outline:4px solid var(--azul);
+      outline-offset:3px;
+      scroll-margin-top:96px;
+    }
+    footer.rodape{
+      background:var(--papel);
+      border-top:1px solid var(--linha);
+      padding:18px 32px;
+      font-size:.85rem;
+      color:var(--tinta-fraca);
+    }
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <h1>Referencia de tags HTML5 &mdash; midia, incorporacao, canvas e SVG</h1>
+  <p>Desenvolvimento Front-end para Web &nbsp;|&nbsp; CEUNSP &nbsp;|&nbsp; Aula 05 &nbsp;|&nbsp; Prof. Alvaro Augusto Pereira</p>
+</header>
+
+<nav class="indice" aria-label="Indice dos grupos de tags">
+  <ul>
+    <li><a href="#g1">1. audio</a></li>
+    <li><a href="#g2">2. video</a></li>
+    <li><a href="#g3">3. source e formatos</a></li>
+    <li><a href="#g4">4. Atributos de comportamento</a></li>
+    <li><a href="#g5">5. track</a></li>
+    <li><a href="#g6">6. Midia no JavaScript</a></li>
+    <li><a href="#g7">7. iframe</a></li>
+    <li><a href="#g8">8. object e embed</a></li>
+    <li><a href="#g9">9. picture e srcset</a></li>
+    <li><a href="#g10">10. canvas</a></li>
+    <li><a href="#g11">11. Formas no canvas</a></li>
+    <li><a href="#g12">12. Texto, imagem, animacao</a></li>
+    <li><a href="#g13">13. svg</a></li>
+    <li><a href="#g14">14. Formas e viewBox</a></li>
+    <li><a href="#g15">15. Colocar SVG na pagina</a></li>
+    <li><a href="#g16">16. Imagem, canvas ou SVG?</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ==================== 1 ==================== -->
+<section class="grupo" id="g1">
+  <h2>1. &lt;audio&gt;</h2>
+  <p class="dica">Som nativo no navegador, sem plugin. Os arquivos de exemplo estao na pasta <code>midia/</code>.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;audio controls&gt;</span> <span class="sentido">toca um arquivo de som</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;audio controls&gt;
+  &lt;source src="midia/audio.mp3" type="audio/mpeg"&gt;
+  Seu navegador nao toca audio.
+  &lt;a href="midia/audio.mp3"&gt;Baixar o audio&lt;/a&gt;
+&lt;/audio&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <audio controls>
+          <source src="midia/audio.mp3" type="audio/mpeg">
+          Seu navegador nao toca audio.
+          <a href="midia/audio.mp3">Baixar o audio</a>
+        </audio>
+        <p><code>controls</code> desenha o player padrao do navegador.</p>
+        <p>O texto entre as tags e o <strong>plano B</strong>: so aparece se o navegador nao entender <code>&lt;audio&gt;</code>. Mesma logica do <code>alt</code>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Sem <code>controls</code>:</strong> o audio existe na pagina, mas o usuario nao ve nada e nao consegue tocar. So o JavaScript alcanca.</p>
+  </article>
+</section>
+
+<!-- ==================== 2 ==================== -->
+<section class="grupo" id="g2">
+  <h2>2. &lt;video&gt;</h2>
+  <p class="dica">Todo player que voce usa hoje (YouTube, Netflix, Instagram) e um <code>&lt;video&gt;</code> com uma interface propria por cima.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;video&gt;</span> <span class="sentido">toca um video com capa e legenda</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;video controls width="400" height="225"
+       poster="midia/capa.jpg" preload="metadata"&gt;
+  &lt;source src="midia/video.webm" type="video/webm"&gt;
+  &lt;source src="midia/video.mp4"  type="video/mp4"&gt;
+  &lt;track kind="captions" src="midia/legendas.vtt"
+         srclang="pt-BR" label="Portugues" default&gt;
+  Seu navegador nao suporta video.
+  &lt;a href="midia/video.mp4"&gt;Baixar o video&lt;/a&gt;
+&lt;/video&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <video controls width="400" height="225" poster="midia/capa.jpg" preload="metadata">
+          <source src="midia/video.webm" type="video/webm">
+          <source src="midia/video.mp4" type="video/mp4">
+          <track kind="captions" src="midia/legendas.vtt" srclang="pt-BR" label="Portugues" default>
+          Seu navegador nao suporta video.
+          <a href="midia/video.mp4">Baixar o video</a>
+        </video>
+        <p><code>width</code>/<code>height</code> reservam o espaco; <code>poster</code> e a capa antes do play.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Responsivo:</strong> o video nao encolhe sozinho no celular. No CSS: <code>video { max-width: 100%; height: auto; }</code></p>
+  </article>
+</section>
+
+<!-- ==================== 3 ==================== -->
+<section class="grupo" id="g3">
+  <h2>3. &lt;source&gt;, formatos e codecs</h2>
+  <p class="dica">Varias opcoes do mesmo arquivo; o navegador escolhe a primeira que sabe tocar.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;source&gt;</span> <span class="sentido">lista de alternativas, lida de cima para baixo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;video controls&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;  &lt;!-- 1a opcao --&gt;
+  &lt;source src="video.mp4"  type="video/mp4"&gt;   &lt;!-- garantia --&gt;
+&lt;/video&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Como o navegador decide</span>
+        <p>Le o <code>type</code> de cada <code>&lt;source&gt;</code>, para no <strong>primeiro</strong> que sabe tocar e ignora o resto. Nao baixa os dois.</p>
+        <p>Ordem: o mais leve primeiro, o mais compativel por ultimo.</p>
+      </div>
+    </div>
+  </article>
+
+  <table class="consulta">
+    <caption>Formatos mais usados</caption>
+    <thead><tr><th>Arquivo</th><th>type</th><th>Observacao</th></tr></thead>
+    <tbody>
+      <tr><td>.mp4</td><td>video/mp4</td><td>Toca em todo lugar (codec H.264). Resolve quase todo caso.</td></tr>
+      <tr><td>.webm</td><td>video/webm</td><td>Formato livre, costuma pesar menos.</td></tr>
+      <tr><td>.mp3</td><td>audio/mpeg</td><td>Audio universal.</td></tr>
+      <tr><td>.ogg</td><td>audio/ogg</td><td>Audio livre.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="par">
+    <div class="caixa certo">
+      <h4>Formato = o recipiente</h4>
+      <pre>.mp4  .webm  .mp3</pre>
+    </div>
+    <div class="caixa certo">
+      <h4>Codec = como foi comprimido</h4>
+      <pre>H.264  VP9  AV1</pre>
+    </div>
+  </div>
+  <p class="dica">Dois arquivos <code>.mp4</code> podem usar codecs diferentes. Por isso as vezes um toca e o outro nao.</p>
+</section>
+
+<!-- ==================== 4 ==================== -->
+<section class="grupo" id="g4">
+  <h2>4. Atributos de comportamento</h2>
+  <p class="dica">Valem para <code>&lt;audio&gt;</code> e <code>&lt;video&gt;</code>. Sao atributos booleanos: basta escrever o nome.</p>
+
+  <table class="consulta">
+    <caption>O que cada atributo faz</caption>
+    <thead><tr><th>Atributo</th><th>Efeito</th></tr></thead>
+    <tbody>
+      <tr><td>controls</td><td>Mostra os controles nativos (play, volume, tela cheia).</td></tr>
+      <tr><td>autoplay</td><td>Tenta tocar sozinho ao carregar. <strong>Com som, o navegador bloqueia.</strong></td></tr>
+      <tr><td>muted</td><td>Comeca sem som. E o que libera o autoplay.</td></tr>
+      <tr><td>loop</td><td>Recomeca ao terminar.</td></tr>
+      <tr><td>preload</td><td><code>none</code> (nao baixa nada), <code>metadata</code> (so duracao e tamanho), <code>auto</code> (o navegador decide).</td></tr>
+      <tr><td>playsinline</td><td>No iPhone, toca dentro da pagina em vez de abrir em tela cheia.</td></tr>
+    </tbody>
+  </table>
+
+  <article class="tag">
+    <h3><span class="nome">autoplay muted loop playsinline</span> <span class="sentido">o combo do video de fundo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;video autoplay muted loop playsinline width="300"&gt;
+  &lt;source src="midia/video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <video autoplay muted loop playsinline width="300">
+          <source src="midia/video.mp4" type="video/mp4">
+        </video>
+        <p>Toca sozinho, sem som, sem parar e sem controles.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Autoplay com som nao funciona</strong> em nenhum navegador moderno. Nao e erro de codigo: e politica de experiencia do usuario.</p>
+  </article>
+</section>
+
+<!-- ==================== 5 ==================== -->
+<section class="grupo" id="g5">
+  <h2>5. &lt;track&gt;: legenda nao e enfeite</h2>
+  <p class="dica">A legenda e um arquivo de texto puro (.vtt) que da para escrever a mao.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;track&gt;</span> + <span class="nome">arquivo .vtt</span> <span class="sentido">legendas sincronizadas</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">midia/legendas.vtt</span>
+<pre>WEBVTT
+
+00:00:00.000 --&gt; 00:00:02.000
+Uma abelha pousa na flor.
+
+00:00:02.000 --&gt; 00:00:04.000
+Ela procura o nectar.</pre>
+        <br>
+        <span class="rotulo">Dentro do &lt;video&gt;</span>
+<pre>&lt;track kind="captions" src="midia/legendas.vtt"
+       srclang="pt-BR" label="Portugues" default&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Atributos</span>
+        <p><code>kind</code> &mdash; <code>captions</code> (transcreve falas e sons, para quem nao ouve) ou <code>subtitles</code> (traducao).</p>
+        <p><code>srclang</code> &mdash; idioma da legenda.</p>
+        <p><code>label</code> &mdash; nome que aparece no menu do player.</p>
+        <p><code>default</code> &mdash; ja comeca ligada.</p>
+        <p>Veja funcionando no video do <a href="#g2">grupo 2</a>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Legenda nao aparece?</strong> Abrindo o HTML com duplo clique (<code>file://</code>), o Chrome bloqueia o .vtt. Abra com o <strong>Live Server</strong> do VS Code.</p>
+  </article>
+</section>
+
+<!-- ==================== 6 ==================== -->
+<section class="grupo" id="g6">
+  <h2>6. O elemento de midia no JavaScript</h2>
+  <p class="dica">Metodo e verbo (faz algo), propriedade e substantivo (guarda um valor), evento e noticia (avisa que algo aconteceu).</p>
+
+  <article class="tag">
+    <h3><span class="nome">play() pause() currentTime muted</span> <span class="sentido">controles feitos por nos</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;video id="v" width="300" src="midia/video.mp4"&gt;&lt;/video&gt;
+&lt;button type="button" id="btnPlay"&gt;Play&lt;/button&gt;
+&lt;button type="button" id="btnParar"&gt;Parar&lt;/button&gt;
+&lt;button type="button" id="btnMudo"&gt;Mudo&lt;/button&gt;
+&lt;output id="tempo"&gt;0.0 s&lt;/output&gt;
+
+&lt;script&gt;
+  const v = document.getElementById("v");
+
+  btnPlay.onclick = () =&gt; v.paused ? v.play() : v.pause();
+  btnParar.onclick = () =&gt; { v.pause(); v.currentTime = 0; };
+  btnMudo.onclick = () =&gt; v.muted = !v.muted;
+
+  v.addEventListener("play",  () =&gt; btnPlay.textContent = "Pause");
+  v.addEventListener("pause", () =&gt; btnPlay.textContent = "Play");
+  v.addEventListener("timeupdate", () =&gt;
+    tempo.textContent = v.currentTime.toFixed(1) + " s");
+&lt;/script&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado (sem controls)</span>
+        <video id="demoV" width="300" src="midia/video.mp4"></video>
+        <p>
+          <button type="button" id="demoPlay">Play</button>
+          <button type="button" id="demoParar">Parar</button>
+          <button type="button" id="demoMudo">Mudo</button>
+          <output id="demoTempo">0.0 s</output>
+        </p>
+      </div>
+    </div>
+    <p class="nota"><strong>Nao existe <code>stop()</code>.</strong> Parar e <code>pause()</code> seguido de <code>currentTime = 0</code>.</p>
+  </article>
+
+  <table class="consulta">
+    <caption>Metodos (verbos)</caption>
+    <thead><tr><th>Metodo</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr><td>play()</td><td>Comeca a tocar.</td></tr>
+      <tr><td>pause()</td><td>Pausa.</td></tr>
+      <tr><td>load()</td><td>Recarrega a midia do zero.</td></tr>
+      <tr><td>requestFullscreen()</td><td>Tela cheia.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="consulta">
+    <caption>Propriedades (substantivos)</caption>
+    <thead><tr><th>Propriedade</th><th>O que guarda</th></tr></thead>
+    <tbody>
+      <tr><td>currentTime</td><td>Posicao atual, em segundos. Da para ler e escrever.</td></tr>
+      <tr><td>duration</td><td>Duracao total. Antes do <code>loadedmetadata</code> vale <code>NaN</code>.</td></tr>
+      <tr><td>paused / ended</td><td><code>true</code> ou <code>false</code>. Tocando = <code>!v.paused</code> (nao existe <code>playing</code>).</td></tr>
+      <tr><td>volume</td><td>De <strong>0 a 1</strong> (0.5 = metade). <code>v.volume = 50</code> da erro.</td></tr>
+      <tr><td>muted</td><td><code>true</code> = sem som.</td></tr>
+      <tr><td>playbackRate</td><td>Velocidade: 1 normal, 2 dobro, 0.5 metade.</td></tr>
+    </tbody>
+  </table>
+
+  <table class="consulta">
+    <caption>Eventos (noticias)</caption>
+    <thead><tr><th>Evento</th><th>Quando dispara</th></tr></thead>
+    <tbody>
+      <tr><td>loadedmetadata</td><td>Ja se sabe a duracao. Hora de configurar a barra de progresso.</td></tr>
+      <tr><td>play / pause</td><td>Comecou a tocar / pausou.</td></tr>
+      <tr><td>timeupdate</td><td>Varias vezes por segundo enquanto toca. Move a barra de progresso.</td></tr>
+      <tr><td>ended</td><td>Terminou.</td></tr>
+      <tr><td>volumechange</td><td>Volume ou mudo mudou.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== 7 ==================== -->
+<section class="grupo" id="g7">
+  <h2>7. &lt;iframe&gt;: uma pagina dentro da outra</h2>
+  <p class="dica">Um site inteiro rodando dentro do seu, isolado do seu CSS. Precisa de internet para aparecer.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;iframe&gt;</span> <span class="sentido">incorpora conteudo de terceiros</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;iframe
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-47.30,-23.21,-47.27,-23.19&amp;layer=mapnik"
+  title="Mapa de Salto - SP"
+  width="400" height="250"
+  loading="lazy"
+  referrerpolicy="no-referrer"&gt;
+&lt;/iframe&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-47.30,-23.21,-47.27,-23.19&amp;layer=mapnik"
+                title="Mapa de Salto - SP" width="400" height="250" loading="lazy"
+                referrerpolicy="no-referrer" style="border:1px solid var(--linha)"></iframe>
+      </div>
+    </div>
+    <p class="nota"><strong>Quadro em branco?</strong> Muitos sites (Google, bancos, redes sociais) recusam ser incorporados. O motivo aparece no Console (F12). Use so o codigo de incorporacao oficial do site.</p>
+  </article>
+
+  <table class="consulta">
+    <caption>Atributos de seguranca e desempenho</caption>
+    <thead><tr><th>Atributo</th><th>Para que serve</th></tr></thead>
+    <tbody>
+      <tr><td>title</td><td>Obrigatorio para acessibilidade: o leitor de tela anuncia o que e o quadro.</td></tr>
+      <tr><td>loading="lazy"</td><td>So carrega quando o usuario rola ate perto.</td></tr>
+      <tr><td>sandbox</td><td>Sem valor, bloqueia quase tudo (scripts, formularios, popups). Libere so o necessario: <code>sandbox="allow-scripts"</code>.</td></tr>
+      <tr><td>allow</td><td>Libera recursos especificos: <code>allow="fullscreen; autoplay"</code>.</td></tr>
+      <tr><td>referrerpolicy</td><td>Controla o que o outro site descobre sobre a sua pagina.</td></tr>
+    </tbody>
+  </table>
+
+  <article class="tag">
+    <h3><span class="nome">Video do YouTube</span> <span class="sentido">a plataforma entrega o codigo pronto</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo (Compartilhar &gt; Incorporar)</span>
+<pre>&lt;iframe width="560" height="315"
+  src="https://www.youtube.com/embed/ID_DO_VIDEO"
+  title="Nome do video"
+  loading="lazy"
+  allow="fullscreen; picture-in-picture"&gt;
+&lt;/iframe&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">O nosso trabalho</span>
+        <p>O codigo do YouTube vem com <code>title</code> generico. Troque pelo nome real do video e acrescente <code>loading="lazy"</code>.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 8 ==================== -->
+<section class="grupo" id="g8">
+  <h2>8. &lt;object&gt; e &lt;embed&gt;</h2>
+  <p class="dica">Uso mais comum hoje: mostrar um PDF dentro da pagina.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;object&gt;</span> <span class="sentido">incorpora um arquivo, com plano B</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;object data="midia/documento.pdf"
+        type="application/pdf"
+        width="400" height="300"&gt;
+  &lt;p&gt;Nao foi possivel exibir o PDF.
+     &lt;a href="midia/documento.pdf"&gt;Baixar o PDF&lt;/a&gt;&lt;/p&gt;
+&lt;/object&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <object data="midia/documento.pdf" type="application/pdf" width="400" height="300">
+          <p>Nao foi possivel exibir o PDF. <a href="midia/documento.pdf">Baixar o PDF</a></p>
+        </object>
+      </div>
+    </div>
+  </article>
+
+  <div class="par">
+    <div class="caixa certo">
+      <h4>&lt;object&gt; aceita conteudo alternativo</h4>
+      <pre>&lt;object data="doc.pdf" type="application/pdf"&gt;
+  &lt;a href="doc.pdf"&gt;Baixar&lt;/a&gt;
+&lt;/object&gt;</pre>
+    </div>
+    <div class="caixa errado">
+      <h4>&lt;embed&gt; nao tem plano B</h4>
+      <pre>&lt;embed src="doc.pdf" type="application/pdf"&gt;
+&lt;!-- elemento vazio: se falhar, nada aparece --&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 9 ==================== -->
+<section class="grupo" id="g9">
+  <h2>9. &lt;picture&gt;, srcset e loading="lazy"</h2>
+  <p class="dica">A imagem certa para cada navegador e cada tela.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;picture&gt;</span> <span class="sentido">formato moderno com garantia</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;picture&gt;
+  &lt;source srcset="midia/foto.webp" type="image/webp"&gt;
+  &lt;img src="midia/foto.jpg"
+       alt="Fatia de toranja vista de cima"
+       width="200" height="200"
+       loading="lazy"&gt;
+&lt;/picture&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <picture>
+          <source srcset="midia/foto.webp" type="image/webp">
+          <img src="midia/foto.jpg" alt="Fatia de toranja vista de cima" width="200" height="200" loading="lazy">
+        </picture>
+        <p>Navegador que entende WebP usa o <code>.webp</code> (mais leve); os outros caem no <code>.jpg</code>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Regras:</strong> o <code>&lt;img&gt;</code> dentro do <code>&lt;picture&gt;</code> e obrigatorio, e o <code>alt</code> vai nele. <code>width</code> e <code>height</code> evitam que a pagina &quot;pule&quot; quando a imagem chega.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">srcset + sizes</span> <span class="sentido">mesma imagem em varios tamanhos</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;img src="foto-800.jpg"
+     srcset="foto-400.jpg 400w,
+             foto-800.jpg 800w,
+             foto-1600.jpg 1600w"
+     sizes="(max-width: 600px) 100vw, 50vw"
+     alt="..."&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Como ler</span>
+        <p><code>400w</code> = &quot;este arquivo tem 400 pixels de largura&quot;.</p>
+        <p><code>sizes</code> = &quot;em tela ate 600px a imagem ocupa a largura toda; acima disso, metade&quot;.</p>
+        <p>O navegador junta as duas informacoes e baixa so o arquivo necessario. Celular nao baixa a foto de 1600px.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="grupo" id="g10">
+  <h2>10. &lt;canvas&gt;: uma area em branco e um pincel</h2>
+  <p class="dica">O HTML cria a tela; o JavaScript desenha. Depois de desenhado, so sobra pixel.</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;canvas&gt;</span> + <span class="nome">getContext("2d")</span> <span class="sentido">o primeiro retangulo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;canvas id="tela" width="300" height="150"&gt;
+  Um quadrado azul.   &lt;!-- plano B / acessibilidade --&gt;
+&lt;/canvas&gt;
+
+&lt;script&gt;
+  const ctx = document.getElementById("tela").getContext("2d");
+  ctx.fillStyle = "#1b4fa0";      // escolhe a tinta
+  ctx.fillRect(20, 20, 100, 100); // x, y, largura, altura
+&lt;/script&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <canvas id="c1" width="300" height="150">Um quadrado azul.</canvas>
+        <p>A origem (0, 0) e o canto <strong>superior esquerdo</strong>. O <strong>y cresce para baixo</strong>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Erro classico:</strong> <code>width</code> e <code>height</code> vao no <strong>atributo</strong>, nao no CSS. Pelo CSS o desenho estica e fica borrado.</p>
+  </article>
+
+  <div class="par">
+    <div class="caixa certo">
+      <h4>Tamanho no atributo</h4>
+      <pre>&lt;canvas width="300" height="150"&gt;</pre>
+    </div>
+    <div class="caixa errado">
+      <h4>Tamanho no CSS: borra</h4>
+      <pre>canvas { width: 300px; height: 150px; }</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="grupo" id="g11">
+  <h2>11. Formas e caminhos no canvas</h2>
+  <p class="dica"><code>fill</code> pinta por dentro, <code>stroke</code> desenha o contorno.</p>
+
+  <article class="tag">
+    <h3><span class="nome">fillRect, strokeRect, beginPath, arc</span> <span class="sentido">retangulo, triangulo e circulo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>// retangulos
+ctx.fillStyle = "#1d7a4d";
+ctx.fillRect(10, 20, 80, 60);
+ctx.strokeStyle = "#b3261e";
+ctx.lineWidth = 3;
+ctx.strokeRect(110, 20, 80, 60);
+
+// triangulo (caminho livre)
+ctx.beginPath();
+ctx.moveTo(250, 20);   // levanta o lapis e vai ate
+ctx.lineTo(290, 80);   // risca ate
+ctx.lineTo(210, 80);
+ctx.closePath();       // volta ao inicio
+ctx.fillStyle = "#ff6f00";
+ctx.fill();
+
+// circulo: arc(x, y, raio, inicio, fim)
+ctx.beginPath();
+ctx.arc(150, 120, 22, 0, Math.PI * 2);
+ctx.fillStyle = "#1b4fa0";
+ctx.fill();</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <canvas id="c2" width="300" height="150">Um retangulo verde, um contorno vermelho, um triangulo laranja e um circulo azul.</canvas>
+        <p>Angulos em <strong>radianos</strong>: volta inteira = <code>Math.PI * 2</code>.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Esqueceu o <code>beginPath()</code>?</strong> O novo desenho continua o caminho anterior e aparecem linhas ligando tudo.</p>
+  </article>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="grupo" id="g12">
+  <h2>12. Texto, imagem e animacao no canvas</h2>
+  <p class="dica">Tudo que vai para o canvas vira pixel, inclusive o texto.</p>
+
+  <article class="tag">
+    <h3><span class="nome">fillText</span> e <span class="nome">drawImage</span> <span class="sentido">escrever e colar imagem</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>ctx.font = "bold 20px Arial";
+ctx.fillStyle = "#16181d";
+ctx.fillText("Ola, canvas!", 10, 30); // texto, x, y
+
+const img = new Image();
+img.src = "midia/foto.jpg";
+img.onload = () =&gt; {
+  ctx.drawImage(img, 180, 10, 100, 100); // x, y, larg, alt
+};</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <canvas id="c3" width="300" height="130">Texto "Ola, canvas!" e a foto de uma toranja.</canvas>
+      </div>
+    </div>
+    <p class="nota"><strong>Armadilha:</strong> desenhar a imagem antes do <code>onload</code> nao da erro nenhum &mdash; ela simplesmente nao aparece.</p>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">requestAnimationFrame</span> <span class="sentido">animacao quadro a quadro</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>let x = 0;
+
+function quadro() {
+  ctx.clearRect(0, 0, 300, 80);   // 1. apaga
+  ctx.beginPath();                // 2. desenha
+  ctx.arc(x, 40, 15, 0, Math.PI * 2);
+  ctx.fillStyle = "#b3261e";
+  ctx.fill();
+  x = (x + 2) % 300;              // 3. avanca
+  requestAnimationFrame(quadro);  // 4. pede o proximo
+}
+quadro();</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <canvas id="c4" width="300" height="80">Uma bola vermelha atravessando a tela.</canvas>
+        <p>Sem o <code>clearRect</code>, a bola deixa rastro: o canvas nao lembra o que desenhou.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="grupo" id="g13">
+  <h2>13. &lt;svg&gt;: desenho que e codigo</h2>
+  <p class="dica">Vetor (nao borra), faz parte do DOM (recebe CSS e clique) e e texto (abre no bloco de notas).</p>
+
+  <article class="tag">
+    <h3><span class="nome">&lt;svg&gt;</span> <span class="sentido">grafico de barras sem uma linha de JavaScript</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;svg width="300" height="150" viewBox="0 0 300 150"
+     role="img" aria-label="Vendas: Jan 60, Fev 100, Mar 40"&gt;
+  &lt;rect x="30"  y="90" width="50" height="60"&gt;
+    &lt;title&gt;Jan: 60&lt;/title&gt;
+  &lt;/rect&gt;
+  &lt;rect x="120" y="50" width="50" height="100"&gt;
+    &lt;title&gt;Fev: 100&lt;/title&gt;
+  &lt;/rect&gt;
+  &lt;rect x="210" y="110" width="50" height="40"&gt;
+    &lt;title&gt;Mar: 40&lt;/title&gt;
+  &lt;/rect&gt;
+&lt;/svg&gt;
+
+/* CSS */
+rect { fill: #1b4fa0; }
+rect:hover { fill: #ff6f00; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado (passe o mouse nas barras)</span>
+        <svg class="svg-demo" width="300" height="150" viewBox="0 0 300 150" role="img" aria-label="Vendas: Jan 60, Fev 100, Mar 40">
+          <rect x="30" y="90" width="50" height="60"><title>Jan: 60</title></rect>
+          <rect x="120" y="50" width="50" height="100"><title>Fev: 100</title></rect>
+          <rect x="210" y="110" width="50" height="40"><title>Mar: 40</title></rect>
+        </svg>
+        <p>Cada barra e um elemento: aparece no inspetor (F12), muda de cor com CSS e mostra dica propria.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Acessibilidade:</strong> <code>role="img"</code> + <code>aria-label</code> descrevem o desenho inteiro para o leitor de tela.</p>
+  </article>
+</section>
+
+<!-- ==================== 14 ==================== -->
+<section class="grupo" id="g14">
+  <h2>14. Formas do SVG e o viewBox</h2>
+  <p class="dica"><code>fill</code> e <code>stroke</code> funcionam como propriedades CSS.</p>
+
+  <article class="tag">
+    <h3><span class="nome">rect circle ellipse line polyline polygon path text</span> <span class="sentido">as formas basicas</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;svg width="300" height="160" viewBox="0 0 300 160"&gt;
+  &lt;rect x="10" y="10" width="60" height="40" fill="#1b4fa0"/&gt;
+  &lt;circle cx="115" cy="30" r="20" fill="#1d7a4d"/&gt;
+  &lt;ellipse cx="190" cy="30" rx="35" ry="18" fill="#ff6f00"/&gt;
+  &lt;line x1="240" y1="10" x2="290" y2="50"
+        stroke="#b3261e" stroke-width="4"/&gt;
+  &lt;polyline points="10,120 40,80 70,110 100,70"
+            fill="none" stroke="#1b4fa0" stroke-width="3"/&gt;
+  &lt;polygon points="150,70 180,120 120,120" fill="#f5a623"/&gt;
+  &lt;path d="M200 120 Q230 60 260 120" fill="none"
+        stroke="#5b6270" stroke-width="3"/&gt;
+  &lt;text x="10" y="150" font-size="14"&gt;Texto no SVG&lt;/text&gt;
+&lt;/svg&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <svg width="300" height="160" viewBox="0 0 300 160" role="img" aria-label="Exemplo das formas basicas do SVG">
+          <rect x="10" y="10" width="60" height="40" fill="#1b4fa0"/>
+          <circle cx="115" cy="30" r="20" fill="#1d7a4d"/>
+          <ellipse cx="190" cy="30" rx="35" ry="18" fill="#ff6f00"/>
+          <line x1="240" y1="10" x2="290" y2="50" stroke="#b3261e" stroke-width="4"/>
+          <polyline points="10,120 40,80 70,110 100,70" fill="none" stroke="#1b4fa0" stroke-width="3"/>
+          <polygon points="150,70 180,120 120,120" fill="#f5a623"/>
+          <path d="M200 120 Q230 60 260 120" fill="none" stroke="#5b6270" stroke-width="3"/>
+          <text x="10" y="150" font-size="14">Texto no SVG</text>
+        </svg>
+        <p><code>polyline</code> precisa de <code>fill="none"</code>, senao preenche de preto. <code>path</code> e a forma mais poderosa: icone exportado do Figma e um path longo.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="tag">
+    <h3><span class="nome">viewBox</span> <span class="sentido">coordenadas internas x tamanho na tela</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!-- o mesmo desenho, viewBox 0 0 24 24 --&gt;
+&lt;svg viewBox="0 0 24 24" width="24" height="24"&gt;...&lt;/svg&gt;
+&lt;svg viewBox="0 0 24 24" width="48" height="48"&gt;...&lt;/svg&gt;
+&lt;svg viewBox="0 0 24 24" width="96" height="96"&gt;...&lt;/svg&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p>
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="#f5a623"/></svg>
+          <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="#f5a623"/></svg>
+          <svg viewBox="0 0 24 24" width="96" height="96" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="#f5a623"/></svg>
+        </p>
+        <p><code>viewBox</code> diz &quot;o desenho vive num quadro de 24 x 24&quot;. <code>width</code>/<code>height</code> dizem o tamanho na tela. Resultado: amplia sem borrar.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Sem viewBox</strong>, o SVG nao escala: aumentar o width so aumenta a area vazia em volta.</p>
+  </article>
+</section>
+
+<!-- ==================== 15 ==================== -->
+<section class="grupo" id="g15">
+  <h2>15. Quatro formas de colocar um SVG na pagina</h2>
+  <p class="dica">A escolha depende de uma pergunta: o CSS e o JavaScript da pagina precisam mexer no desenho?</p>
+
+  <article class="tag">
+    <h3><span class="nome">inline x &lt;img&gt;</span> <span class="sentido">so o inline obedece ao CSS da pagina</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;!-- 1. inline: faz parte do DOM --&gt;
+&lt;svg class="icone-tema" viewBox="0 0 24 24" width="48" height="48"&gt;
+  &lt;path d="M12 2l3 7h7..." fill="currentColor"/&gt;
+&lt;/svg&gt;
+
+&lt;!-- 2. arquivo externo por &lt;img&gt; --&gt;
+&lt;img src="midia/icone.svg" alt="Estrela" width="48" height="48"&gt;
+
+/* CSS */
+.icone-tema { color: green; }
+.icone-tema:hover { color: red; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado (passe o mouse nos dois)</span>
+        <p>
+          <svg class="icone-tema" viewBox="0 0 24 24" width="48" height="48" role="img" aria-label="Estrela inline"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="currentColor"/></svg>
+          &nbsp;
+          <img src="midia/icone.svg" alt="Estrela por img" width="48" height="48">
+        </p>
+        <p>O inline muda de cor. O <code>&lt;img&gt;</code> e um documento fechado: o CSS da pagina nao entra.</p>
+      </div>
+    </div>
+  </article>
+
+  <table class="consulta">
+    <caption>Qual usar</caption>
+    <thead><tr><th>Forma</th><th>Exemplo</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr><td>inline</td><td><code>&lt;svg&gt;...&lt;/svg&gt;</code> no HTML</td><td>Muda de cor, anima ou responde a clique.</td></tr>
+      <tr><td>&lt;img&gt;</td><td><code>&lt;img src="logo.svg" alt="..."&gt;</code></td><td>Ilustracao ou logo fixo.</td></tr>
+      <tr><td>background CSS</td><td><code>background-image: url(fundo.svg);</code></td><td>Decoracao. Some para o leitor de tela.</td></tr>
+      <tr><td>&lt;use&gt; (sprite)</td><td><code>&lt;svg&gt;&lt;use href="icones.svg#casa"/&gt;&lt;/svg&gt;</code></td><td>Muitos icones num arquivo so (sistemas de design).</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== 16 ==================== -->
+<section class="grupo" id="g16">
+  <h2>16. Imagem, canvas ou SVG: como decidir</h2>
+  <p class="dica">Nao existe resposta unica: existe criterio. O que muda e o requisito.</p>
+
+  <table class="consulta">
+    <caption>Comparativo</caption>
+    <thead><tr><th>Criterio</th><th>Imagem (img)</th><th>&lt;canvas&gt;</th><th>&lt;svg&gt;</th></tr></thead>
+    <tbody>
+      <tr><td>Tipo</td><td>Pixel pronto</td><td>Pixel desenhado por JS</td><td>Vetor (formas)</td></tr>
+      <tr><td>Amplia sem borrar</td><td>Nao</td><td>Nao</td><td>Sim</td></tr>
+      <tr><td>Cada parte e elemento do DOM</td><td>Nao</td><td>Nao</td><td>Sim</td></tr>
+      <tr><td>Recebe CSS e clique por parte</td><td>Nao</td><td>Nao</td><td>Sim</td></tr>
+      <tr><td>Muda com os dados</td><td>Nao</td><td>Sim (redesenha)</td><td>Sim</td></tr>
+      <tr><td>Milhares de objetos / jogos</td><td>&mdash;</td><td>Melhor</td><td>Fica lento</td></tr>
+      <tr><td>Acessibilidade</td><td><code>alt</code></td><td>So o texto entre as tags</td><td><code>title</code>, <code>aria-label</code></td></tr>
+    </tbody>
+  </table>
+
+  <article class="tag">
+    <h3><span class="nome">A regra em uma frase</span></h3>
+    <div style="padding:14px 16px">
+      <ul style="margin:0;padding-left:20px">
+        <li>Foto ou ilustracao que nunca muda: <strong>imagem</strong>.</li>
+        <li>Cada parte precisa ser um objeto (clicar, estilizar, ler): <strong>SVG</strong>.</li>
+        <li>O que importa e a cena inteira e a velocidade (jogo, animacao pesada, edicao de foto): <strong>canvas</strong>.</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+</main>
+
+<div class="barra-foco" role="group" aria-label="Navegacao tag por tag">
+  <button type="button" id="anterior" aria-label="Tag anterior">&larr;</button>
+  <span id="contador">tag 0 / 0</span>
+  <button type="button" id="proxima" aria-label="Proxima tag">&rarr;</button>
+</div>
+
+<footer class="rodape">
+  Desenvolvimento Front-end para Web &mdash; CEUNSP. Material de apoio da Aula 05.
+  Midias de exemplo: <a href="https://developer.mozilla.org/pt-BR/">MDN</a> (dominio publico, CC0).
+  Referencias: <a href="https://developer.mozilla.org/pt-BR/docs/Web/API/Canvas_API/Tutorial">Tutorial de Canvas (MDN)</a> &nbsp;|&nbsp;
+  <a href="https://developer.mozilla.org/pt-BR/docs/Web/SVG">SVG (MDN)</a>
+</footer>
+
+<script>
+  // ---------- demos ao vivo dos cartoes ----------
+
+  // grupo 6: player com controles proprios
+  (function () {
+    var v = document.getElementById('demoV');
+    var btnPlay = document.getElementById('demoPlay');
+    var tempo = document.getElementById('demoTempo');
+    btnPlay.onclick = function () { v.paused ? v.play() : v.pause(); };
+    document.getElementById('demoParar').onclick = function () { v.pause(); v.currentTime = 0; };
+    document.getElementById('demoMudo').onclick = function () { v.muted = !v.muted; };
+    v.addEventListener('play', function () { btnPlay.textContent = 'Pause'; });
+    v.addEventListener('pause', function () { btnPlay.textContent = 'Play'; });
+    v.addEventListener('timeupdate', function () { tempo.textContent = v.currentTime.toFixed(1) + ' s'; });
+  })();
+
+  // grupo 10: primeiro retangulo
+  (function () {
+    var ctx = document.getElementById('c1').getContext('2d');
+    ctx.fillStyle = '#1b4fa0';
+    ctx.fillRect(20, 20, 100, 100);
+  })();
+
+  // grupo 11: formas e caminhos
+  (function () {
+    var ctx = document.getElementById('c2').getContext('2d');
+    ctx.fillStyle = '#1d7a4d';
+    ctx.fillRect(10, 20, 80, 60);
+    ctx.strokeStyle = '#b3261e';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(110, 20, 80, 60);
+    ctx.beginPath();
+    ctx.moveTo(250, 20);
+    ctx.lineTo(290, 80);
+    ctx.lineTo(210, 80);
+    ctx.closePath();
+    ctx.fillStyle = '#ff6f00';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(150, 120, 22, 0, Math.PI * 2);
+    ctx.fillStyle = '#1b4fa0';
+    ctx.fill();
+  })();
+
+  // grupo 12: texto e imagem
+  (function () {
+    var ctx = document.getElementById('c3').getContext('2d');
+    ctx.font = 'bold 20px Arial';
+    ctx.fillStyle = '#16181d';
+    ctx.fillText('Ola, canvas!', 10, 30);
+    var img = new Image();
+    img.src = 'midia/foto.jpg';
+    img.onload = function () { ctx.drawImage(img, 180, 10, 100, 100); };
+  })();
+
+  // grupo 12: animacao
+  (function () {
+    var ctx = document.getElementById('c4').getContext('2d');
+    var x = 0;
+    function quadro() {
+      ctx.clearRect(0, 0, 300, 80);
+      ctx.beginPath();
+      ctx.arc(x, 40, 15, 0, Math.PI * 2);
+      ctx.fillStyle = '#b3261e';
+      ctx.fill();
+      x = (x + 2) % 300;
+      requestAnimationFrame(quadro);
+    }
+    quadro();
+  })();
+
+  // ---------- navegacao tag por tag: setas do teclado ou botoes ----------
+  (function () {
+    var cartoes = Array.prototype.slice.call(document.querySelectorAll('article.tag'));
+    var contador = document.getElementById('contador');
+    var atual = -1;
+
+    function ir(passo) {
+      if (atual >= 0) cartoes[atual].classList.remove('destacada');
+      atual = Math.max(0, Math.min(cartoes.length - 1, atual + passo));
+      var alvo = cartoes[atual];
+      alvo.classList.add('destacada');
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      contador.textContent = 'tag ' + (atual + 1) + ' / ' + cartoes.length;
+    }
+
+    contador.textContent = 'tag 0 / ' + cartoes.length;
+    document.getElementById('proxima').addEventListener('click', function () { ir(1); });
+    document.getElementById('anterior').addEventListener('click', function () { ir(-1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); ir(-1); }
+    });
+  })();
+</script>
+
+</body>
+</html>

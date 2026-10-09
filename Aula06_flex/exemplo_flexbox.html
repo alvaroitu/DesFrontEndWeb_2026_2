@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos de CSS Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #444;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .exemplo-container {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== EXEMPLO 1: Flex Básico ===== */
+        .flex-basico {
+            display: flex;
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .item {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        /* ===== EXEMPLO 2: Row vs Column ===== */
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .box-linha {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* ===== EXEMPLO 3: Justify-Content ===== */
+        .flex-justify {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .flex-start {
+            justify-content: flex-start;
+            background-color: #fff3cd;
+        }
+
+        .flex-center {
+            justify-content: center;
+            background-color: #d1ecf1;
+        }
+
+        .flex-end {
+            justify-content: flex-end;
+            background-color: #f8d7da;
+        }
+
+        .flex-between {
+            justify-content: space-between;
+            background-color: #e2e3e5;
+        }
+
+        .flex-around {
+            justify-content: space-around;
+            background-color: #cfe2ff;
+        }
+
+        .small-box {
+            background-color: #ffc107;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100px;
+        }
+
+        /* ===== EXEMPLO 4: Align-Items ===== */
+        .flex-align {
+            display: flex;
+            gap: 10px;
+            height: 150px;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .align-stretch {
+            align-items: stretch;
+            background-color: #fff3cd;
+        }
+
+        .align-center {
+            align-items: center;
+            background-color: #d1ecf1;
+        }
+
+        .align-start {
+            align-items: flex-start;
+            background-color: #f8d7da;
+        }
+
+        .align-end {
+            align-items: flex-end;
+            background-color: #e2e3e5;
+        }
+
+        .tall-box {
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 80px;
+        }
+
+        /* ===== EXEMPLO 5: Flex-Grow ===== */
+        .flex-grow-exemplo {
+            display: flex;
+            gap: 10px;
+            background-color: #e7d4f5;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .grow-0 {
+            background-color: #6f42c1;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            width: 100px;
+        }
+
+        .grow-1 {
+            flex: 1;
+            background-color: #6610f2;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* ===== EXEMPLO 6: Flex-Wrap ===== */
+        .flex-wrap-exemplo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .wrap-box {
+            background-color: #20c997;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        /* ===== EXEMPLO 7: Centralização Perfeita ===== */
+        .flex-centralizador {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+        }
+
+        .centered-content {
+            background-color: white;
+            padding: 30px 50px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== EXEMPLO 8: Cards em Flex ===== */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+        }
+
+        .card-footer {
+            background-color: #f5f5f5;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* ===== LABELS ===== */
+        .label {
+            background-color: #666;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exemplos Práticos de CSS Flexbox</h1>
+
+    <!-- Exemplo 1 -->
+    <div class="exemplo-container">
+        <h2>1. Flex Básico</h2>
+        <p class="label">display: flex; flex: 1;</p>
+        <div class="flex-basico">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 2 -->
+    <div class="exemplo-container">
+        <h2>2. Flex Direction: Row vs Column</h2>
+        <p class="label">flex-direction: row;</p>
+        <div class="flex-row">
+            <div class="box-linha">A</div>
+            <div class="box-linha">B</div>
+            <div class="box-linha">C</div>
+        </div>
+
+        <p class="label">flex-direction: column;</p>
+        <div class="flex-column">
+            <div class="box-linha">X</div>
+            <div class="box-linha">Y</div>
+            <div class="box-linha">Z</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 3 -->
+    <div class="exemplo-container">
+        <h2>3. Justify-Content (Alinhamento no Eixo Principal)</h2>
+
+        <p class="label">justify-content: flex-start;</p>
+        <div class="flex-justify flex-start">
+            <div class="small-box">A</div>
+            <div class="small-box">B</div>
+            <div class="small-box">C</div>
+        </div>
+
+        <p class="label">justify-content: center;</p>
+        <div class="flex-justify flex-center">
+            <div class="small-box">A</div>
+            <div class="small-box">B</div>
+            <div class="small-box">C</div>
+        </div>
+
+        <p class="label">justify-content: flex-end;</p>
+        <div class="flex-justify flex-end">
+            <div class="small-box">A</div>
+            <div class="small-box">B</div>
+            <div class="small-box">C</div>
+        </div>
+
+        <p class="label">justify-content: space-between;</p>
+        <div class="flex-justify flex-between">
+            <div class="small-box">A</div>
+            <div class="small-box">B</div>
+            <div class="small-box">C</div>
+        </div>
+
+        <p class="label">justify-content: space-around;</p>
+        <div class="flex-justify flex-around">
+            <div class="small-box">A</div>
+            <div class="small-box">B</div>
+            <div class="small-box">C</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 4 -->
+    <div class="exemplo-container">
+        <h2>4. Align-Items (Alinhamento no Eixo Transversal)</h2>
+
+        <p class="label">align-items: stretch;</p>
+        <div class="flex-align align-stretch">
+            <div class="tall-box">A</div>
+            <div class="tall-box">B</div>
+            <div class="tall-box">C</div>
+        </div>
+
+        <p class="label">align-items: center;</p>
+        <div class="flex-align align-center">
+            <div class="tall-box">A</div>
+            <div class="tall-box">B</div>
+            <div class="tall-box">C</div>
+        </div>
+
+        <p class="label">align-items: flex-start;</p>
+        <div class="flex-align align-start">
+            <div class="tall-box">A</div>
+            <div class="tall-box">B</div>
+            <div class="tall-box">C</div>
+        </div>
+
+        <p class="label">align-items: flex-end;</p>
+        <div class="flex-align align-end">
+            <div class="tall-box">A</div>
+            <div class="tall-box">B</div>
+            <div class="tall-box">C</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 5 -->
+    <div class="exemplo-container">
+        <h2>5. Flex-Grow (Distribuição de Espaço)</h2>
+        <p class="label">flex: 0; | flex: 1; | flex: 1;</p>
+        <div class="flex-grow-exemplo">
+            <div class="grow-0">Fixo</div>
+            <div class="grow-1">Cresce</div>
+            <div class="grow-1">Cresce</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 6 -->
+    <div class="exemplo-container">
+        <h2>6. Flex-Wrap (Quebra de Linha)</h2>
+        <p class="label">flex-wrap: wrap;</p>
+        <div class="flex-wrap-exemplo">
+            <div class="wrap-box">Box 1</div>
+            <div class="wrap-box">Box 2</div>
+            <div class="wrap-box">Box 3</div>
+            <div class="wrap-box">Box 4</div>
+            <div class="wrap-box">Box 5</div>
+        </div>
+    </div>
+
+    <!-- Exemplo 7 -->
+    <div class="exemplo-container">
+        <h2>7. Centralização Perfeita</h2>
+        <p class="label">display: flex; justify-content: center; align-items: center;</p>
+        <div class="flex-centralizador">
+            <div class="centered-content">
+                <h3>Conteúdo Centralizado</h3>
+                <p>Perfeitamente centrado na horizontal e vertical!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exemplo 8 -->
+    <div class="exemplo-container">
+        <h2>8. Cards Responsivos com Flexbox</h2>
+        <p class="label">flex: 1; min-width: 200px; flex-wrap: wrap;</p>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">Card 1</div>
+                <div class="card-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+                <div class="card-footer">Footer</div>
+            </div>
+            <div class="card">
+                <div class="card-header">Card 2</div>
+                <div class="card-body">
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+                <div class="card-footer">Footer</div>
+            </div>
+            <div class="card">
+                <div class="card-header">Card 3</div>
+                <div class="card-body">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                </div>
+                <div class="card-footer">Footer</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

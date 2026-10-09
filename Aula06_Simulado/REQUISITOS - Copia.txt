@@ -1,0 +1,156 @@
+================================================================================
+EXERCÍCIO SIMULADO — PORTFÓLIO DE DESENVOLVEDOR
+Desenvolvimento Front-End para Web — Aula 06 (+ integração de todas as aulas)
+Duração: 120 minutos (sem limite de tempo nesta versão simulado)
+================================================================================
+
+OBJETIVO
+Criar um portfólio pessoal de desenvolvedor que demonstre compreensão dos
+conceitos de HTML semântico, CSS modular, seletores e responsividade.
+
+================================================================================
+REQUISITOS TÉCNICOS (CHECKLIST)
+================================================================================
+
+[ ] 1. ESTRUTURA SEMÂNTICA (Aulas 02-03)
+    [ ] Arquivo HTML com DOCTYPE, <html lang="pt-BR">, <meta charset="UTF-8">
+    [ ] <meta name="viewport"> para responsividade
+    [ ] <header> com <h1> e <nav> com <ul> e <li>
+    [ ] <main> com pelo menos 3 <section> ou <article>
+    [ ] <footer> com <address>
+    [ ] Nenhuma tag <div> sem justificativa (para layout)
+    [ ] Validação W3C: zero erros
+
+[ ] 2. FORMULÁRIO COM VALIDAÇÃO (Aula 04)
+    [ ] <form> com method="POST" action="#"
+    [ ] Campos: nome (text, required), email (email, required),
+                telefone (tel), mensagem (textarea, maxlength="500")
+    [ ] <label> for/id correto em cada campo
+    [ ] <fieldset> e <legend> agrupando os campos
+    [ ] <button type="submit"> com texto "Enviar mensagem"
+    [ ] Navegador barra envio vazio (sem JavaScript)
+
+[ ] 3. IMAGENS E MÍDIA (Aula 05)
+    [ ] Imagem responsiva com <figure> e <figcaption>
+    [ ] <img> com alt obrigatório
+    [ ] Avatar PNG fornecido no src
+    [ ] SVG de ícone simples em pelo menos 1 local (é só copiar o código)
+    [ ] width="300" height="300" ou similares (reserva espaço)
+
+[ ] 4. CSS EXTERNO E MODULAR (Aula 06)
+    [ ] Arquivo css/main.css que importa @import dos módulos
+    [ ] Arquivo css/base/variaveis.css com cores, fontes, espaçamentos
+    [ ] Arquivo css/base/reset.css com box-sizing e margin: 0
+    [ ] Arquivo css/componentes/botao.css com classes de botões
+    [ ] Arquivo css/layout/cabecalho.css para header
+    [ ] Nenhuma cor escrita diretamente (usar var(--cor-primaria) etc)
+    [ ] Seletores: tipo, classe, combinador (> ou espaço), atributo
+
+[ ] 5. BOX MODEL E LAYOUTS (Aula 06-07)
+    [ ] Flexbox no header (logo à esquerda, menu à direita com space-between)
+    [ ] Cards de projetos lado a lado (Flexbox ou Grid simples)
+    [ ] Padding, margin e border consistentes (em rem, não px para font)
+    [ ] display: flex em componentes apropriados
+    [ ] gap para espaçamento entre itens (não margin)
+
+[ ] 6. PSEUDO-CLASSES E PSEUDO-ELEMENTOS (Aula 07)
+    [ ] a:hover, a:focus com sublinhado mantido (WCAG)
+    [ ] :focus-visible sem outline: none
+    [ ] .botao:hover com transição visual (cor, sombra)
+    [ ] Ordem correta LVHFA (Link, Visited, Hover, Focus, Active)
+    [ ] ::after em pelo menos um lugar (ex: ícone decorativo, asterisco required)
+
+[ ] 7. RESPONSIVIDADE (Aula 07)
+    [ ] Uma @media query (min-width: 700px ou similar)
+    [ ] Layout muda de 1 coluna (mobile) para 2-3 (desktop)
+    [ ] Grid ou Flexbox se reorganiza na @media
+    [ ] Fonte mínima 16px
+
+[ ] 8. ORGANIZAÇÃO DO CÓDIGO
+    [ ] Sem erros de sintaxe CSS (nenhuma declaração riscada no DevTools)
+    [ ] Comentários de uma linha no topo de cada arquivo CSS
+    [ ] Nomes de classe pelo papel, não aparência (.botao-confirmar, não .btn-verde)
+    [ ] Especificidade baixa e consistente (evitar #id no CSS, usar classes)
+
+================================================================================
+ESTRUTURA DE PASTAS (OBRIGATÓRIA)
+================================================================================
+
+portfolio/
+├── index.html
+├── css/
+│   ├── main.css
+│   ├── base/
+│   │   ├── reset.css
+│   │   └── variaveis.css
+│   ├── layout/
+│   │   └── cabecalho.css
+│   └── componentes/
+│       └── botao.css
+├── img/
+│   ├── avatar.jpg (fornecido ou placeholder)
+│   └── projeto1.jpg (3 imagens de projetos)
+├── svg/
+│   └── icone.svg (fornecido)
+└── TEXTOS_DO_PROJETO.txt (use para copiar textos)
+
+================================================================================
+CRITÉRIO DE SUCESSO
+================================================================================
+
+✓ Validação W3C: 0 erros HTML
+✓ DevTools: nenhuma declaração CSS riscada por erro
+✓ HeadingsMap: hierarquia sem níveis pulados (1 h1, h2 etc)
+✓ Layout: header, 3 seções, footer com grid/flex visíveis
+✓ Formulário: navegador barra envio vazio (required nativo)
+✓ Cores: todas vêm de variáveis CSS (--cor-primaria, --cor-texto, etc)
+✓ Responsividade: ao redimensionar, layout se reorganiza
+
+================================================================================
+O QUE NÃO FAZER
+================================================================================
+
+✗ Usar style="" inline (CSS externo obrigatório)
+✗ Cores hardcoded (#1A237E diretamente, sem variável)
+✗ Nomes de classe pela aparência (.laranja, .grande)
+✗ <div> ou <table> para layout
+✗ Links sem href (href="#" ok se for placeholder)
+✗ Imagens sem alt
+✗ Formulário sem <form>
+✗ Labels sem <label> (apenas texto solto)
+✗ !important em lugar nenhum
+✗ Fonte em px para tamanho base (usar rem)
+
+================================================================================
+DURAÇÃO RECOMENDADA
+================================================================================
+
+1. Estrutura HTML e semântica ................. 20 min
+2. Criar CSS modular (arquivos) .............. 10 min
+3. Variáveis e reset ......................... 10 min
+4. Layout header e footer (flex) ............. 15 min
+5. Cards de projetos ......................... 20 min
+6. Formulário ............................... 15 min
+7. Pseudo-classes e estados .................. 10 min
+8. Responsividade (@media) ................... 10 min
+9. Validação e checklist final ............... 10 min
+
+Total: ~120 minutos
+
+================================================================================
+DIFERENÇA DESTA SIMULADO PARA A AVALIAÇÃO REAL
+================================================================================
+
+Nesta simulado:
+- Arquivos de partida já existem (HTML, CSS base)
+- Textos prontos para copiar (não digitam)
+- Imagens e SVG já criados
+- Requisitos mais claros e específicos
+
+Na avaliação real (Projeto A2):
+- Será mais aberto ("crie um portfólio")
+- Requisitos menos explícitos
+- Tempo limitado a 1 aula (4 horas)
+- Pode incluir temáticas mais complexas (temas, animações)
+
+================================================================================

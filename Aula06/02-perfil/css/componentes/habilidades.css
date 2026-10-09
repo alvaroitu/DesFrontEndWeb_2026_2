@@ -1,0 +1,14 @@
+/* habilidades.css: lista de habilidades em forma de selo */
+.habilidades {
+  padding: 0;
+  list-style: none;
+}
+
+.habilidades li {
+  display: inline-block;
+  padding: calc(var(--espaco) / 4) calc(var(--espaco) * 0.75);
+  margin: 0 calc(var(--espaco) / 2) calc(var(--espaco) / 2) 0;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+}

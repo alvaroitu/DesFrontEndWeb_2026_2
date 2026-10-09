@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Fundo -->
+  <rect width="200" height="200" fill="#E3F2FD"/>
+
+  <!-- Cabeça -->
+  <circle cx="100" cy="70" r="35" fill="#1A237E"/>
+
+  <!-- Corpo -->
+  <rect x="65" y="110" width="70" height="60" rx="10" fill="#1A237E"/>
+
+  <!-- Destaque -->
+  <circle cx="120" cy="50" r="8" fill="#FF6F00"/>
+</svg>

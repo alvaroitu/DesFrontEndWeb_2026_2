@@ -1,0 +1,28 @@
+/* variaveis.css: cores, fontes, espaços do projeto */
+
+:root {
+  /* cores */
+  --cor-primaria: #1A237E;
+  --cor-destaque: #FF6F00;
+  --cor-sucesso: #2E7D32;
+  --cor-texto: #37474F;
+  --cor-fundo: #FFFFFF;
+  --cor-fundo-claro: #F5F5F5;
+  --cor-borda: #DFE3EA;
+
+  /* fontes */
+  --fonte-texto: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --fonte-titulo: Georgia, "Times New Roman", serif;
+
+  /* espaçamentos */
+  --espaco: 1rem;
+  --espaco-pequeno: 0.5rem;
+  --espaco-grande: 2rem;
+
+  /* raios */
+  --raio: 6px;
+  --raio-grande: 12px;
+
+  /* sombras */
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

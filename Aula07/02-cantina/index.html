@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantina do Campus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cantina.css">
+</head>
+<body>
+
+  <!-- GRID no body: cabecalho, lateral, conteudo e rodape -->
+  <header class="cabecalho">
+    <strong class="logo">Cantina do Campus</strong>
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a href="#cardapio" aria-current="page">Cardapio</a></li>
+        <li><a href="#precos">Precos</a></li>
+        <li><a href="#horarios">Horarios</a></li>
+        <li><a href="cardapio-completo.pdf">Cardapio em PDF</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="lateral">
+    <h2>Categorias</h2>
+    <ul class="categorias">
+      <li>Lanches</li>
+      <li>Salgados</li>
+      <li>Bebidas</li>
+      <li>Doces</li>
+      <li>Saudaveis</li>
+    </ul>
+    <blockquote class="citacao">O melhor pao de queijo do intervalo.</blockquote>
+  </aside>
+
+  <main class="conteudo">
+
+    <section class="banner">
+      <h1>Promocao da semana</h1>
+      <p>Combo lanche natural + suco por um preco camarada.</p>
+    </section>
+
+    <section id="cardapio">
+      <h2>Cardapio</h2>
+      <!-- GRID auto-fit na galeria; FLEX em coluna dentro de cada card -->
+      <div class="galeria">
+        <article class="card">
+          <h3 class="card__titulo">Pao de queijo</h3>
+          <p class="card__texto">Assado na hora.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+        <article class="card card--destaque">
+          <h3 class="card__titulo">Lanche natural</h3>
+          <p class="card__texto">Pao integral, frango desfiado, cenoura, alface e requeijao. Acompanha suco.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+        <article class="card">
+          <h3 class="card__titulo">Coxinha</h3>
+          <p class="card__texto">Frango com catupiry.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+        <article class="card">
+          <h3 class="card__titulo">Salada de frutas</h3>
+          <p class="card__texto">Frutas da estacao, com ou sem granola e mel.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+        <article class="card">
+          <h3 class="card__titulo">Cafe coado</h3>
+          <p class="card__texto">Copo de 200 ml.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+        <article class="card">
+          <h3 class="card__titulo">Brownie</h3>
+          <p class="card__texto">Chocolate meio amargo.</p>
+          <a class="botao" href="#">Pedir</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="precos">
+      <h2>Precos</h2>
+      <div class="rolagem">
+        <table class="tabela">
+          <caption>Tabela de precos (R$)</caption>
+          <thead>
+            <tr><th>Item</th><th>Pequeno</th><th>Grande</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="novo">Lanche natural</td><td>12,00</td><td>16,50</td></tr>
+            <tr><td>Pao de queijo</td><td>4,00</td><td>7,50</td></tr>
+            <tr><td>Suco natural</td><td>6,00</td><td>9,00</td></tr>
+            <tr><td class="novo">Salada de frutas</td><td>8,00</td><td>11,00</td></tr>
+            <tr><td>Cafe coado</td><td>3,50</td><td>5,00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="horarios">
+      <h2>Horarios</h2>
+      <ul class="horarios">
+        <li>Segunda a sexta: 7h as 22h30</li>
+        <li>Sabado: 7h as 13h</li>
+        <li>Domingo e feriado: fechado</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Cantina do Campus &middot; pagina de exemplo da Aula 07</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* container.css: largura maxima centralizada e espaco entre secoes */
+.container {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 calc(var(--espaco) * 1.5);
+}
+
+.secao {
+  padding: calc(var(--espaco) * 2) 0;
+  border-bottom: 1px solid var(--cor-borda);
+}

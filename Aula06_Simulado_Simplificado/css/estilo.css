@@ -1,0 +1,353 @@
+/* ==========================================================
+   estilo.css — todo o CSS da página em um só arquivo.
+   Cada elemento tem a sua própria classe: para mudar algo,
+   procure a classe que está no HTML.
+   ========================================================== */
+
+/* largura e altura passam a incluir padding e borda */
+* {
+  box-sizing: border-box;
+}
+
+
+/* ---------- PÁGINA ---------- */
+
+.pagina {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #37474F;
+  background: #F5F5F5;
+}
+
+
+/* ---------- CABEÇALHO ---------- */
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #1A237E;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu-lista {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-item {
+  display: flex;
+}
+
+.menu-link {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.menu-link:hover {
+  color: #FF6F00;
+  border-bottom-color: #FF6F00;
+}
+
+
+/* ---------- ÁREA PRINCIPAL ---------- */
+
+.conteudo {
+  padding: 32px 16px;
+}
+
+
+/* ---------- SEÇÃO SOBRE ---------- */
+
+.sobre {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 32px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-titulo {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: #1A237E;
+}
+
+.sobre-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.sobre-figura {
+  margin: 0;
+  text-align: center;
+}
+
+.sobre-foto {
+  display: block;
+  border-radius: 50%;
+}
+
+.sobre-legenda {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666666;
+}
+
+.sobre-texto {
+  flex: 1;
+}
+
+.sobre-paragrafo {
+  margin: 0 0 16px;
+}
+
+.destaque {
+  font-weight: 700;
+  color: #1A237E;
+}
+
+
+/* ---------- SEÇÃO PROJETOS ---------- */
+
+.projetos {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 32px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.projetos-titulo {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: #1A237E;
+}
+
+/* grid: cada card tem no mínimo 250px; cabem 1, 2 ou 3 por linha */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background: #F5F5F5;
+  border: 1px solid #DFE3EA;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-titulo {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: #1A237E;
+}
+
+.card-texto {
+  flex: 1;
+  margin: 0 0 32px;
+  color: #666666;
+}
+
+.card-botao {
+  align-self: flex-start;
+  padding: 12px 24px;
+  background: #1A237E;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.card-botao:hover {
+  background: #FF6F00;
+}
+
+
+/* ---------- SEÇÃO CONTATO ---------- */
+
+.contato {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 32px;
+  background: #1A237E;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contato-titulo {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: #FFFFFF;
+}
+
+.contato-texto {
+  margin: 0 0 16px;
+  color: #FFFFFF;
+}
+
+.formulario {
+  max-width: 600px;
+  margin: 32px auto 0;
+}
+
+.grupo {
+  margin: 0 0 32px;
+  padding: 32px;
+  background: #FAFAFA;
+  border: 2px solid #1A237E;
+  border-radius: 6px;
+}
+
+.grupo-titulo {
+  padding: 8px 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: #1A237E;
+  border-radius: 6px;
+}
+
+.rotulo {
+  display: block;
+  margin: 16px 0 8px;
+  font-weight: 600;
+  color: #37474F;
+}
+
+.campo {
+  width: 100%;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #DFE3EA;
+  border-radius: 6px;
+}
+
+.campo:focus {
+  outline: none;
+  border-color: #1A237E;
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.2);
+}
+
+/* validação nativa: vermelho se inválido, verde se válido */
+.campo:invalid {
+  border-color: #D32F2F;
+}
+
+.campo:valid {
+  border-color: #2E7D32;
+}
+
+.campo-mensagem {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #DFE3EA;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.campo-mensagem:focus {
+  outline: none;
+  border-color: #1A237E;
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.2);
+}
+
+.botao-enviar {
+  width: 100%;
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: #FF6F00;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.botao-enviar:hover {
+  background: #E55F00;
+}
+
+
+/* ---------- RODAPÉ ---------- */
+
+.rodape {
+  padding: 32px 16px;
+  text-align: center;
+  background: #1A237E;
+}
+
+.rodape-endereco {
+  margin: 0 0 16px;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+.rodape-link {
+  color: #FFFFFF;
+}
+
+.rodape-texto {
+  margin: 0;
+  color: #FFFFFF;
+}
+
+
+/* ---------- TELAS MAIORES (a partir de 768px) ---------- */
+
+@media (min-width: 768px) {
+
+  .cabecalho {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 32px;
+  }
+
+  .sobre-conteudo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+}

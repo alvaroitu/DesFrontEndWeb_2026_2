@@ -1,0 +1,62 @@
+/* cabecalho.css: header com logo e navegação */
+
+.cabecalho {
+  background: var(--cor-primaria);
+  color: var(--cor-fundo);
+  padding: 1rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  position: sticky;
+  top: 0;
+  box-shadow: var(--sombra);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu > ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+}
+
+.menu a {
+  color: var(--cor-fundo);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  border-bottom-color: var(--cor-destaque);
+  color: var(--cor-destaque);
+}

@@ -1,0 +1,346 @@
+================================================================================
+INSTRUÇÕES PARA O PROFESSOR — EXERCÍCIO SIMULADO AULA 06
+================================================================================
+
+Este arquivo contém recomendações de como usar o simulado em sala de aula.
+
+================================================================================
+OBJETIVO DO SIMULADO
+================================================================================
+
+Preparar alunos para o Projeto A2 (avaliação formal).
+
+O simulado é:
+✓ Menos aberto (requisitos explícitos)
+✓ Mais guiado (exemplo completo fornecido)
+✓ Integrador (todas as aulas 02-07)
+✓ Sem tempo limite (prática, não avaliação)
+
+================================================================================
+ESTRUTURA DOS ARQUIVOS
+================================================================================
+
+COMECE_AQUI.txt
+└─ Guia passo a passo para o aluno (7 passos)
+
+index.html
+└─ Solução completa (referência)
+
+REQUISITOS.txt
+└─ O que fazer (checklist de requisitos)
+
+TEXTOS_DO_PROJETO.txt
+└─ Textos prontos (aluno copia/cola)
+
+css/ + img/ + svg/
+└─ Arquivos de mídia (SVG e avatar prontos)
+
+CHECKLIST_ENTREGA.txt
+└─ Autovaliação do aluno (preenche antes de enviar)
+
+README.md
+└─ Documentação completa (conceitos, dicas, FAQs)
+
+================================================================================
+COMO USAR EM SALA DE AULA
+================================================================================
+
+OPÇÃO 1: EXERCÍCIO DA AULA (Recomendado)
+─────────────────────────────────────────
+
+Slide da aula 06 → Após slide 40 (Checklist de CSS)
+
+Tempo: 1 aula (4 horas) ou 2 aulas (8 horas)
+
+Fluxo:
+1. Distribuir pasta Aula06_Simulado para alunos (via pendrive, Slack, Teams)
+2. Alunos abrem COMECE_AQUI.txt
+3. Passo 1-3: Estudam exemplo (30 min)
+4. Passo 4: Começam código próprio (90 min)
+5. Passo 5-6: Validação e checklist (30 min)
+
+Você circula pela sala:
+- Minuto 0: "Abram COMECE_AQUI.txt"
+- Minuto 30: "Todos já abriram index.html no navegador?"
+- Minuto 60: "Quem já começou HTML?"
+- Minuto 90: "Checklist CSS pronto? DevTools aberto?"
+- Minuto 120: "Formulário bloqueia vazio?"
+- Minuto 150: "Validação W3C passou?"
+
+OPÇÃO 2: LIÇÃO DE CASA
+──────────────────────
+
+Passar como tarefa após slide 40:
+- "Façam o exercício simulado em casa"
+- Prazo: 1 semana
+- Trazer pronto na aula seguinte
+
+OPÇÃO 3: AVALIAÇÃO FORMATIVA (Não Vale Nota)
+────────────────────────────────────────────
+
+Usar para aferir compreensão antes do Projeto A2:
+- Alunos fazem em dupla
+- Não vale nota, mas vocês dão feedback
+- "Que tal? Qual parte ficou difícil?"
+
+================================================================================
+COMO AVALIAR (Se For Nota)
+================================================================================
+
+Recomendação: não vale nota, é simulado. Mas se quiser avaliar:
+
+CRITÉRIO         PONTOS   COMO CONFERIR
+─────────────────────────────────────────
+HTML Semântico     15    W3C: 0 erros? Validador passou?
+                         header/nav/main/section/footer presentes?
+
+Formulário         15    Navegador barra vazio? label correto?
+                         required e email validation funcionam?
+
+CSS Modular        15    @import em main.css? Arquivos separados?
+                         Comentários no topo de cada arquivo?
+
+Variáveis          10    Todas as cores usam var()?
+                         Mude --cor-primaria: site inteiro muda?
+
+Flexbox/Grid       20    Header em flex? Galeria em grid?
+                         3 colunas desktop → 1 mobile?
+
+Pseudo-Classes     10    Links com :hover? ::after funciona?
+                         Sem outline: none sem substituto?
+
+Responsividade     10    @media query presente? Layout muda?
+                         Testa em 375px, 768px, 1200px?
+
+DevTools            5    Console sem erros? Styles sem ⚠️?
+
+TOTAL             100
+
+Escala: 70 a 100 = Pronto para Projeto A2
+
+================================================================================
+O QUE FAZER SE O ALUNO NÃO TERMINAR
+================================================================================
+
+Não terminou em 1 aula? Normal!
+
+Próximos passos:
+1. "Termina em casa e traz pronto"
+2. Você confere usando CHECKLIST_ENTREGA.txt
+3. Feedback: "Faltou ... e ... para ficar 100%"
+4. Aluno revisa
+5. Traz de novo para conferência
+
+Não deixar aluno se sentir mal:
+- "Isto é simulado, sem pressa"
+- "A avaliação de verdade é mais aberta"
+- "Você aprendeu o conceito? Então tá bom!"
+
+================================================================================
+COMO AJUDAR EM SALA (Enquanto Alunos Fazem)
+================================================================================
+
+Circule pela sala, concentre-se nesses pontos:
+
+⚠️ ERRO COMUM #1: CSS inline (style="")
+   Você vê: <div style="color: blue">
+   Você corrige: "Vai em CSS, não inline"
+
+⚠️ ERRO COMUM #2: Cor hardcoded
+   Você vê: background: #1A237E
+   Você corrige: "Vai em variaveis.css, muda a variável"
+
+⚠️ ERRO COMUM #3: Seletor muito específico
+   Você vê: #meu-div.classe a:first-child { ... }
+   Você corrige: "Tira o ID, usa só a classe"
+
+⚠️ ERRO COMUM #4: <div> para layout
+   Você vê: <div class="linha"> com vários .item
+   Você corrige: "Usa <section> ou CSS Grid/Flex"
+
+⚠️ ERRO COMUM #5: Label sem <label>
+   Você vê: <p>Nome:</p> <input>
+   Você corrige: "<label for="nome">Nome</label>"
+
+⚠️ ERRO COMUM #6: Formulário sem envio
+   Você testa: deixa vazio e clica enviar
+   Se enviar: "Falta required nos inputs"
+
+Vantagem do simulado: você acha os erros enquanto ainda está em aula.
+
+================================================================================
+FEEDBACK PARA CADA GRUPO/ALUNO
+================================================================================
+
+TEMPLATE DE FEEDBACK (imprima ou escreva na folha):
+
+┌─────────────────────────────────────────────────────────┐
+│ SIMULADO PORTFÓLIO DE DESENVOLVEDOR — FEEDBACK         │
+│ Aluno(s): _________________________ Data: _________    │
+├─────────────────────────────────────────────────────────┤
+│ ✓ O que foi bem:                                        │
+│   [ ] HTML semântico                                    │
+│   [ ] CSS organizado em módulos                         │
+│   [ ] Flexbox e Grid funcionando                        │
+│   [ ] Responsividade                                    │
+│   [ ] Formulário com validação                          │
+│                                                          │
+│ ⚠️  Pode melhorar:                                       │
+│   [ ] Algumas cores não usam variáveis                 │
+│   [ ] Um ou dois <div> desnecessários                  │
+│   [ ] Faltou @media query                              │
+│   [ ] Formulário não barra vazio                       │
+│   [ ] DevTools tem erros de CSS                        │
+│                                                          │
+│ 🎯 Para a avaliação real (Projeto A2):                  │
+│   • Revise REQUISITOS.txt uma vez                      │
+│   • Teste em 3 tamanhos: 375px, 768px, 1200px         │
+│   • Rode validador W3C antes de entregar               │
+│   • Leia CHECKLIST_ENTREGA.txt (preencha tudo)        │
+│                                                          │
+│ Nota simulado (se for avaliar): _____ / 100            │
+│ Status: [ ] Pronto para A2  [ ] Precisa revisar        │
+└─────────────────────────────────────────────────────────┘
+
+================================================================================
+ADAPTAÇÕES E VARIAÇÕES
+================================================================================
+
+Se quiser customizar o simulado:
+
+VERSÃO SIMPLIFICADA (Aula 05):
+- Retire responsividade (@media)
+- Retire Grid (use só Flexbox)
+- Retire formulário complexo
+- Tempo: 2 horas
+
+VERSÃO EXPANDIDA (Aula 07+):
+- Adicione animações (@keyframes)
+- Adicione tema escuro (prefers-color-scheme)
+- Adicione menu mobile (hambúrguer)
+- Tempo: 4+ horas
+
+VERSÃO PARA AVALIAÇÃO FORMAL:
+- Retire o index.html completo (só deixe requisitos)
+- Retire TEXTOS_DO_PROJETO.txt (alunos digitam)
+- Retire COMECE_AQUI.txt (só deixe REQUISITOS.txt)
+- Tempo: 4 horas com limite
+
+================================================================================
+CONEXÃO COM O PROJETO A2
+================================================================================
+
+Diferenças do simulado para o Projeto A2 (avaliação real):
+
+SIMULADO (Este)                 VS    PROJETO A2 (Real)
+──────────────────────────────────────────────────────
+Requisitos explícitos                Requisitos abertos
+Exemplo completo fornecido           Seu projeto pessoal
+Textos prontos (copy/paste)          Você escreve os textos
+2 horas (prática)                    4 horas em aula (avaliação)
+Sem limite de tempo extra            Tempo fixo (1 aula)
+Valor nota: 0 ou feedback            Valor nota: até 30%
+Circulo pela sala ajudando           Você circula observando
+Alunos podem perguntar               Perguntas com moderação
+
+Por isso o simulado é importante: aluno aprende a estrutura,
+depois cria algo próprio no A2.
+
+================================================================================
+SUGESTÃO: PRIMEIRO A2
+================================================================================
+
+Se essa for a primeira vez que oferece este simulado:
+
+1. Semana 1: Slideshow + COMECE_AQUI.txt em sala
+2. Semana 2: Alunos trabalham (você confere)
+3. Semana 3: Feedback + checklist
+4. Semana 4: Projeto A2 (avaliação real)
+
+Assim alunos chegam no A2 já praticados.
+
+================================================================================
+ARQUIVOS QUE VOCÊ PASSA PARA ALUNO
+================================================================================
+
+Crie uma pasta entregável:
+
+📦 Aula06_Simulado/
+ ├─ 📄 COMECE_AQUI.txt (LEIA PRIMEIRO)
+ ├─ 📄 REQUISITOS.txt
+ ├─ 📄 TEXTOS_DO_PROJETO.txt
+ ├─ 📄 CHECKLIST_ENTREGA.txt
+ ├─ 📄 README.md
+ ├─ 📄 index.html (referência — abra para ver resultado)
+ ├─ 📁 css/ (com todos os .css)
+ ├─ 📁 img/ (avatar.png)
+ └─ 📁 svg/ (icone-codigo.svg)
+
+Você NÃO passa:
+✗ INSTRUCOES_PROFESSOR.txt (este arquivo)
+
+Alunos recebem tudo em um ZIP.
+
+================================================================================
+CHECKLIST PRÉ-AULA (Prepare-se)
+================================================================================
+
+Antes de levar o simulado para sala:
+
+[ ] Testei index.html no navegador — funciona 100%
+[ ] DevTools Console — nenhum erro vermelho
+[ ] Validador W3C — 0 erros
+[ ] Testei responsividade — 375px, 768px, 1200px ✓
+[ ] Testei formulário — bloqueia vazio ✓
+[ ] Simulei ser aluno — consegui fazer em 2 horas? Sim ☐ Não ☐
+[ ] Listei erros que alunos farão (use ⚠️ ERRO COMUM acima)
+[ ] Preparei feedback template (copiei acima)
+[ ] Criei pasta Aula06_Simulado.zip para distribuir
+
+================================================================================
+PERGUNTAS FREQUENTES DE ALUNOS
+================================================================================
+
+P: "Por que copiar o texto? Isso é trapaça?"
+R: "Não. Você aprende sobre ESTRUTURA e CSS, não digitação.
+    Na avaliação real você digita tudo."
+
+P: "Posso usar IA para gerar código?"
+R: "Não. Se usar, não aprende. Depois no A2 você sofre.
+    Foco em APRENDER, não em terminar rápido."
+
+P: "Posso fazer sozinho em vez de dupla?"
+R: "Sim, claro. Dupla é mais divertido, mas solo também vale."
+
+P: "Não terminei em 2 horas..."
+R: "Sem problema, isso é simulado. Termina em casa e traz.
+    Na avaliação real também terá tempo para pensar."
+
+P: "Meu código ficou feio..."
+R: "Funcional é mais importante que bonito neste momento.
+    Estética vem depois. Validação? Responsividade? Aí sim!"
+
+================================================================================
+ÚLTIMO CONSELHO
+================================================================================
+
+Este simulado funciona melhor quando você:
+
+1. ✓ Deixa claro: "Isto é prática, sem pressa"
+2. ✓ Circula ajudando, não criticando
+3. ✓ Celebra pequenas vitórias ("Legal! Validou!")
+4. ✓ Conecta com o Projeto A2 ("Isto vai aparecer lá")
+5. ✓ Oferece feedback honesto no checklist
+6. ✓ Permite alunos aprenderem com "erros"
+
+Aluno que faz simulado bem = aluno que tira nota boa no A2.
+
+Vale investir tempo aqui.
+
+================================================================================
+
+Boa sorte com a turma! 🚀
+
+Qualquer dúvida sobre o simulado, me avise.
+
+================================================================================

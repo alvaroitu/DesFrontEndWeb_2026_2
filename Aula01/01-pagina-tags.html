@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de exemplo usando as tags HTML5 vistas em aula, do DOCTYPE até figure.">
+    <meta name="author" content="Álvaro Augusto Pereira">
+    <title>Guia de estudos &mdash; Front-end para Web</title>
+    <link rel="stylesheet" href="01-pagina-tags.css">
+</head>
+<body id="topo">
+
+    <!-- Título principal da página: só um <h1> por documento. -->
+    <h1>Guia de estudos &mdash; Front-end para Web</h1>
+    <p><small>Página de exemplo escrita apenas com as tags do início do conteúdo: do <b>&lt;!DOCTYPE&gt;</b> ao <b>&lt;figure&gt;</b>.</small></p>
+
+    <hr>
+
+    <!-- ============ Índice: links internos com âncora (#id) ============ -->
+    <h2>Nesta página</h2>
+    <ul>
+        <li><a href="#roteiro">Roteiro do semestre</a></li>
+        <li><a href="#glossario">Glossário</a></li>
+        <li><a href="#notas">Tabela de notas</a></li>
+        <li><a href="#campus">O campus</a></li>
+    </ul>
+
+    <hr>
+
+    <!-- ============ Texto: ênfase, citação, sub, sup, mark ============ -->
+    <h2 id="roteiro">Roteiro do semestre</h2>
+
+    <p>
+        A ordem de estudo é sempre a mesma: primeiro o <strong>conteúdo</strong>,
+        depois a <em>apresentação</em>. Quem inverte isso acaba usando
+        <b>negrito</b> e <i>itálico</i> no lugar de estrutura &mdash; e o leitor
+        de tela não entende nada.
+    </p>
+
+    <blockquote>
+        O HTML descreve o que a coisa &eacute;. O CSS descreve como ela aparece.
+    </blockquote>
+
+    <ol>
+        <li>Estrutura do documento e tags do <b>&lt;head&gt;</b></li>
+        <li>Texto, listas e tabelas</li>
+        <li>Links e imagens</li>
+        <li>CSS: seletores, cores e caixa</li>
+        <li>Layout responsivo</li>
+    </ol>
+
+    <p>
+        Fórmula que aparece no exemplo de química: H<sub>2</sub>O.<br>
+        Fórmula que aparece no exemplo de matemática: x<sup>2</sup> + y<sup>2</sup>.
+    </p>
+
+    <p class="aviso">
+        Atenção ao que é <mark>cobrado na avaliação</mark>: tags semânticas,
+        acessibilidade da imagem e uso correto de <b>id</b> e <b>class</b>.
+    </p>
+
+    <hr>
+
+    <!-- ============ Lista de definição ============ -->
+    <h2 id="glossario">Glossário</h2>
+
+    <dl>
+        <dt>HTML</dt>
+            <dd>Linguagem de marcação que dá estrutura e significado ao conteúdo.</dd>
+        <dt>CSS</dt>
+            <dd>Linguagem de estilo: cores, espaçamentos, tipografia e layout.</dd>
+        <dt>Tag vazia</dt>
+            <dd>Elemento sem conteúdo e sem fechamento, como <b>&lt;br&gt;</b>, <b>&lt;hr&gt;</b> e <b>&lt;img&gt;</b>.</dd>
+        <dt>Entidade</dt>
+            <dd>Código para escrever caracteres reservados: &amp;lt; vira &lt;, &amp;amp; vira &amp; e &amp;copy; vira &copy;.</dd>
+    </dl>
+
+    <hr>
+
+    <!-- ============ Tabela completa: caption, thead, tbody, th, td ============ -->
+    <h2 id="notas">Tabela de notas</h2>
+
+    <table>
+        <caption>Composição da nota do semestre</caption>
+        <thead>
+            <tr>
+                <th>Etapa</th>
+                <th>Instrumento</th>
+                <th>Peso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A1</td>
+                <td>Prova e projeto</td>
+                <td>5,0</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>Prova e portfólio</td>
+                <td>5,0</td>
+            </tr>
+            <tr>
+                <th colspan="2">Total</th>
+                <td>10,0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- ============ Imagens: img solta, img dentro de link e figure ============ -->
+    <h2 id="campus">O campus</h2>
+
+    <p>
+        <img src="img/logo2.png" alt="Logotipo do CEUNSP" width="100" height="80">
+    </p>
+
+    <figure>
+        <img src="img/campus.jpg"
+             alt="Fachada do campus ao entardecer"
+             width="400" height="200">
+        <figcaption>Campus do CEUNSP ao entardecer. Foto do acervo da instituição.</figcaption>
+    </figure>
+
+    <p>Imagem que também é link &mdash; a imagem vai <em>dentro</em> da tag <b>&lt;a&gt;</b>:</p>
+
+    <p>
+        <a href="https://ceunsp.edu.br" target="_blank">
+            <img src="img/logo2.png" alt="Site do CEUNSP" width="80" height="64">
+        </a>
+    </p>
+
+    <hr>
+
+    <!-- ============ Os quatro tipos de link ============ -->
+    <h2>Para onde um link pode apontar</h2>
+
+    <ul>
+        <li><a href="contato.html">Outra página do site</a> &mdash; caminho relativo</li>
+        <li><a href="https://ceunsp.edu.br">Site externo</a> &mdash; URL completa</li>
+        <li><a href="https://ceunsp.edu.br" target="_blank">Site externo em nova aba</a> &mdash; atributo <b>target</b></li>
+        <li><a href="#topo">Voltar ao topo</a> &mdash; âncora interna com <b>#id</b></li>
+        <li><a href="mailto:contato@ceunsp.edu.br">Enviar e-mail</a> &mdash; esquema <b>mailto:</b></li>
+    </ul>
+
+    <hr>
+
+    <p class="rodape"><small>&copy; 2026 &mdash; Material de apoio da disciplina Desenvolvimento Front-end para Web.</small></p>
+
+</body>
+</html>

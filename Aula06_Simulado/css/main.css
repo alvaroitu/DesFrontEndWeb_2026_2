@@ -1,0 +1,11 @@
+/* main.css: importa os módulos em ordem (do geral para o específico) */
+
+@import url("base/reset.css");
+@import url("base/variaveis.css");
+@import url("base/tipografia.css");
+@import url("layout/cabecalho.css");
+@import url("layout/secoes.css");
+@import url("componentes/botao.css");
+@import url("componentes/formulario.css");
+@import url("componentes/card.css");
+@import url("layout/responsividade.css");

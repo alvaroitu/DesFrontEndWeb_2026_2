@@ -1,0 +1,295 @@
+================================================================================
+ÍNDICE DE ARQUIVOS — EXERCÍCIO SIMULADO AULA 06
+================================================================================
+
+Estrutura completa do projeto simulado criado em:
+C:\Users\alvar\Documents\Ceunsp\Docente\DisciplinasMinistradas\2026\SegundoSemestre\Disciplinas\4_6_DesFrontEndWeb_Salto_ADS_ENGS\Projetos\Aula06_Simulado\
+
+================================================================================
+📂 ESTRUTURA DE PASTAS
+================================================================================
+
+Aula06_Simulado/
+│
+├─── 📄 ARQUIVOS DE GUIA (LEIA NESTA ORDEM)
+│    ├─ COMECE_AQUI.txt ..................... Roteiro passo a passo para aluno
+│    ├─ REQUISITOS.txt ..................... O que fazer (checklist)
+│    ├─ TEXTOS_DO_PROJETO.txt .............. Textos prontos (copy/paste)
+│    ├─ CHECKLIST_ENTREGA.txt .............. Autovaliação antes de entregar
+│    ├─ README.md .......................... Documentação completa
+│    ├─ INDICE_ARQUIVOS.txt ............... Este arquivo
+│    └─ INSTRUCOES_PROFESSOR.txt ........... (Apenas para professor)
+│
+├─── 📄 ARQUIVO PRINCIPAL
+│    └─ index.html ......................... Solução completa (referência)
+│
+├─── 📁 CSS/ (Arquivos organizados por responsabilidade)
+│    │
+│    ├─ main.css .......................... (importa todos os módulos)
+│    │
+│    ├─ 📁 base/ (estilos fundamentais)
+│    │   ├─ reset.css ..................... (zera padrões do navegador)
+│    │   ├─ variaveis.css ................ (cores, fontes, espaçamentos)
+│    │   └─ tipografia.css ............... (texto, links, headings)
+│    │
+│    ├─ 📁 layout/ (estrutura da página)
+│    │   ├─ cabecalho.css ................ (header com flex)
+│    │   ├─ secoes.css ................... (sections, grid de cards, footer)
+│    │   └─ responsividade.css ........... (@media queries)
+│    │
+│    └─ 📁 componentes/ (peças reutilizáveis)
+│        ├─ botao.css .................... (botões e variações)
+│        ├─ card.css ..................... (cards de projetos)
+│        └─ formulario.css ............... (campos e validação)
+│
+├─── 📁 img/ (Imagens)
+│    └─ avatar.svg ........................ (avatar do desenvolvedor)
+│
+└─── 📁 svg/ (Ícones vetoriais)
+     └─ icone-codigo.svg .................. (ícone decorativo)
+
+
+================================================================================
+📋 DESCRIÇÃO DE CADA ARQUIVO
+================================================================================
+
+GUIAS PARA ALUNOS
+─────────────────
+
+✓ COMECE_AQUI.txt (LEIA PRIMEIRO!)
+  Objetivo: Orientar o aluno passo a passo
+  Contém: 7 passos (preparação, estudo, código, validação, reflexão)
+  Tempo: Leia em 5 minutos, depois siga os passos
+
+✓ REQUISITOS.txt
+  Objetivo: Lista completa de tudo que fazer
+  Contém: Checklist de 8 blocos (HTML, Formulário, Imagens, CSS, etc)
+  Uso: Consulte durante o trabalho
+
+✓ TEXTOS_DO_PROJETO.txt
+  Objetivo: Economizar tempo de digitação
+  Contém: Todos os textos do site prontos para copy/paste
+  Uso: Copie e cole nos <h1>, <p>, <input>, etc
+
+✓ CHECKLIST_ENTREGA.txt
+  Objetivo: Autovaliação antes de enviar
+  Contém: 14 seções de verificação (estrutura, HTML, formulário, CSS, etc)
+  Uso: Preencha antes de entregar, marque [ ] ✓
+
+✓ README.md
+  Objetivo: Documentação completa e referência
+  Contém: Estrutura, dicas, conceitos cobertos, FAQs
+  Uso: Consulte durante dúvidas
+
+✓ INDICE_ARQUIVOS.txt (Este arquivo)
+  Objetivo: Mapear tudo que foi criado
+  Contém: Descrição de cada arquivo e pasta
+  Uso: Entenda a organização
+
+
+GUIA PARA PROFESSOR (VOCÊ)
+──────────────────────────
+
+✓ INSTRUCOES_PROFESSOR.txt
+  Objetivo: Orientar você na condução do simulado
+  Contém: Objetivos, como usar em sala, erros comuns, avaliação, feedback
+  Leitura: Antes da aula
+
+
+ARQUIVO EXECUTÁVEL
+───────────────────
+
+✓ index.html
+  Objetivo: Mostrar o resultado final (solução completa)
+  Contém: HTML semântico + links para CSS
+  Uso: Abra no navegador (double-click) → veja o resultado
+  Aviso: Use como REFERÊNCIA, não copie código!
+
+
+ARQUIVOS CSS (Modularizados)
+──────────────────────────────
+
+reset.css (base/)
+  ├─ box-sizing: border-box em tudo
+  ├─ margin: 0 no body
+  ├─ list-style: none em ul/ol
+  └─ font: inherit em form elements
+
+variaveis.css (base/)
+  ├─ Cores: --cor-primaria, --cor-destaque, --cor-texto, --cor-fundo, etc
+  ├─ Fontes: --fonte-texto, --fonte-titulo
+  ├─ Espaçamentos: --espaco, --espaco-pequeno, --espaco-grande
+  ├─ Raios: --raio, --raio-grande
+  └─ Sombras: --sombra
+  💡 TIP: Mude --cor-primaria e veja o site inteiro mudar!
+
+tipografia.css (base/)
+  ├─ body: font-family, line-height, color, background
+  ├─ h1...h6: tamanhos, pesos, cores
+  ├─ p: espaçamento
+  ├─ a: cores, estados (hover, focus, visited)
+  └─ figure/figcaption
+
+cabecalho.css (layout/)
+  ├─ .cabecalho: display flex, justify-content space-between
+  ├─ .logo: estilização
+  ├─ .menu: display flex com gap
+  └─ Links: hover com border-bottom, focus com outline
+
+secoes.css (layout/)
+  ├─ main: padding, max-width
+  ├─ section: background, border-radius, box-shadow
+  ├─ .sobre__conteudo: display flex (imagem + texto)
+  ├─ .galeria: display grid com auto-fit e minmax
+  ├─ .contato: gradiente de fundo
+  └─ .rodape: cor primária, text-align center
+
+responsividade.css (layout/)
+  ├─ @media (min-width: 768px): aumenta padding, redimensiona fonte
+  ├─ @media (min-width: 1024px): mais ajustes
+  └─ Mobile-first: estilos base para mobile, @media acrescenta
+
+botao.css (componentes/)
+  ├─ .botao: display inline-block, padding, background, border-radius
+  ├─ .botao:hover: transform translateY, box-shadow
+  ├─ .botao:focus-visible: outline 2px
+  ├─ .botao--destaque: cor laranja, width 100%
+  └─ .botao--secundario: background transparent, border
+
+formulario.css (componentes/)
+  ├─ fieldset + legend: borda, padding, background
+  ├─ label: display block, font-weight
+  ├─ input[type="text|email|tel"]: width 100%, padding, border
+  ├─ textarea: resize vertical, min-height
+  ├─ input:focus: outline none, border-color primária, box-shadow
+  ├─ input:invalid: border vermelha
+  └─ input:valid: border verde
+
+card.css (componentes/)
+  ├─ .card: display flex, flex-direction column, padding, border
+  ├─ .card h3: cor primária
+  ├─ .card p: flex: 1 (cresce)
+  ├─ .card .botao: margin-top auto (fica na base)
+  └─ .card:hover: transform, sombra, border-color
+
+main.css (raiz do css/)
+  └─ Contém apenas @import de todos os módulos em ordem
+
+
+IMAGENS E ÍCONES
+────────────────
+
+avatar.png (img/)
+  ├─ Avatar genérico do desenvolvedor
+  ├─ Círculo azul com detalhes em branco
+  └─ 200x200px (responsivo com width/height no HTML)
+
+icone-codigo.svg (svg/)
+  ├─ Ícone de "</>" (símbolos de código)
+  ├─ 24x24px (pequeno e reutilizável)
+  └─ stroke="currentColor" (herda cor do texto)
+
+
+================================================================================
+COMO CADA ARQUIVO RELACIONA COM AS AULAS
+================================================================================
+
+AULA 02 (HTML + Fundamentos)
+├─ index.html: estrutura <!DOCTYPE>, <meta>, <header>, <nav>, <main>, <section>, <footer>
+
+AULA 03 (Semântica)
+├─ index.html: <header>, <nav>, <main>, <section>, <article>, <footer>, <figure>, <address>
+
+AULA 04 (Formulário)
+├─ index.html: <form>, <fieldset>, <legend>, <label for="id">, <input required>, <textarea>
+└─ formulario.css: estilos e validação nativa
+
+AULA 05 (Mídia)
+├─ index.html: <figure>, <img alt>, <figcaption>, <svg>
+├─ avatar.svg: imagem vetorial
+└─ icone-codigo.svg: ícone SVG
+
+AULA 06 (CSS Modular)
+├─ main.css: @import dos módulos
+├─ variaveis.css: --cor-*, --fonte-*, --espaco-*
+├─ reset.css: box-sizing, margin: 0
+├─ Todos os arquivos: seletores tipo, classe, combinador, atributo
+└─ Todos os arquivos: especificidade baixa (sem #id)
+
+AULA 07 (Pseudo-classes, Flexbox, Grid)
+├─ tipografia.css: a:hover, a:focus-visible
+├─ botao.css: .botao:hover, .botao:focus-visible
+├─ cabecalho.css: display flex em .cabecalho e .menu
+├─ secoes.css: display grid em .galeria com auto-fit
+├─ card.css: .card:hover, pseudo-elemento ::after (bonus)
+└─ responsividade.css: @media (min-width)
+
+
+================================================================================
+ESTATÍSTICAS DO PROJETO
+================================================================================
+
+Arquivos criados: 26
+├─ Arquivos de texto/guia: 7 (COMECE_AQUI, REQUISITOS, TEXTOS, CHECKLIST, README, INDEX, INSTRUCOES)
+├─ Arquivo HTML: 1 (index.html)
+├─ Arquivos CSS: 10 (main + 3 base + 3 layout + 3 componentes)
+├─ Imagens/Ícones: 2 (avatar.png, icone-codigo.svg)
+└─ Pastas: 6 (css/, base/, layout/, componentes/, img/, svg/)
+
+Linhas de código:
+├─ HTML: ~120 linhas
+├─ CSS total: ~500+ linhas (bem organizado)
+└─ Documentação: ~1500 linhas (guias + requisitos)
+
+Requisitos cobertos: 8 blocos
+├─ HTML Semântico
+├─ Formulário com Validação
+├─ Imagens e Mídia
+├─ CSS Externo e Modular
+├─ Box Model
+├─ Pseudo-classes e Pseudo-elementos
+├─ Responsividade
+└─ Organização do Código
+
+Tempo estimado: 2-2.5 horas (aluno)
+
+
+================================================================================
+COMO USAR ESTE ARQUIVO
+================================================================================
+
+Este é um mapa de referência. Use quando:
+- Precisar localizar um arquivo específico
+- Entender a organização do projeto
+- Explicar aos alunos por que cada arquivo existe
+- Verificar o que foi criado
+
+Passe este arquivo para alunos se eles pedirem: "Quais são todos os arquivos?"
+
+
+================================================================================
+PRÓXIMAS ETAPAS
+================================================================================
+
+Para professor (você):
+1. Leia INSTRUCOES_PROFESSOR.txt
+2. Prepare a aula (slides, timer, feedback template)
+3. Teste index.html no seu navegador antes de levar para sala
+4. Faça um backup da pasta Aula06_Simulado
+
+Para alunos:
+1. Leia COMECE_AQUI.txt
+2. Siga os 7 passos
+3. Preencha CHECKLIST_ENTREGA.txt antes de entregar
+
+Para avaliação (A2):
+- Use REQUISITOS.txt como inspiração
+- Deixe simulado disponível como prática antes da nota
+
+================================================================================
+
+Estrutura criada com sucesso! 🎉
+
+Qualquer arquivo que faltar, avise.
+
+================================================================================

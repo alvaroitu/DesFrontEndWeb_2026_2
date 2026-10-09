@@ -1,0 +1,193 @@
+/* cantina.css: pagina exemplo da Aula 07.
+   Grid no esqueleto, flex nos componentes, pseudo-seletores no acabamento. */
+
+/* ---------- base ---------- */
+:root {
+  --cor-primaria: #1A237E;
+  --cor-destaque: #FF6F00;
+  --cor-texto: #37474F;
+  --cor-fraca: #607D8B;
+  --cor-fundo: #F5F5F5;
+  --cor-borda: #DFE3EA;
+  --raio: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+
+  /* GRID: mobile-first, uma coluna */
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    "cabecalho"
+    "conteudo"
+    "lateral"
+    "rodape";
+}
+
+.cabecalho { grid-area: cabecalho; }
+.lateral   { grid-area: lateral; }
+.conteudo  { grid-area: conteudo; }
+.rodape    { grid-area: rodape; }
+
+/* a partir de 800px: lateral a esquerda */
+@media (min-width: 800px) {
+  body {
+    grid-template-columns: 230px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "cabecalho cabecalho"
+      "lateral   conteudo"
+      "rodape    rodape";
+  }
+}
+
+h1, h2, h3 { line-height: 1.2; color: var(--cor-primaria); }
+
+/* ---------- cabecalho: FLEX ---------- */
+.cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--cor-primaria);
+}
+
+.logo { color: #FFFFFF; font-size: 1.3rem; }
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* links: ordem LVHFA */
+.menu a { color: #FFFFFF; text-decoration: none; border-bottom: 2px solid transparent; }
+.menu a:visited { color: #FFFFFF; }
+.menu a:hover { border-bottom-color: var(--cor-destaque); }
+.menu a:focus-visible { outline: 3px solid var(--cor-destaque); outline-offset: 3px; }
+.menu a[aria-current="page"] { border-bottom-color: #FFFFFF; font-weight: 700; }
+.menu a[href$=".pdf"]::after { content: " \2193"; }   /* seta de download */
+
+/* ---------- lateral ---------- */
+.lateral {
+  padding: 1.5rem;
+  background: #FFFFFF;
+  border-right: 1px solid var(--cor-borda);
+}
+
+.categorias { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.categorias li { padding: 0.5rem 0; }
+.categorias li:not(:last-child) { border-bottom: 1px solid var(--cor-borda); }
+.categorias li::before { content: "\203A  "; color: var(--cor-destaque); font-weight: 700; }
+
+.citacao {
+  margin: 0;
+  padding-left: 1.75rem;
+  position: relative;
+  font-style: italic;
+  color: var(--cor-fraca);
+}
+.citacao::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -0.6rem;
+  font-size: 2.5rem;
+  color: var(--cor-destaque);
+}
+
+/* ---------- conteudo ---------- */
+.conteudo { padding: 1.5rem; }
+
+.banner {
+  padding: 2.5rem 1.5rem;
+  border-radius: var(--raio);
+  color: #FFFFFF;
+  background:
+    linear-gradient(rgb(0 0 0 / 35%), rgb(0 0 0 / 35%)),
+    linear-gradient(120deg, var(--cor-primaria), var(--cor-destaque));
+}
+.banner h1 { color: #FFFFFF; margin: 0 0 0.5rem; }
+.banner p  { margin: 0; }
+
+/* galeria: GRID responsivo sem media query */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* card: FLEX em coluna, botao sempre na base */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+.card__titulo { margin: 0 0 0.5rem; font-size: 1.1rem; }
+.card__texto  { margin: 0 0 1rem; color: var(--cor-fraca); }
+.card--destaque { border: 2px solid var(--cor-destaque); }
+
+.botao {
+  margin-top: auto;            /* empurra para a base do card */
+  align-self: flex-start;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  background: var(--cor-destaque);
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+}
+.botao:hover { background: #E65100; }
+.botao:focus-visible { outline: 3px solid var(--cor-primaria); outline-offset: 3px; }
+
+/* ---------- tabela ---------- */
+.rolagem { overflow-x: auto; }
+
+.tabela { border-collapse: collapse; width: 100%; min-width: 26rem; background: #FFFFFF; }
+.tabela caption { caption-side: top; text-align: left; font-weight: 700; padding: 0 0 0.5rem; }
+.tabela th, .tabela td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--cor-borda); text-align: left; }
+.tabela thead th { background: var(--cor-primaria); color: #FFFFFF; }
+.tabela tbody tr:nth-child(even) { background: var(--cor-fundo); }
+.tabela tbody tr:hover { background: #FFF3E0; }
+.tabela td + td, .tabela th + th { text-align: right; font-variant-numeric: tabular-nums; }
+.tabela .novo::after {
+  content: "novo";
+  margin-left: 0.5rem;
+  padding: 0 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #2E7D32;
+  border-radius: 4px;
+}
+
+/* ---------- horarios ---------- */
+.horarios { padding-left: 1.2rem; }
+.horarios li::marker { color: var(--cor-destaque); }
+.horarios li:last-child { color: #C62828; }
+
+/* ---------- rodape ---------- */
+.rodape {
+  padding: 1rem;
+  text-align: center;
+  color: #FFFFFF;
+  background: #0D144A;
+}
+.rodape p { margin: 0; }

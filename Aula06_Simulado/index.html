@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Silva — Desenvolvedor Front-End</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <strong class="logo">João Silva — Desenvolvedor Front-End</strong>
+    <nav class="menu">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- SEÇÃO SOBRE -->
+    <section id="inicio" class="sobre">
+      <h2>Sobre mim</h2>
+
+      <div class="sobre__conteudo">
+        <figure class="sobre__figura">
+          <img src="img/avatar.png" alt="Avatar de João Silva, desenvolvedor front-end"
+               width="200" height="200">
+          <figcaption>João Silva</figcaption>
+        </figure>
+
+        <div class="sobre__texto">
+          <p>
+            Sou um desenvolvedor front-end apaixonado por criar interfaces
+            <strong>acessíveis e responsivas</strong>. Com experiência em HTML5,
+            CSS3 e JavaScript, trabalho para transformar ideias em realidade na web.
+          </p>
+          <p>
+            Minhas habilidades incluem semântica HTML, CSS modular, Flexbox e Grid,
+            formulários acessíveis e otimização para performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS -->
+    <section id="projetos" class="projetos">
+      <h2>Meus Projetos</h2>
+
+      <div class="galeria">
+
+        <article class="card">
+          <h3>Portfólio Pessoal</h3>
+          <p>Site responsivo com design limpo e navegação intuitiva.</p>
+          <a href="#" class="botao">Ver projeto</a>
+        </article>
+
+        <article class="card">
+          <h3>E-commerce</h3>
+          <p>Plataforma de vendas com carrinho funcional e busca de produtos.</p>
+          <a href="#" class="botao">Ver projeto</a>
+        </article>
+
+        <article class="card">
+          <h3>Blog Técnico</h3>
+          <p>Blog sobre desenvolvimento web com artigos bem estruturados.</p>
+          <a href="#" class="botao">Ver projeto</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contato" class="contato">
+      <h2>Entre em contato</h2>
+      <p>Preencha o formulário abaixo e entrarei em contato em breve.</p>
+
+      <form class="formulario" action="#" method="POST">
+
+        <fieldset>
+          <legend>Seus dados</legend>
+
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" required
+                 autocomplete="name" maxlength="80">
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required
+                 autocomplete="email">
+
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone"
+                 autocomplete="tel" inputmode="numeric">
+        </fieldset>
+
+        <fieldset>
+          <legend>Sua mensagem</legend>
+
+          <label for="mensagem">Sua mensagem aqui (máximo 500 caracteres)</label>
+          <textarea id="mensagem" name="mensagem" rows="5" maxlength="500"
+                    placeholder="Escreva sua mensagem"></textarea>
+        </fieldset>
+
+        <button type="submit" class="botao botao--destaque">Enviar mensagem</button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <address>
+      Entre em contato: <a href="mailto:joao@email.com">joao@email.com</a>
+    </address>
+    <p>&copy; 2026 João Silva. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

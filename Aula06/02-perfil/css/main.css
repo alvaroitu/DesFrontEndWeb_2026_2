@@ -1,0 +1,11 @@
+/* main.css: so importa os modulos, do mais geral para o mais especifico.
+   @import precisa ser a primeira coisa do arquivo. */
+@import url("base/reset.css");
+@import url("base/variaveis.css");
+@import url("base/tipografia.css");
+@import url("layout/container.css");
+@import url("layout/cabecalho.css");
+@import url("layout/rodape.css");
+@import url("componentes/botao.css");
+@import url("componentes/card.css");
+@import url("componentes/habilidades.css");

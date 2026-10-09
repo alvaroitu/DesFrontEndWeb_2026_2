@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia de CSS - Aula 06: sintaxe, seletores e organizacao</title>
+  <meta name="description" content="Referencia visual da Aula 06 de Desenvolvimento Front-end para Web - CEUNSP">
+  <meta name="author" content="Prof. Alvaro Augusto Pereira">
+  <style>
+    :root{
+      --tinta:#16181d;
+      --tinta-fraca:#5b6270;
+      --fundo:#ffffff;
+      --papel:#f6f7f9;
+      --linha:#dfe3ea;
+      --azul:#1b4fa0;
+      --azul-claro:#e8effa;
+      --verde:#1d7a4d;
+      --vermelho:#b3261e;
+      --amarelo:#fff3c4;
+      --raio:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:17px;
+      line-height:1.55;
+      color:var(--tinta);
+      background:var(--fundo);
+    }
+    code,pre,kbd,samp{font-family:Consolas,"Courier New",monospace}
+
+    /* ---------- cabecalho ---------- */
+    header.topo{
+      background:var(--tinta);
+      color:#fff;
+      padding:22px 32px;
+    }
+    header.topo h1{margin:0;font-size:1.6rem}
+    header.topo p{margin:4px 0 0;color:#b9c0cc;font-size:.95rem}
+
+    nav.indice{
+      position:sticky;top:0;z-index:20;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      padding:10px 32px;
+    }
+    nav.indice ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+    nav.indice a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--azul);
+      background:#fff;
+      border:1px solid var(--linha);
+      border-radius:99px;
+      padding:3px 12px;
+      font-size:.82rem;
+    }
+    nav.indice a:hover{background:var(--azul-claro)}
+
+    main{padding:0 32px 80px}
+    section.grupo{margin:44px 0 0}
+    section.grupo > h2{
+      font-size:1.35rem;
+      margin:0 0 4px;
+      padding-bottom:8px;
+      border-bottom:3px solid var(--azul);
+    }
+    section.grupo > p.dica{margin:0 0 18px;color:var(--tinta-fraca);font-size:.95rem}
+
+    /* ---------- cartao de tag ---------- */
+    article.tag{
+      border:1px solid var(--linha);
+      border-radius:var(--raio);
+      margin:0 0 16px;
+      overflow:hidden;
+      background:#fff;
+    }
+    article.tag > h3{
+      margin:0;
+      padding:10px 16px;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      font-size:1.05rem;
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    article.tag > h3 .nome{
+      color:var(--azul);
+      font-family:Consolas,"Courier New",monospace;
+      font-size:1.1rem;
+    }
+    article.tag > h3 .sentido{
+      font-weight:400;
+      font-size:.9rem;
+      color:var(--tinta-fraca);
+    }
+    .corpo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    @media (max-width:900px){.corpo{grid-template-columns:1fr}}
+    .codigo,.resultado{padding:14px 16px}
+    .codigo{background:#1e2229;border-right:1px solid var(--linha)}
+    .codigo pre{
+      margin:0;
+      color:#e6e9ef;
+      font-size:.86rem;
+      line-height:1.5;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .rotulo{
+      display:block;
+      font-size:.68rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      color:var(--tinta-fraca);
+    }
+    .codigo .rotulo{color:#8b93a1}
+    .resultado > *:not(.rotulo):first-of-type{margin-top:0}
+    .resultado video,.resultado img,.resultado iframe,.resultado object{max-width:100%}
+    .resultado video{height:auto}
+    .resultado canvas{border:1px solid var(--linha);max-width:100%}
+    .resultado button{
+      font:inherit;font-size:.9rem;cursor:pointer;
+      padding:4px 12px;border-radius:6px;border:1px solid var(--linha);background:#fff;
+    }
+    .resultado button:hover{background:var(--azul-claro)}
+    .nota{
+      margin:0;
+      padding:10px 16px;
+      background:var(--amarelo);
+      border-top:1px solid var(--linha);
+      font-size:.88rem;
+    }
+    .nota strong{color:#7a5c00}
+
+    /* ---------- comparativos ---------- */
+    .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+    @media (max-width:900px){.par{grid-template-columns:1fr}}
+    .caixa{border:1px solid var(--linha);border-radius:var(--raio);padding:14px 16px}
+    .caixa.certo{border-left:5px solid var(--verde)}
+    .caixa.errado{border-left:5px solid var(--vermelho)}
+    .caixa h4{margin:0 0 8px;font-size:.95rem}
+    .caixa.certo h4{color:var(--verde)}
+    .caixa.errado h4{color:var(--vermelho)}
+    .caixa pre{margin:0;font-size:.84rem;white-space:pre-wrap;background:var(--papel);padding:10px;border-radius:6px}
+
+    /* ---------- tabelas de consulta ---------- */
+    table.consulta{border-collapse:collapse;width:100%;font-size:.9rem;margin:0 0 16px}
+    table.consulta caption{text-align:left;font-weight:600;padding-bottom:8px}
+    table.consulta th,table.consulta td{border:1px solid var(--linha);padding:7px 10px;text-align:left;vertical-align:top}
+    table.consulta thead{background:var(--papel)}
+    table.consulta td:first-child{font-family:Consolas,monospace;color:var(--azul)}
+
+    /* ---------- modo foco ---------- */
+    .barra-foco{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      display:flex;gap:6px;align-items:center;
+      background:var(--tinta);color:#fff;
+      padding:8px 12px;border-radius:99px;
+      box-shadow:0 4px 14px rgba(0,0,0,.28);
+      font-size:.85rem;
+    }
+    .barra-foco button{
+      font:inherit;cursor:pointer;
+      background:#333a45;color:#fff;border:0;border-radius:6px;padding:4px 10px;
+    }
+    .barra-foco button:hover{background:var(--azul)}
+    article.tag.destacada{
+      outline:4px solid var(--azul);
+      outline-offset:3px;
+      scroll-margin-top:96px;
+    }
+    footer.rodape{
+      background:var(--papel);
+      border-top:1px solid var(--linha);
+      padding:18px 32px;
+      font-size:.85rem;
+      color:var(--tinta-fraca);
+    }
+  
+    /* ---------- demos desta aula ---------- */
+
+    .demo-caixa{border:1px dashed var(--linha);padding:10px;border-radius:8px;margin:0 0 8px}
+    .marca{background:#fff3c4;outline:2px solid #ff6f00}
+    /* 1 formas */
+    .d-interno p{color:#1a237e;font-size:18px}
+    /* 2 anatomia */
+    .d-ok{font-family:Georgia,serif;color:#1d7a4d}
+    .d-erro{font-family:Georgia,serif color:#1d7a4d}
+    /* 3 cores */
+    .amostras{display:flex;flex-wrap:wrap;gap:8px}
+    .amostras span{display:inline-block;padding:8px 10px;border-radius:6px;color:#fff;font-size:.8rem;font-family:Consolas,monospace}
+    .d-contraste-ruim{color:#bbb;background:#fff;padding:6px}
+    .d-contraste-bom{color:#37474f;background:#fff;padding:6px}
+    /* 4 unidades */
+    .d-em li{font-size:1.2em}
+    .d-rem li{font-size:1.2rem}
+    .d-ch{max-width:30ch;background:var(--papel);padding:6px}
+    /* 5 basicos */
+    .d-basico p{margin:4px 0}
+    .d-basico .destaque{color:#ff6f00;font-weight:600}
+    .d-basico #topo{background:var(--azul-claro);padding:4px}
+    .d-basico p.aviso{font-weight:bold;color:#b3261e}
+    /* 6 combinadores */
+    .d-desc .post p,.d-filho .post > p,.d-adj .post h4 + p,.d-irm .post h4 ~ p{background:#fff3c4;outline:2px solid #ff6f00}
+    .post{border:1px solid var(--linha);padding:6px 10px;border-radius:6px;font-size:.9rem}
+    .post h4{margin:2px 0}.post p{margin:3px 0}.post div{margin-left:14px;border-left:3px solid var(--linha);padding-left:8px}
+    /* 7 atributo */
+    .d-attr a[href$=".pdf"]{color:#1d7a4d;font-weight:600}
+    .d-attr a[href$=".pdf"]::after{content:" (PDF)"}
+    .d-attr a[href^="https"]{color:#b3261e}
+    .d-attr input[type="email"]{border:2px solid #1b4fa0}
+    .d-attr [required]{background:#fff3c4}
+    .d-attr input{display:block;margin:6px 0;padding:4px;font:inherit}
+    /* 8 cascata */
+    .d-casc p{color:blue}
+    .d-casc p{color:red}
+    /* 9 heranca */
+    .d-her{color:#1a237e;font-family:Georgia,serif;border:3px solid #ff6f00;padding:8px}
+    .d-her .filho-inherit{border:inherit;margin-top:6px;padding:4px}
+    /* 10 especificidade */
+    #d-esp-menu a{color:#1b4fa0}
+    .d-esp .menu .link.ativo{color:#b3261e}
+    .d-esp2 .link{color:#b3261e}
+    .d-esp2 nav ul li a{color:#1b4fa0}
+    /* 11 important */
+    .d-imp .aviso{color:#b3261e !important}
+    #d-imp-id{color:#1b4fa0}
+    /* 12 box model */
+    .d-box{width:220px;padding:20px;border:6px solid #37474f;margin:16px;background:#e8effa}
+    .d-box-fora{background:#fff3c4;display:inline-block}
+    /* 13 box-sizing */
+    .d-bs{width:50%;padding:16px;border:3px solid #1b4fa0;display:inline-block;background:#e8effa;vertical-align:top;font-size:.85rem}
+    .d-bs-bb .d-bs{box-sizing:border-box}
+    .d-bs-cb .d-bs{box-sizing:content-box}
+    .d-bs-cb,.d-bs-bb{font-size:0}
+    .d-bs-cb .d-bs,.d-bs-bb .d-bs{font-size:.85rem}
+    /* 14 atalhos */
+    .d-atalho{background:#ff6f00;display:inline-block}
+    .d-atalho div{background:#e8effa;margin:10px 30px 20px 50px;padding:6px}
+    .d-centro{max-width:200px;margin:0 auto;background:#e8effa;text-align:center;padding:6px}
+    /* 15 display */
+    .d-disp span,.d-disp a{background:#fff3c4;border:1px solid #ff6f00}
+    .d-disp .ib{display:inline-block;width:110px;text-align:center;padding:6px}
+    .d-disp .pad{padding:14px}
+    .d-disp .bl{display:block}
+    .d-disp .none{display:none}
+    .d-disp .hid{visibility:hidden}
+    /* 16 variaveis */
+    .d-var{--cor-primaria:#1a237e;--raio:8px;--espaco:12px}
+    .d-var .botao{background:var(--cor-primaria);color:#fff;border-radius:var(--raio);padding:var(--espaco) calc(var(--espaco)*2);display:inline-block;text-decoration:none}
+    .d-var .botao--secundario{background:transparent;color:var(--cor-primaria);border:2px solid var(--cor-primaria)}
+    .d-var h4{color:var(--cor-primaria);margin:0 0 8px}
+    .d-var .reserva{color:var(--nao-existe, #1d7a4d)}
+    /* 17 BEM */
+    .card{border:1px solid var(--linha);border-radius:8px;padding:10px;max-width:260px}
+    .card__titulo{margin:0 0 4px;font-size:1rem}
+    .card__texto{margin:0;font-size:.9rem;color:var(--tinta-fraca)}
+    .card--destaque{border-color:#ff6f00;box-shadow:0 0 0 3px #fff3c4}
+
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <h1>Referencia de CSS &mdash; sintaxe, seletores, cascata, box model e organizacao</h1>
+  <p>Desenvolvimento Front-end para Web &nbsp;|&nbsp; CEUNSP &nbsp;|&nbsp; Aula 06 &nbsp;|&nbsp; Prof. Alvaro Augusto Pereira</p>
+</header>
+
+<nav class="indice" aria-label="Indice dos grupos">
+  <ul>
+    <li><a href="#g1">1. Tres formas de ligar</a></li>
+    <li><a href="#g2">2. Anatomia da regra</a></li>
+    <li><a href="#g3">3. Cores</a></li>
+    <li><a href="#g4">4. Unidades</a></li>
+    <li><a href="#g5">5. Seletores basicos</a></li>
+    <li><a href="#g6">6. Combinadores</a></li>
+    <li><a href="#g7">7. Atributo</a></li>
+    <li><a href="#g8">8. Cascata</a></li>
+    <li><a href="#g9">9. Heranca</a></li>
+    <li><a href="#g10">10. Especificidade</a></li>
+    <li><a href="#g11">11. !important</a></li>
+    <li><a href="#g12">12. Box model</a></li>
+    <li><a href="#g13">13. box-sizing</a></li>
+    <li><a href="#g14">14. Atalhos e centralizar</a></li>
+    <li><a href="#g15">15. display</a></li>
+    <li><a href="#g16">16. Variaveis CSS</a></li>
+    <li><a href="#g17">17. Organizacao e BEM</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ==================== 1 ==================== -->
+<section class="grupo" id="g1">
+  <h2>1. Tres formas de ligar o CSS ao HTML</h2>
+  <p class="dica">Inline, interno e externo. Todas funcionam; so a externa escala para um site inteiro.</p>
+
+  <article class="tag">
+    <h3><span class="nome">style=""</span> <span class="sentido">inline: so aquele elemento</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;p style="color: #1A237E; font-size: 18px;"&gt;
+  Texto com estilo inline
+&lt;/p&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p style="color: #1A237E; font-size: 18px;">Texto com estilo inline</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Evite:</strong> mistura conteudo com aparencia e vence quase qualquer regra do arquivo. Uso legitimo hoje: e-mail em HTML.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">&lt;style&gt;</span> <span class="sentido">interno: so aquela pagina</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;head&gt;
+  &lt;style&gt;
+    p { color: #1A237E; font-size: 18px; }
+  &lt;/style&gt;
+&lt;/head&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-interno"><p>Todo paragrafo desta pagina fica assim.</p></div>
+      </div>
+    </div>
+    <p class="nota">Bom para prototipo e teste rapido. Trocar o visual de 50 paginas = editar 50 arquivos.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">&lt;link rel="stylesheet"&gt;</span> <span class="sentido">externo: o site inteiro</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>&lt;head&gt;
+  &lt;link rel="stylesheet" href="css/estilo.css"&gt;
+&lt;/head&gt;
+
+/* css/estilo.css */
+p { color: #1A237E; font-size: 18px; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p>Esta propria pagina usa um bloco &lt;style&gt; para caber em um arquivo so; a pagina exemplo <code>02-perfil</code> usa CSS externo.</p>
+        <p>O navegador guarda o .css em cache: a segunda pagina do site ja abre com o estilo pronto.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Caminho:</strong> o href segue a mesma regra do src da imagem. Caminho errado = pagina sem estilo e um 404 na aba Network.</p>
+  </article>
+</section>
+
+<!-- ==================== 2 ==================== -->
+<section class="grupo" id="g2">
+  <h2>2. Anatomia de uma regra</h2>
+  <p class="dica">Seletor, bloco de declaracao, propriedade e valor. E um erro de CSS nunca aparece no console.</p>
+
+  <article class="tag">
+    <h3><span class="nome">seletor { propriedade: valor; }</span> <span class="sentido">a forma de toda regra</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>/* comentario: o navegador ignora */
+h1 {
+  color: #1A237E;       /* declaracao */
+  font-size: 2rem;
+  margin-bottom: 16px;  /* ; separa as declaracoes */
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <h1 style="margin:0;color:#1A237E;font-size:2rem">Titulo</h1>
+        <p>Comentario em CSS e so <code>/* */</code>. Nao existe <code>//</code> em CSS.</p>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">; esquecido</span> <span class="sentido">o erro silencioso</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.d-ok {
+  font-family: Georgia, serif;
+  color: #1d7a4d;
+}
+.d-erro {
+  font-family: Georgia, serif     /* falta ; */
+  color: #1d7a4d;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p class="d-ok">Com ponto e virgula: fonte e cor aplicadas.</p>
+        <p class="d-erro">Sem ponto e virgula: nem a fonte nem a cor.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>Por que as duas somem:</strong> o navegador le <code>Georgia, serif color: #1d7a4d</code> como um valor so, invalido. No DevTools, a declaracao aparece riscada com um icone de alerta.</p>
+  </article>
+</section>
+
+<!-- ==================== 3 ==================== -->
+<section class="grupo" id="g3">
+  <h2>3. Cores</h2>
+  <p class="dica">Cinco formas de dizer a mesma cor. color pinta o texto; background-color pinta o fundo.</p>
+
+  <article class="tag">
+    <h3><span class="nome">color</span> <span class="sentido">nome, hexa, rgb e hsl</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>color: orange;
+color: #FF6F00;
+color: #F60;              /* = #FF6600 */
+color: rgb(255 111 0);
+color: rgb(255 111 0 / 50%);
+color: hsl(26 100% 50%);
+color: hsl(26 100% 35%);  /* mesma cor, mais escura */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="amostras">
+          <span style="background:orange">orange</span>
+          <span style="background:#FF6F00">#FF6F00</span>
+          <span style="background:#F60">#F60</span>
+          <span style="background:rgb(255 111 0)">rgb</span>
+          <span style="background:rgb(255 111 0 / 50%)">rgb / 50%</span>
+          <span style="background:hsl(26 100% 50%)">hsl 50%</span>
+          <span style="background:hsl(26 100% 35%)">hsl 35%</span>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>hsl:</strong> mudar so o ultimo numero (luz) gera o tom do hover e o tom claro do mesmo botao.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">contraste</span> <span class="sentido">4,5:1 para texto normal</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.ruim { color: #BBBBBB; background: #FFFFFF; }  /* 1,9:1 */
+.bom  { color: #37474F; background: #FFFFFF; }  /* 9,9:1 */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p class="d-contraste-ruim">Texto cinza claro: lindo no Figma, ilegivel no sol.</p>
+        <p class="d-contraste-bom">Texto cinza escuro: passa no WCAG AA com folga.</p>
+      </div>
+    </div>
+    <p class="nota">No DevTools, clicar na amostra de cor mostra a razao de contraste e se ela passa em AA e AAA.</p>
+  </article>
+</section>
+
+<!-- ==================== 4 ==================== -->
+<section class="grupo" id="g4">
+  <h2>4. Unidades de medida</h2>
+  <p class="dica">rem para fonte e espaco, % para largura, px para borda.</p>
+
+  <article class="tag">
+    <h3><span class="nome">em x rem</span> <span class="sentido">em acumula; rem nao</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.d-em  li { font-size: 1.2em;  }
+.d-rem li { font-size: 1.2rem; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="par" style="margin:0">
+          <ul class="d-em"><li>em nivel 1<ul><li>nivel 2<ul><li>nivel 3</li></ul></li></ul></li></ul>
+          <ul class="d-rem"><li>rem nivel 1<ul><li>nivel 2<ul><li>nivel 3</li></ul></li></ul></li></ul>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>em</strong> multiplica pela fonte do pai: 1,2 x 1,2 x 1,2. <strong>rem</strong> olha sempre o html e fica igual em qualquer nivel.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">ch</span> <span class="sentido">largura de caractere</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.d-ch { max-width: 30ch; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p class="d-ch">Com max-width em ch, a linha de texto nunca passa de uns 30 caracteres, nao importa o tamanho da tela.</p>
+      </div>
+    </div>
+    <p class="nota">Para leitura confortavel em texto corrido, algo entre 60ch e 75ch.</p>
+  </article>
+</section>
+
+<!-- ==================== 5 ==================== -->
+<section class="grupo" id="g5">
+  <h2>5. Seletores basicos</h2>
+  <p class="dica">Universal, tipo, classe, id e agrupamento.</p>
+
+  <article class="tag">
+    <h3><span class="nome">p  .classe  #id  a, b</span> <span class="sentido">os cinco do dia a dia</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>p          { margin: 4px 0; }
+.destaque  { color: #FF6F00; }
+#topo      { background: #E8EFFA; }
+p.aviso    { color: #B3261E; }   /* &lt;p&gt; COM a classe */
+
+&lt;p id="topo"&gt;Paragrafo com id&lt;/p&gt;
+&lt;p class="destaque"&gt;Paragrafo destaque&lt;/p&gt;
+&lt;span class="destaque"&gt;Span destaque&lt;/span&gt;
+&lt;p class="aviso"&gt;Paragrafo aviso&lt;/p&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-basico">
+          <p id="topo">Paragrafo com id</p>
+          <p class="destaque">Paragrafo destaque</p>
+          <span class="destaque">Span destaque</span>
+          <p class="aviso">Paragrafo aviso</p>
+        </div>
+      </div>
+    </div>
+    <p class="nota">No CSS a classe tem ponto; no HTML nao: <code>class="destaque"</code>. E <code>p.aviso</code> (sem espaco) e diferente de <code>p .aviso</code> (com espaco).</p>
+  </article>
+</section>
+
+<!-- ==================== 6 ==================== -->
+<section class="grupo" id="g6">
+  <h2>6. Combinadores</h2>
+  <p class="dica">Selecionar pela posicao na arvore do HTML. O destaque laranja mostra o que cada seletor pega.</p>
+
+  <article class="tag">
+    <h3><span class="nome">.post p</span> <span class="sentido">descendente: qualquer nivel</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.post p { background: #FFF3C4; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-desc">
+          <div class="post"><h4>Titulo</h4><p>Primeiro paragrafo</p><p>Segundo paragrafo</p><div><p>Paragrafo do rodape</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">Pega as tres &lt;p&gt;, inclusive a de dentro da div.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">.post &gt; p</span> <span class="sentido">filho direto</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.post &gt; p { background: #FFF3C4; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-filho">
+          <div class="post"><h4>Titulo</h4><p>Primeiro paragrafo</p><p>Segundo paragrafo</p><div><p>Paragrafo do rodape</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">So as duas &lt;p&gt; que sao filhas diretas do .post.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">h4 + p</span> <span class="sentido">irmao imediatamente seguinte</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>h4 + p { background: #FFF3C4; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-adj">
+          <div class="post"><h4>Titulo</h4><p>Primeiro paragrafo</p><p>Segundo paragrafo</p><div><p>Paragrafo do rodape</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">So a &lt;p&gt; que vem logo depois do titulo.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">h4 ~ p</span> <span class="sentido">todos os irmaos seguintes</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>h4 ~ p { background: #FFF3C4; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-irm">
+          <div class="post"><h4>Titulo</h4><p>Primeiro paragrafo</p><p>Segundo paragrafo</p><div><p>Paragrafo do rodape</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">As duas &lt;p&gt; irmas do titulo. A do rodape e neta, nao irma.</p>
+  </article>
+</section>
+
+<!-- ==================== 7 ==================== -->
+<section class="grupo" id="g7">
+  <h2>7. Seletores de atributo</h2>
+  <p class="dica">Selecionar pelo que ja esta escrito na tag, sem inventar classe.</p>
+
+  <article class="tag">
+    <h3><span class="nome">[attr]  ^=  $=</span> <span class="sentido">existe, comeca com, termina com</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>a[href$=".pdf"]     { color: #1D7A4D; }
+a[href$=".pdf"]::after { content: " (PDF)"; }
+a[href^="https"]    { color: #B3261E; }
+input[type="email"] { border: 2px solid #1B4FA0; }
+[required]          { background: #FFF3C4; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-attr">
+          <p><a href="#">Link interno</a> &middot; <a href="#manual.pdf">manual.pdf</a> &middot; <a href="https://developer.mozilla.org">MDN (externo)</a></p>
+          <input type="text" placeholder="texto comum">
+          <input type="email" placeholder="e-mail" required>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>Truque de revisao:</strong> <code>img:not([alt]) { outline: 3px solid red; }</code> acha toda imagem sem alt da pagina.</p>
+  </article>
+</section>
+
+<!-- ==================== 8 ==================== -->
+<section class="grupo" id="g8">
+  <h2>8. A cascata</h2>
+  <p class="dica">Origem, especificidade e ordem, nesta sequencia.</p>
+
+  <article class="tag">
+    <h3><span class="nome">ordem</span> <span class="sentido">empate: vence a ultima</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>p { color: blue; }
+p { color: red; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-casc"><p>Mesma especificidade: a regra de baixo vence.</p></div>
+      </div>
+    </div>
+    <p class="nota">Brigam so as declaracoes da mesma propriedade. Uma regra com cor e outra com tamanho valem juntas.</p>
+  </article>
+</section>
+
+<!-- ==================== 9 ==================== -->
+<section class="grupo" id="g9">
+  <h2>9. Heranca</h2>
+  <p class="dica">O que e de texto desce do pai para os filhos; o que e de caixa, nao.</p>
+
+  <article class="tag">
+    <h3><span class="nome">inherit</span> <span class="sentido">texto herda, caixa nao</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.pai {
+  color: #1A237E;
+  font-family: Georgia, serif;
+  border: 3px solid #FF6F00;
+}
+.filho-inherit { border: inherit; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-her">Pai com cor, fonte e borda
+          <p>Filho: herdou cor e fonte, nao herdou a borda.</p>
+          <p class="filho-inherit">Filho com border: inherit, forcando a heranca.</p>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>Excecao importante:</strong> button, input, select e textarea nao herdam a fonte do body por padrao. O conserto e <code>font: inherit</code>.</p>
+  </article>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="grupo" id="g10">
+  <h2>10. Especificidade</h2>
+  <p class="dica">Placar (id, classe, tipo), comparado coluna por coluna, da esquerda para a direita.</p>
+
+  <article class="tag">
+    <h3><span class="nome">(1,0,1) x (0,3,0)</span> <span class="sentido">um id vence qualquer numero de classes</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>#menu a              { color: #1B4FA0; }  /* (1,0,1) */
+.menu .link.ativo    { color: #B3261E; }  /* (0,3,0) */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <nav id="d-esp-menu" class="d-esp"><span class="menu"><a href="#" class="link ativo">Link com as duas regras: azul</a></span></nav>
+      </div>
+    </div>
+    <p class="nota">Nao e soma decimal: 11 classes continuam perdendo para 1 id.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">(0,1,0) x (0,0,4)</span> <span class="sentido">uma classe vence qualquer numero de tags</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.link          { color: #B3261E; }   /* (0,1,0) */
+nav ul li a    { color: #1B4FA0; }   /* (0,0,4), veio depois */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-esp2"><nav><ul style="margin:0"><li><a href="#" class="link">Link: vermelho, apesar da ordem</a></li></ul></nav></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="grupo" id="g11">
+  <h2>11. !important</h2>
+  <p class="dica">Passa por cima da especificidade. Use como excecao documentada, nunca como solucao.</p>
+
+  <article class="tag">
+    <h3><span class="nome">!important</span> <span class="sentido">vence ate o id</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.aviso   { color: #B3261E !important; }
+#texto   { color: #1B4FA0; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-imp"><p id="d-imp-id" class="aviso">Tem id azul, mas o !important da classe vence.</p></div>
+      </div>
+    </div>
+    <p class="nota">Para vencer um !important, so outro !important. E assim que comeca a corrida que destroi um CSS.</p>
+  </article>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="grupo" id="g12">
+  <h2>12. O modelo de caixa</h2>
+  <p class="dica">content, padding, border e margin. Todo elemento da pagina e uma caixa.</p>
+
+  <article class="tag">
+    <h3><span class="nome">padding  border  margin</span> <span class="sentido">dentro e fora da borda</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.caixa {
+  width: 220px;
+  padding: 20px;               /* dentro da borda */
+  border: 6px solid #37474F;
+  margin: 16px;                /* fora da borda */
+  background: #E8EFFA;         /* pinta conteudo + padding */
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-box-fora"><div class="d-box">Conteudo</div></div>
+        <p>O amarelo e o pai: a faixa amarela em volta e a margem, sempre transparente.</p>
+      </div>
+    </div>
+    <p class="nota">No DevTools, a aba Computed desenha este diagrama para qualquer elemento.</p>
+  </article>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="grupo" id="g13">
+  <h2>13. box-sizing</h2>
+  <p class="dica">O width inclui ou nao o padding e a borda?</p>
+
+  <article class="tag">
+    <h3><span class="nome">content-box (padrao)</span> <span class="sentido">width so do conteudo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.coluna {
+  width: 50%;
+  padding: 16px;
+  border: 3px solid #1B4FA0;
+  box-sizing: content-box;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-bs-cb"><div class="d-bs">coluna 1</div><div class="d-bs">coluna 2 caiu</div></div>
+      </div>
+    </div>
+    <p class="nota">50% + 32px de padding + 6px de borda: cada coluna passa da metade e a segunda cai.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">border-box</span> <span class="sentido">width inclui padding e borda</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>*, *::before, *::after {
+  box-sizing: border-box;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-bs-bb"><div class="d-bs">coluna 1</div><div class="d-bs">coluna 2 cabe</div></div>
+      </div>
+    </div>
+    <p class="nota">Primeira regra de praticamente todo projeto profissional.</p>
+  </article>
+</section>
+
+<!-- ==================== 14 ==================== -->
+<section class="grupo" id="g14">
+  <h2>14. Atalhos de margin e padding</h2>
+  <p class="dica">Um a quatro valores, em sentido horario a partir do topo.</p>
+
+  <article class="tag">
+    <h3><span class="nome">margin: 10px 30px 20px 50px</span> <span class="sentido">topo, direita, base, esquerda</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>margin: 10px;                 /* os quatro */
+margin: 10px 20px;            /* vertical | horizontal */
+margin: 10px 20px 30px;       /* topo | laterais | base */
+margin: 10px 30px 20px 50px;  /* topo | direita | base | esquerda */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-atalho"><div>margin: 10px 30px 20px 50px</div></div>
+        <p>O laranja e a margem aparecendo atras da caixa.</p>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">margin: 0 auto</span> <span class="sentido">centraliza bloco com largura</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.container {
+  max-width: 200px;
+  margin: 0 auto;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-centro">bloco centralizado</div>
+      </div>
+    </div>
+    <p class="nota">Sem width ou max-width nao ha sobra para dividir, e o auto nao faz nada.</p>
+  </article>
+</section>
+
+<!-- ==================== 15 ==================== -->
+<section class="grupo" id="g15">
+  <h2>15. display</h2>
+  <p class="dica">block, inline, inline-block e none.</p>
+
+  <article class="tag">
+    <h3><span class="nome">display</span> <span class="sentido">como a caixa entra no fluxo</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>span              { display: inline; }        /* padrao */
+.ib               { display: inline-block; width: 110px; }
+.bl               { display: block; }
+.none             { display: none; }
+.hid              { visibility: hidden; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-disp">
+          <p>Texto com <span>span inline</span> no meio e <span class="ib">inline-block</span> tambem.</p>
+          <p>Link com padding: <a href="#" class="pad">inline vaza</a> por cima das linhas vizinhas quando o paragrafo quebra em mais de uma linha.</p>
+          <span class="bl">span com display: block ocupa a linha toda</span>
+          <p>Antes <span class="none">none</span>|<span class="hid">hidden</span> depois (o hidden guardou o espaco).</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 16 ==================== -->
+<section class="grupo" id="g16">
+  <h2>16. Variaveis CSS</h2>
+  <p class="dica">Um valor definido uma vez, lido com var(). Mude a cor abaixo e veja tudo que usa a variavel mudar junto.</p>
+
+  <article class="tag">
+    <h3><span class="nome">--nome  var(--nome)</span> <span class="sentido">custom properties</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>:root {
+  --cor-primaria: #1A237E;
+  --raio: 8px;
+  --espaco: 12px;
+}
+.botao {
+  background: var(--cor-primaria);
+  border-radius: var(--raio);
+  padding: var(--espaco) calc(var(--espaco) * 2);
+}
+.botao--secundario {
+  background: transparent;
+  color: var(--cor-primaria);
+  border: 2px solid var(--cor-primaria);
+}
+.reserva { color: var(--nao-existe, #1D7A4D); }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-var" id="demoVar">
+          <h4>Titulo na cor primaria</h4>
+          <a href="#" class="botao">Primario</a>
+          <a href="#" class="botao botao--secundario">Secundario</a>
+          <p class="reserva">Esta cor veio do valor reserva do var().</p>
+          <label>--cor-primaria <input type="color" id="corVar" value="#1a237e"></label>
+        </div>
+      </div>
+    </div>
+    <p class="nota">Tema escuro inteiro = redefinir as variaveis. E a resposta do slide 3: trocar a cor do site em uma linha.</p>
+  </article>
+</section>
+
+<!-- ==================== 17 ==================== -->
+<section class="grupo" id="g17">
+  <h2>17. Organizacao modular e nomes de classe</h2>
+  <p class="dica">Um arquivo por responsabilidade e nomes pelo papel, nunca pela aparencia.</p>
+
+  <article class="tag">
+    <h3><span class="nome">css/</span> <span class="sentido">base, layout, componentes</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>css/
+  main.css            &lt;- so @import
+  base/
+    reset.css
+    variaveis.css
+    tipografia.css
+  layout/
+    cabecalho.css
+    rodape.css
+  componentes/
+    botao.css
+    card.css
+
+/* main.css: @import SEMPRE no topo */
+@import url("base/reset.css");
+@import url("base/variaveis.css");
+...</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p>A pagina exemplo <code>02-perfil/</code> desta pasta usa exatamente esta estrutura.</p>
+        <p>Do mais geral para o mais especifico: o reset vem primeiro, os componentes por ultimo. E a cascata trabalhando a favor.</p>
+      </div>
+    </div>
+    <p class="nota"><strong>@import depois de qualquer regra e ignorado em silencio.</strong> O caminho e relativo ao main.css, nao ao HTML.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">bloco__elemento--modificador</span> <span class="sentido">convencao BEM</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.card { }
+.card__titulo { }
+.card__texto { }
+.card--destaque { }
+
+&lt;div class="card card--destaque"&gt;
+  &lt;h4 class="card__titulo"&gt;Titulo&lt;/h4&gt;
+  &lt;p class="card__texto"&gt;Texto do card&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="card"><h4 class="card__titulo">Card normal</h4><p class="card__texto">So .card</p></div>
+        <br>
+        <div class="card card--destaque"><h4 class="card__titulo">Card destaque</h4><p class="card__texto">.card + .card--destaque</p></div>
+      </div>
+    </div>
+    <p class="nota">Todo seletor com uma classe so: especificidade baixa e igual em tudo.</p>
+  </article>
+</section>
+
+</main>
+
+<div class="barra-foco" role="group" aria-label="Navegacao cartao por cartao">
+  <button type="button" id="anterior" aria-label="Cartao anterior">&larr;</button>
+  <span id="contador">tag 0 / 0</span>
+  <button type="button" id="proxima" aria-label="Proximo cartao">&rarr;</button>
+</div>
+
+<footer class="rodape">
+  Desenvolvimento Front-end para Web &mdash; CEUNSP. Material de apoio da Aula 06. Referencias: <a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS">Aprenda CSS (MDN)</a> &nbsp;|&nbsp; <a href="https://flukeout.github.io/">CSS Diner</a>
+</footer>
+
+<script>
+  // ---------- demo das variaveis CSS ----------
+  (function () {
+    var caixa = document.getElementById('demoVar');
+    document.getElementById('corVar').addEventListener('input', function (e) {
+      caixa.style.setProperty('--cor-primaria', e.target.value);
+    });
+  })();
+
+  // ---------- navegacao tag por tag: setas do teclado ou botoes ----------
+  (function () {
+    var cartoes = Array.prototype.slice.call(document.querySelectorAll('article.tag'));
+    var contador = document.getElementById('contador');
+    var atual = -1;
+
+    function ir(passo) {
+      if (atual >= 0) cartoes[atual].classList.remove('destacada');
+      atual = Math.max(0, Math.min(cartoes.length - 1, atual + passo));
+      var alvo = cartoes[atual];
+      alvo.classList.add('destacada');
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      contador.textContent = 'tag ' + (atual + 1) + ' / ' + cartoes.length;
+    }
+
+    contador.textContent = 'tag 0 / ' + cartoes.length;
+    document.getElementById('proxima').addEventListener('click', function () { ir(1); });
+    document.getElementById('anterior').addEventListener('click', function () { ir(-1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); ir(-1); }
+    });
+  })();
+</script>
+
+</body>
+</html>

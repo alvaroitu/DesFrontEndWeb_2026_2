@@ -1,0 +1,18 @@
+/* variaveis.css: todas as cores, fontes e espacos do site.
+   Teste: troque --cor-primaria e veja a pagina inteira mudar. */
+:root {
+  --cor-primaria: #1A237E;
+  --cor-destaque: #FF6F00;
+  --cor-texto: #37474F;
+  --cor-texto-fraco: #607D8B;
+  --cor-fundo: #F5F5F5;
+  --cor-superficie: #FFFFFF;
+  --cor-borda: #DFE3EA;
+
+  --fonte-texto: "Segoe UI", Arial, sans-serif;
+  --fonte-titulo: Georgia, "Times New Roman", serif;
+
+  --espaco: 1rem;
+  --raio: 8px;
+  --largura-max: 60rem;
+}

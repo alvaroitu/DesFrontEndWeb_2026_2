@@ -1,0 +1,153 @@
+/* ---------- base ---------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f4f6f8;
+}
+
+/* ---------- cabecalho ---------- */
+header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #1d7a4d;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.logo {
+  color: #ffd54f;          /* o SVG usa fill="currentColor" */
+}
+
+.logo:hover {
+  color: white;
+}
+
+nav {
+  margin-left: auto;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- conteudo ---------- */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+section {
+  background: white;
+  margin: 24px 0;
+  padding: 16px 24px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #1d7a4d;
+  margin-top: 0;
+}
+
+/* midia nunca passa da largura da tela */
+video,
+img,
+iframe,
+object {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe,
+object {
+  border: 1px solid #ccc;
+}
+
+/* ---------- controles do video ---------- */
+.controles {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  background: #1d7a4d;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #145c39;
+}
+
+#aviso {
+  color: #b3261e;
+  font-weight: bold;
+}
+
+/* ---------- graficos ---------- */
+.lado-a-lado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: .85rem;
+  color: #666;
+}
+
+canvas {
+  border: 1px solid #ccc;   /* borda pode; tamanho NAO (vai no atributo) */
+}
+
+.grafico-svg {
+  border: 1px solid #ccc;
+}
+
+.grafico-svg rect {
+  fill: #1d7a4d;
+}
+
+.grafico-svg rect:hover {
+  fill: #ff6f00;             /* cada barra e um elemento: recebe CSS */
+}
+
+.grafico-svg text {
+  font-size: 12px;
+  text-anchor: middle;
+}
+
+/* ---------- rodape ---------- */
+footer {
+  text-align: center;
+  padding: 16px;
+  color: #666;
+}
+
+footer img {
+  vertical-align: middle;
+}

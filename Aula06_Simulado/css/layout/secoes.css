@@ -1,0 +1,89 @@
+/* secoes.css: estilos gerais de sections e estrutura de main */
+
+main {
+  padding: var(--espaco-grande) var(--espaco);
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto var(--espaco-grande);
+  padding: var(--espaco-grande);
+  background: var(--cor-fundo);
+  border-radius: var(--raio-grande);
+  box-shadow: var(--sombra);
+}
+
+section > h2 {
+  margin-top: 0;
+}
+
+/* SEÇÃO SOBRE */
+
+.sobre__conteudo {
+  display: flex;
+  gap: var(--espaco-grande);
+  align-items: flex-start;
+}
+
+.sobre__figura {
+  flex-shrink: 0;
+}
+
+.sobre__figura img {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sobre__texto {
+  flex: 1;
+}
+
+/* SEÇÃO PROJETOS */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espaco-grande);
+  margin-top: var(--espaco-grande);
+}
+
+/* SEÇÃO CONTATO */
+
+.contato {
+  background: linear-gradient(135deg, var(--cor-primaria), #0D144A);
+  color: var(--cor-fundo);
+}
+
+.contato h2,
+.contato > p {
+  color: var(--cor-fundo);
+}
+
+.contato a {
+  color: var(--cor-fundo);
+  text-decoration: underline;
+}
+
+/* FOOTER */
+
+.rodape {
+  background: var(--cor-primaria);
+  color: var(--cor-fundo);
+  padding: var(--espaco-grande) var(--espaco);
+  text-align: center;
+  margin-top: var(--espaco-grande);
+}
+
+.rodape p {
+  margin: var(--espaco-pequeno) 0 0 0;
+}
+
+.rodape address {
+  font-style: normal;
+  margin-bottom: var(--espaco);
+}
+
+.rodape a {
+  color: var(--cor-fundo);
+}

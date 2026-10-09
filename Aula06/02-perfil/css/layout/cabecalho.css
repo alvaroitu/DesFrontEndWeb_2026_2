@@ -1,0 +1,31 @@
+/* cabecalho.css: faixa do topo com nome, cargo e menu */
+.cabecalho {
+  background: var(--cor-primaria);
+  color: var(--cor-superficie);
+  padding: calc(var(--espaco) * 2) 0 var(--espaco);
+}
+
+.cabecalho__nome {
+  color: var(--cor-superficie);
+  font-size: 2.4rem;
+  margin-bottom: calc(var(--espaco) / 4);
+}
+
+.cabecalho__cargo {
+  opacity: 0.85;
+}
+
+/* combinador: estiliza os links sem classe nova no HTML */
+.menu a {
+  display: inline-block;
+  color: var(--cor-superficie);
+  text-decoration: none;
+  padding: calc(var(--espaco) / 2) 0;
+  margin-right: calc(var(--espaco) * 1.25);
+  border-bottom: 2px solid transparent;
+}
+
+/* seletor de atributo: o link do PDF ganha cor propria */
+.menu a[href$=".pdf"] {
+  color: var(--cor-destaque);
+}

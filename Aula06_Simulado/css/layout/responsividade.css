@@ -1,0 +1,45 @@
+/* responsividade.css: media queries para desktop (mobile-first) */
+
+@media (min-width: 768px) {
+
+  main {
+    padding: var(--espaco-grande) var(--espaco-grande);
+  }
+
+  section {
+    padding: var(--espaco-grande) * 2;
+  }
+
+  .sobre__conteudo {
+    gap: var(--espaco-grande) * 2;
+  }
+
+  .sobre__figura img {
+    width: 250px;
+    height: 250px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .cabecalho {
+    padding: var(--espaco) var(--espaco-grande) * 2;
+  }
+
+  main {
+    padding: var(--espaco-grande) * 2;
+  }
+
+  section {
+    border-radius: var(--raio-grande) * 2;
+  }
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Dev - Flexbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- FLEXBOX: header com navegação horizontal -->
+  <header class="cabecalho">
+    <div class="container">
+      <h1 class="logo">DevPortfolio</h1>
+      <nav class="nav">
+        <ul class="nav__lista">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#projetos" class="nav__link">Projetos</a></li>
+          <li><a href="#habilidades" class="nav__link">Habilidades</a></li>
+          <li><a href="#contato" class="nav__link">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- FLEXBOX: seção hero com conteúdo centralizado -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__conteudo">
+          <h2 class="hero__titulo">Desenvolvedor Front-End</h2>
+          <p class="hero__descricao">Criando experiências web incríveis com HTML, CSS e JavaScript</p>
+          <a href="#contato" class="botao">Fale Comigo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEXBOX: seção sobre -->
+    <section id="sobre" class="sobre">
+      <div class="container">
+        <h2 class="secao__titulo">Sobre Mim</h2>
+        <div class="sobre__conteudo">
+          <div class="sobre__texto">
+            <p>Sou um desenvolvedor front-end apaixonado por criar interfaces intuitivas e responsivas. Tenho experiência com tecnologias web modernas e trabalho com as melhores práticas de desenvolvimento.</p>
+            <p>Minha especialidade é transformar designs em código funcional, sempre priorizando a acessibilidade e a performance.</p>
+          </div>
+          <div class="sobre__info">
+            <div class="info-card">
+              <h3 class="info-card__titulo">Experiência</h3>
+              <p class="info-card__valor">5+ anos</p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-card__titulo">Projetos</h3>
+              <p class="info-card__valor">30+</p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-card__titulo">Clientes</h3>
+              <p class="info-card__valor">20+</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEXBOX: seção projetos com cards em linhas -->
+    <section id="projetos" class="projetos">
+      <div class="container">
+        <h2 class="secao__titulo">Projetos em Destaque</h2>
+        <div class="projetos__grade">
+          <article class="projeto-card">
+            <div class="projeto-card__cabecalho">
+              <h3 class="projeto-card__titulo">E-Commerce Responsivo</h3>
+              <span class="projeto-card__badge">React</span>
+            </div>
+            <p class="projeto-card__descricao">Plataforma de compras com carinho, filtros avançados e checkout seguro.</p>
+            <div class="projeto-card__tecnologias">
+              <span class="tech">React</span>
+              <span class="tech">Sass</span>
+              <span class="tech">API REST</span>
+            </div>
+            <a href="#" class="projeto-card__link">Ver Projeto</a>
+          </article>
+
+          <article class="projeto-card">
+            <div class="projeto-card__cabecalho">
+              <h3 class="projeto-card__titulo">Blog Pessoal</h3>
+              <span class="projeto-card__badge">Next.js</span>
+            </div>
+            <p class="projeto-card__descricao">Plataforma de blog com dark mode, search e comentários integrados.</p>
+            <div class="projeto-card__tecnologias">
+              <span class="tech">Next.js</span>
+              <span class="tech">Markdown</span>
+              <span class="tech">Tailwind</span>
+            </div>
+            <a href="#" class="projeto-card__link">Ver Projeto</a>
+          </article>
+
+          <article class="projeto-card">
+            <div class="projeto-card__cabecalho">
+              <h3 class="projeto-card__titulo">Dashboard Analytics</h3>
+              <span class="projeto-card__badge">Vue</span>
+            </div>
+            <p class="projeto-card__descricao">Sistema de análise de dados com gráficos interativos e relatórios em tempo real.</p>
+            <div class="projeto-card__tecnologias">
+              <span class="tech">Vue</span>
+              <span class="tech">Chart.js</span>
+              <span class="tech">Bootstrap</span>
+            </div>
+            <a href="#" class="projeto-card__link">Ver Projeto</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEXBOX: seção habilidades -->
+    <section id="habilidades" class="habilidades">
+      <div class="container">
+        <h2 class="secao__titulo">Habilidades</h2>
+        <div class="habilidades__grade">
+          <div class="habilidade">
+            <h3 class="habilidade__titulo">Front-End</h3>
+            <ul class="habilidade__lista">
+              <li>HTML5 & CSS3</li>
+              <li>JavaScript ES6+</li>
+              <li>React & Vue</li>
+              <li>Flexbox & Grid</li>
+              <li>Responsive Design</li>
+            </ul>
+          </div>
+
+          <div class="habilidade">
+            <h3 class="habilidade__titulo">Ferramentas</h3>
+            <ul class="habilidade__lista">
+              <li>Git & GitHub</li>
+              <li>VS Code</li>
+              <li>Figma</li>
+              <li>Webpack</li>
+              <li>npm & yarn</li>
+            </ul>
+          </div>
+
+          <div class="habilidade">
+            <h3 class="habilidade__titulo">Soft Skills</h3>
+            <ul class="habilidade__lista">
+              <li>Comunicação</li>
+              <li>Problem Solving</li>
+              <li>Trabalho em Equipe</li>
+              <li>Gestão de Tempo</li>
+              <li>Aprendizado Contínuo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEXBOX: formulário de contato -->
+    <section id="contato" class="contato">
+      <div class="container">
+        <h2 class="secao__titulo">Entre em Contato</h2>
+        <div class="contato__conteudo">
+          <p class="contato__intro">Tem uma oportunidade interessante? Gostaria de colaborar ou simplemente conversar? Envie uma mensagem!</p>
+
+          <div class="contato__formulario">
+            <form class="formulario">
+              <div class="formulario__grupo">
+                <label class="formulario__label" for="nome">Nome</label>
+                <input class="formulario__input" type="text" id="nome" name="nome" required>
+              </div>
+
+              <div class="formulario__grupo">
+                <label class="formulario__label" for="email">Email</label>
+                <input class="formulario__input" type="email" id="email" name="email" required>
+              </div>
+
+              <div class="formulario__grupo">
+                <label class="formulario__label" for="mensagem">Mensagem</label>
+                <textarea class="formulario__textarea" id="mensagem" name="mensagem" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="botao botao--primario">Enviar Mensagem</button>
+            </form>
+          </div>
+
+          <div class="contato__links">
+            <a href="mailto:dev@email.com" class="contato__link">📧 Email</a>
+            <a href="https://linkedin.com" class="contato__link" target="_blank">💼 LinkedIn</a>
+            <a href="https://github.com" class="contato__link" target="_blank">🐙 GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLEXBOX: rodapé -->
+  <footer class="rodape">
+    <div class="container">
+      <p>&copy; 2026 DevPortfolio. Exemplo de uso de Flexbox em página real (Aula 06).</p>
+    </div>
+  </footer>
+
+</body>
+</html>

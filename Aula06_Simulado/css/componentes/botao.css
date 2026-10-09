@@ -1,0 +1,55 @@
+/* botao.css: botões e links estilizados como botões */
+
+.botao {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--cor-primaria);
+  color: var(--cor-fundo);
+  text-decoration: none;
+  border-radius: var(--raio);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.botao:hover {
+  background: var(--cor-destaque);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.botao:focus-visible {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+.botao:active {
+  transform: translateY(0);
+}
+
+/* Variação destaque */
+
+.botao--destaque {
+  background: var(--cor-destaque);
+  width: 100%;
+}
+
+.botao--destaque:hover {
+  background: #E55F00;
+}
+
+/* Variação secundária */
+
+.botao--secundario {
+  background: transparent;
+  color: var(--cor-primaria);
+  border: 2px solid var(--cor-primaria);
+}
+
+.botao--secundario:hover {
+  background: var(--cor-primaria);
+  color: var(--cor-fundo);
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canal Natureza</title>
+  <link rel="stylesheet" href="02-pagina-midia.css">
+</head>
+<body>
+
+  <header>
+    <!-- SVG inline: muda de cor pelo CSS -->
+    <svg class="logo" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
+      <path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" fill="currentColor"/>
+    </svg>
+    <h1>Canal Natureza</h1>
+    <nav>
+      <a href="#video">Video</a>
+      <a href="#audio">Audio</a>
+      <a href="#foto">Foto</a>
+      <a href="#graficos">Graficos</a>
+      <a href="#mapa">Mapa</a>
+      <a href="#documento">Documento</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 1. VIDEO com controles proprios -->
+    <section id="video">
+      <h2>Video da semana</h2>
+      <video id="meuVideo" width="640" height="360" poster="midia/capa.jpg" preload="metadata">
+        <source src="midia/video.webm" type="video/webm">
+        <source src="midia/video.mp4" type="video/mp4">
+        <track kind="captions" src="midia/legendas.vtt" srclang="pt-BR" label="Portugues" default>
+        Seu navegador nao suporta video.
+        <a href="midia/video.mp4">Baixar o video</a>
+      </video>
+
+      <div class="controles">
+        <button type="button" id="btnPlay">Play</button>
+        <button type="button" id="btnParar">Parar</button>
+        <button type="button" id="btnMudo">Mudo</button>
+
+        <label for="barra">Progresso</label>
+        <input type="range" id="barra" min="0" value="0" step="0.1">
+        <output id="tempo">0:00 / 0:00</output>
+
+        <label for="velocidade">Velocidade</label>
+        <select id="velocidade">
+          <option value="0.5">0.5x</option>
+          <option value="1" selected>1x</option>
+          <option value="2">2x</option>
+        </select>
+      </div>
+      <p id="aviso" hidden>Fim do video!</p>
+    </section>
+
+    <!-- 2. AUDIO -->
+    <section id="audio">
+      <h2>Som da semana</h2>
+      <audio controls>
+        <source src="midia/audio.mp3" type="audio/mpeg">
+        Seu navegador nao toca audio.
+        <a href="midia/audio.mp3">Baixar o audio</a>
+      </audio>
+    </section>
+
+    <!-- 3. PICTURE: WebP com JPG de garantia -->
+    <section id="foto">
+      <h2>Foto do dia</h2>
+      <picture>
+        <source srcset="midia/foto.webp" type="image/webp">
+        <img src="midia/foto.jpg" alt="Fatia de toranja vista de cima" width="332" height="332" loading="lazy">
+      </picture>
+    </section>
+
+    <!-- 4. O MESMO GRAFICO: canvas e SVG -->
+    <section id="graficos">
+      <h2>Visitas por mes</h2>
+      <div class="lado-a-lado">
+
+        <figure>
+          <canvas id="grafico" width="320" height="200">
+            Grafico de visitas: Jan 120, Fev 180, Mar 90, Abr 150.
+          </canvas>
+          <figcaption>Com &lt;canvas&gt; (desenhado por JavaScript)</figcaption>
+        </figure>
+
+        <figure>
+          <svg class="grafico-svg" width="320" height="200" viewBox="0 0 320 200"
+               role="img" aria-label="Grafico de visitas: Jan 120, Fev 180, Mar 90, Abr 150">
+            <rect x="30"  y="100" width="50" height="80"><title>Jan: 120</title></rect>
+            <rect x="100" y="60"  width="50" height="120"><title>Fev: 180</title></rect>
+            <rect x="170" y="120" width="50" height="60"><title>Mar: 90</title></rect>
+            <rect x="240" y="80"  width="50" height="100"><title>Abr: 150</title></rect>
+            <line x1="20" y1="180" x2="300" y2="180" stroke="#333" stroke-width="2"/>
+            <text x="55"  y="196">Jan</text>
+            <text x="125" y="196">Fev</text>
+            <text x="195" y="196">Mar</text>
+            <text x="265" y="196">Abr</text>
+          </svg>
+          <figcaption>Com &lt;svg&gt; (passe o mouse nas barras)</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- 5. IFRAME: mapa (precisa de internet) -->
+    <section id="mapa">
+      <h2>Onde estamos</h2>
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-47.30,-23.21,-47.27,-23.19&amp;layer=mapnik"
+              title="Mapa de Salto - SP"
+              width="640" height="300"
+              loading="lazy"
+              referrerpolicy="no-referrer"></iframe>
+    </section>
+
+    <!-- 6. OBJECT: PDF com plano B -->
+    <section id="documento">
+      <h2>Documento</h2>
+      <object data="midia/documento.pdf" type="application/pdf" width="640" height="400">
+        <p>Nao foi possivel exibir o PDF. <a href="midia/documento.pdf">Baixar o PDF</a></p>
+      </object>
+    </section>
+
+  </main>
+
+  <footer>
+    <!-- SVG externo por <img>: nao muda de cor pelo CSS -->
+    <img src="midia/icone.svg" alt="" width="20" height="20">
+    Canal Natureza &mdash; exemplo da Aula 05
+  </footer>
+
+  <script src="02-pagina-midia.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+/* rodape.css: faixa final da pagina */
+.rodape {
+  text-align: center;
+  color: var(--cor-texto-fraco);
+  font-size: 0.9rem;
+  padding: calc(var(--espaco) * 2) 0;
+}

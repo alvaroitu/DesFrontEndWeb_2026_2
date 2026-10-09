@@ -1,0 +1,65 @@
+body {
+  margin: 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.topo,
+.rodape {
+  width: 100%;
+}
+
+.titulo-site {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0;
+  color: #000 !important;
+}
+
+.titulo-secao,
+.titulo-lateral {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.83em 0;
+}
+
+.titulo-post {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.data,
+.texto,
+.rodape div:last-child {
+  margin: 1em 0;
+}
+
+.negrito {
+  font-weight: bold;
+}
+
+.menu {
+  margin: 1em 0;
+  padding-left: 40px;
+}
+
+.item {
+  display: list-item;
+  list-style: disc;
+}
+
+.lateral div:last-child {
+  display: list-item;
+  list-style: disc;
+  margin: 1em 0 1em 40px;
+}
+
+.imagem {
+  margin: 1em 40px;
+}
+
+.rodape div:first-child {
+  font-style: italic;
+}

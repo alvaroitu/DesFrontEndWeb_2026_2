@@ -1,0 +1,214 @@
+================================================================================
+COMECE AQUI — ROTEIRO PASSO A PASSO
+================================================================================
+
+Este arquivo guia você através do exercício simulado.
+
+================================================================================
+PASSO 1: PREPARAÇÃO (5 minutos)
+================================================================================
+
+[ ] 1. Abra a pasta Aula06_Simulado no VS Code
+[ ] 2. Veja a estrutura:
+      - index.html (arquivo HTML com exemplo completo)
+      - css/ (pasta com arquivos CSS modularizados)
+      - img/ (pasta com imagens)
+      - svg/ (pasta com ícones SVG)
+      - TEXTOS_DO_PROJETO.txt (textos prontos para copiar/colar)
+      - REQUISITOS.txt (o que fazer)
+      - README.md (documentação completa)
+
+[ ] 3. Abra REQUISITOS.txt e leia toda a seção "REQUISITOS TÉCNICOS"
+
+[ ] 4. Este arquivo (COMECE_AQUI.txt) já fornece um exemplo pronto em index.html
+
+================================================================================
+PASSO 2: ESTUDE O EXEMPLO (30 minutos)
+================================================================================
+
+[ ] 1. Abra index.html no navegador (double-click no arquivo)
+[ ] 2. Veja o resultado final — é isto que você vai fazer
+
+[ ] 3. Abra o DevTools (F12):
+      [ ] Inspecione o <header> → veja display: flex
+      [ ] Inspecione um .card → veja as classes
+      [ ] Abra a aba Console → nenhum erro
+      [ ] Abra a aba Network → confira que CSS carregou
+
+[ ] 4. Redimensione a janela:
+      [ ] Desktop (1200px): 3 cards lado a lado
+      [ ] Tablet (768px): 2 cards
+      [ ] Mobile (375px): 1 card empilhado
+
+[ ] 5. Interaja com a página:
+      [ ] Deixe campos do formulário vazios → clique "Enviar" → bloqueado
+      [ ] Escreva um email inválido (sem @) → veja cor vermelha
+      [ ] Passe mouse sobre os links → veja underline
+      [ ] Passe mouse sobre um card → veja sombra aparecer
+
+================================================================================
+PASSO 3: ENTENDA A ESTRUTURA CSS (20 minutos)
+================================================================================
+
+[ ] 1. Abra css/main.css:
+      [ ] Veja os @import em ordem
+      [ ] Entenda: geral (reset, variaveis, tipografia)
+                  → depois layout (cabecalho, secoes)
+                  → depois componentes (botao, formulario, card)
+                  → depois responsividade
+
+[ ] 2. Abra css/base/variaveis.css:
+      [ ] Veja --cor-primaria: #1A237E
+      [ ] Mude para #2E7D32 (verde)
+      [ ] Volte ao navegador e pressione F5 → todo o site ficou verde
+      [ ] Mude de volta para #1A237E
+
+[ ] 3. Abra css/componentes/botao.css:
+      [ ] Veja .botao:hover com transform e box-shadow
+      [ ] Veja .botao--destaque como variação
+      [ ] Entenda como especificidade está baixa (0,1,0) em tudo
+
+[ ] 4. Abra css/layout/secoes.css:
+      [ ] Veja .galeria com display: grid e auto-fit
+      [ ] Entenda como repeat(auto-fit, minmax(...)) funciona
+
+================================================================================
+PASSO 4: ESTUDE O HTML SEMÂNTICO (15 minutos)
+================================================================================
+
+[ ] 1. Abra index.html no VS Code
+
+[ ] 2. Veja a estrutura:
+      [ ] <header> com <h1> e <nav>
+      [ ] <main> com <section id="inicio"> (SOBRE)
+      [ ] <section id="projetos"> (PROJETOS)
+      [ ] <section id="contato"> (CONTATO)
+      [ ] <footer> com <address>
+
+[ ] 3. Localize os labels:
+      [ ] <label for="nome"> aponta para id="nome"
+      [ ] Clique no texto "Nome completo" → foco vai para input
+
+[ ] 4. Valide no W3C:
+      [ ] Vá a validator.w3.org
+      [ ] Copie todo o HTML de index.html
+      [ ] Cole no validador
+      [ ] Confira: 0 erros, 0 avisos
+
+================================================================================
+PASSO 5: AGORA É SUA VEZ (90 minutos)
+================================================================================
+
+SEU OBJETIVO: Reproduzir este projeto do zero (sem copiar código).
+
+Recomendação de tempo:
+  1. Estrutura HTML ........................ 20 min
+  2. CSS base (reset, variaveis, tipografia) 10 min
+  3. Layout (header, secoes) .............. 20 min
+  4. Componentes (botao, card) ............ 20 min
+  5. Formulário ........................... 15 min
+  6. Responsividade (@media) .............. 10 min
+  7. Validação e ajustes .................. 10 min
+
+COMO COMEÇAR:
+  [ ] 1. Crie uma pasta nova: meu-portfolio/
+  [ ] 2. Dentro, crie: index.html, css/, img/, svg/
+  [ ] 3. Comece escrevendo o HTML do zero
+  [ ] 4. Copie os TEXTOS de TEXTOS_DO_PROJETO.txt
+  [ ] 5. Crie os arquivos CSS um a um
+  [ ] 6. Use index.html daqui como referência (não como cópia!)
+
+PROIBIDO:
+  ✗ Copiar/colar código
+  ✗ Usar CSS inline (style="...")
+  ✗ Nomes de classe pela aparência (.azul, .grande)
+  ✗ Cores hardcoded (sempre use var(--cor-primaria))
+  ✗ <div> para layout (use <section>, <article>, flex, grid)
+
+PERMITIDO:
+  ✓ Consultar index.html para lembrar da estrutura
+  ✓ Copiar TEXTOS_DO_PROJETO.txt
+  ✓ Copiar avatar.png e icone-codigo.svg
+  ✓ Usar arquivo CSS como guia de propriedades
+  ✓ Mudar cores, fontes, espaçamentos (customização)
+
+================================================================================
+PASSO 6: VALIDAÇÃO FINAL (10 minutos)
+================================================================================
+
+Quando terminar, OBRIGATORIAMENTE verifique:
+
+[ ] HTML:
+    [ ] Abra DevTools → Console → nenhum erro
+    [ ] Vá a validator.w3.org → 0 erros
+    [ ] Heading Map mostra hierarquia sem pulos
+
+[ ] CSS:
+    [ ] DevTools → Styles → nenhuma linha riscada com alerta ⚠️
+    [ ] Nenhuma cor hardcoded (todas vêm de variaveis.css)
+    [ ] Seletores usam classes, não IDs
+
+[ ] Funcionalidade:
+    [ ] Formulário vazio → "Enviar" é bloqueado pelo navegador
+    [ ] Email inválido → campo fica vermelho
+    [ ] Links ao passar mouse → aparecem com hover visual
+    [ ] Cards ao redimensionar → reorganizam em grades diferentes
+
+[ ] Responsividade:
+    [ ] Abra DevTools → Ctrl+Shift+M (device mode)
+    [ ] Mobile (375px): 1 coluna
+    [ ] Tablet (768px): 2 colunas
+    [ ] Desktop (1200px): 3 colunas
+
+================================================================================
+PASSO 7: REFLEXÃO E APRENDIZADO (5 minutos)
+================================================================================
+
+Ao terminar, responda:
+
+1. "Qual foi o conceito mais difícil que aprendi?"
+   _________________________________________________________________
+
+2. "O que entendi sobre cascata e especificidade?"
+   _________________________________________________________________
+
+3. "Como o Flexbox ajudou no header?"
+   _________________________________________________________________
+
+4. "Como o Grid ajudou nos cards?"
+   _________________________________________________________________
+
+5. "Por que separar CSS em módulos?"
+   _________________________________________________________________
+
+Se souber responder tudo, você está pronto para a avaliação real!
+
+================================================================================
+DÚVIDAS COMUNS
+================================================================================
+
+P: Posso mudar as cores?
+R: Sim! Altere apenas em variaveis.css.
+
+P: Preciso fazer um avatar próprio?
+R: Não. Copie o avatar.png fornecido (é um avatar genérico).
+
+P: Posso adicionar mais seções?
+R: Sim, mas mantenha a mesma estrutura (HTML semântico).
+
+P: E se não terminar em 2 horas?
+R: Não tem problema. Aproveite todo o tempo para aprender bem.
+
+P: Posso usar IA para gerar código?
+R: Não. O objetivo é você APRENDER, não gerar.
+
+P: Como sei se está correto?
+R: Use o checklist no Passo 6. Se tudo passar, está correto!
+
+================================================================================
+
+Boa sorte! Você vai aprender muito com este exercício. 🚀
+
+Tempo estimado total: 2-2.5 horas (dependendo de sua velocidade)
+
+================================================================================

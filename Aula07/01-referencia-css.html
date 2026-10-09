@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referencia de CSS - Aula 07: conteudo, pseudo, flexbox e grid</title>
+  <meta name="description" content="Referencia visual da Aula 07 de Desenvolvimento Front-end para Web - CEUNSP">
+  <meta name="author" content="Prof. Alvaro Augusto Pereira">
+  <style>
+    :root{
+      --tinta:#16181d;
+      --tinta-fraca:#5b6270;
+      --fundo:#ffffff;
+      --papel:#f6f7f9;
+      --linha:#dfe3ea;
+      --azul:#1b4fa0;
+      --azul-claro:#e8effa;
+      --verde:#1d7a4d;
+      --vermelho:#b3261e;
+      --amarelo:#fff3c4;
+      --raio:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      font-size:17px;
+      line-height:1.55;
+      color:var(--tinta);
+      background:var(--fundo);
+    }
+    code,pre,kbd,samp{font-family:Consolas,"Courier New",monospace}
+
+    /* ---------- cabecalho ---------- */
+    header.topo{
+      background:var(--tinta);
+      color:#fff;
+      padding:22px 32px;
+    }
+    header.topo h1{margin:0;font-size:1.6rem}
+    header.topo p{margin:4px 0 0;color:#b9c0cc;font-size:.95rem}
+
+    nav.indice{
+      position:sticky;top:0;z-index:20;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      padding:10px 32px;
+    }
+    nav.indice ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+    nav.indice a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--azul);
+      background:#fff;
+      border:1px solid var(--linha);
+      border-radius:99px;
+      padding:3px 12px;
+      font-size:.82rem;
+    }
+    nav.indice a:hover{background:var(--azul-claro)}
+
+    main{padding:0 32px 80px}
+    section.grupo{margin:44px 0 0}
+    section.grupo > h2{
+      font-size:1.35rem;
+      margin:0 0 4px;
+      padding-bottom:8px;
+      border-bottom:3px solid var(--azul);
+    }
+    section.grupo > p.dica{margin:0 0 18px;color:var(--tinta-fraca);font-size:.95rem}
+
+    /* ---------- cartao de tag ---------- */
+    article.tag{
+      border:1px solid var(--linha);
+      border-radius:var(--raio);
+      margin:0 0 16px;
+      overflow:hidden;
+      background:#fff;
+    }
+    article.tag > h3{
+      margin:0;
+      padding:10px 16px;
+      background:var(--papel);
+      border-bottom:1px solid var(--linha);
+      font-size:1.05rem;
+      display:flex;
+      align-items:baseline;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    article.tag > h3 .nome{
+      color:var(--azul);
+      font-family:Consolas,"Courier New",monospace;
+      font-size:1.1rem;
+    }
+    article.tag > h3 .sentido{
+      font-weight:400;
+      font-size:.9rem;
+      color:var(--tinta-fraca);
+    }
+    .corpo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    @media (max-width:900px){.corpo{grid-template-columns:1fr}}
+    .codigo,.resultado{padding:14px 16px}
+    .codigo{background:#1e2229;border-right:1px solid var(--linha)}
+    .codigo pre{
+      margin:0;
+      color:#e6e9ef;
+      font-size:.86rem;
+      line-height:1.5;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .rotulo{
+      display:block;
+      font-size:.68rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      color:var(--tinta-fraca);
+    }
+    .codigo .rotulo{color:#8b93a1}
+    .resultado > *:not(.rotulo):first-of-type{margin-top:0}
+    .resultado video,.resultado img,.resultado iframe,.resultado object{max-width:100%}
+    .resultado video{height:auto}
+    .resultado canvas{border:1px solid var(--linha);max-width:100%}
+    .resultado button{
+      font:inherit;font-size:.9rem;cursor:pointer;
+      padding:4px 12px;border-radius:6px;border:1px solid var(--linha);background:#fff;
+    }
+    .resultado button:hover{background:var(--azul-claro)}
+    .nota{
+      margin:0;
+      padding:10px 16px;
+      background:var(--amarelo);
+      border-top:1px solid var(--linha);
+      font-size:.88rem;
+    }
+    .nota strong{color:#7a5c00}
+
+    /* ---------- comparativos ---------- */
+    .par{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+    @media (max-width:900px){.par{grid-template-columns:1fr}}
+    .caixa{border:1px solid var(--linha);border-radius:var(--raio);padding:14px 16px}
+    .caixa.certo{border-left:5px solid var(--verde)}
+    .caixa.errado{border-left:5px solid var(--vermelho)}
+    .caixa h4{margin:0 0 8px;font-size:.95rem}
+    .caixa.certo h4{color:var(--verde)}
+    .caixa.errado h4{color:var(--vermelho)}
+    .caixa pre{margin:0;font-size:.84rem;white-space:pre-wrap;background:var(--papel);padding:10px;border-radius:6px}
+
+    /* ---------- tabelas de consulta ---------- */
+    table.consulta{border-collapse:collapse;width:100%;font-size:.9rem;margin:0 0 16px}
+    table.consulta caption{text-align:left;font-weight:600;padding-bottom:8px}
+    table.consulta th,table.consulta td{border:1px solid var(--linha);padding:7px 10px;text-align:left;vertical-align:top}
+    table.consulta thead{background:var(--papel)}
+    table.consulta td:first-child{font-family:Consolas,monospace;color:var(--azul)}
+
+    /* ---------- modo foco ---------- */
+    .barra-foco{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      display:flex;gap:6px;align-items:center;
+      background:var(--tinta);color:#fff;
+      padding:8px 12px;border-radius:99px;
+      box-shadow:0 4px 14px rgba(0,0,0,.28);
+      font-size:.85rem;
+    }
+    .barra-foco button{
+      font:inherit;cursor:pointer;
+      background:#333a45;color:#fff;border:0;border-radius:6px;padding:4px 10px;
+    }
+    .barra-foco button:hover{background:var(--azul)}
+    article.tag.destacada{
+      outline:4px solid var(--azul);
+      outline-offset:3px;
+      scroll-margin-top:96px;
+    }
+    footer.rodape{
+      background:var(--papel);
+      border-top:1px solid var(--linha);
+      padding:18px 32px;
+      font-size:.85rem;
+      color:var(--tinta-fraca);
+    }
+  
+    /* ---------- demos desta aula ---------- */
+
+    /* 1 texto */
+    .d-lh1{line-height:1;margin:0 0 10px}
+    .d-lh16{line-height:1.6;margin:0}
+    .d-tipo h4{font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin:0 0 4px;font-family:Georgia,serif}
+    .d-tipo .selo{text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;color:#b3261e}
+    /* 2 links */
+    .d-link a{color:#1a237e}
+    .d-link a:visited{color:#6a1b9a}
+    .d-link a:hover{color:#ff6f00}
+    .d-link a:focus-visible{outline:3px solid #ff6f00;outline-offset:2px}
+    .d-link a:active{color:#c62828}
+    .d-link .sem-foco:focus{outline:none}
+    /* 3 listas */
+    .d-lista ul.check{list-style-type:square}
+    .d-lista ol{list-style-type:upper-roman}
+    .d-lista li::marker{color:#ff6f00;font-weight:700}
+    .d-lista .menu{list-style:none;margin:0;padding:0;border:1px dashed var(--linha)}
+    /* 4 tabela */
+    .d-tab{border-collapse:collapse;width:100%;font-size:.9rem}
+    .d-tab caption{caption-side:top;font-weight:700;text-align:left;padding:4px 0}
+    .d-tab th,.d-tab td{border:1px solid var(--linha);padding:6px 10px;text-align:left}
+    .d-tab thead th{background:#1a237e;color:#fff}
+    .d-tab tbody tr:nth-child(even){background:#f5f5f5}
+    .d-tab tbody tr:hover{background:#fff3e0}
+    .d-tab td + td{text-align:right;font-variant-numeric:tabular-nums}
+    .d-tab tbody tr:last-child{font-weight:700}
+    .d-tab .aprovado::after{content:" \2713";color:#2e7d32}
+    /* 5 bordas */
+    .d-card{border:1px solid var(--linha);border-left:4px solid #ff6f00;border-radius:12px;box-shadow:0 2px 8px rgb(0 0 0 / 15%);padding:12px;max-width:260px}
+    .d-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1a237e,#ff6f00);display:inline-block}
+    .d-quadrado{width:80px;height:80px;background:linear-gradient(135deg,#1a237e,#ff6f00);display:inline-block;margin-right:12px}
+    /* 6 fundo */
+    .d-grad{height:60px;border-radius:8px;background:linear-gradient(90deg,#1a237e,#ff6f00);margin-bottom:8px}
+    .d-radial{height:60px;border-radius:8px;background:radial-gradient(circle,#ffd54f,#ff6f00);margin-bottom:8px}
+    .d-banner{padding:28px 16px;border-radius:8px;color:#fff;font-weight:700;
+      background:linear-gradient(rgb(0 0 0 / 55%),rgb(0 0 0 / 55%)),repeating-linear-gradient(45deg,#ffd54f 0 12px,#fff 12px 24px)}
+    /* 7 estado */
+    .d-est button{font:inherit;padding:6px 14px;border:2px solid #1a237e;border-radius:6px;background:#fff;cursor:pointer}
+    .d-est button:hover{background:#e8effa}
+    .d-est button:focus-visible{outline:3px solid #ff6f00;outline-offset:2px}
+    .d-est button:active{transform:translateY(1px);background:#c5cae9}
+    .d-est input{font:inherit;padding:4px;border:2px solid var(--linha);border-radius:4px;display:block;margin:8px 0}
+    .d-est input:user-invalid{border-color:#c62828}
+    .d-est input:valid{border-color:#2e7d32}
+    .d-est input[type=checkbox]:checked + span{text-decoration:line-through;color:var(--tinta-fraca)}
+    /* 8 estruturais */
+    .d-str ul{padding-left:20px;margin:0}
+    .d-str li:first-child{color:#1b4fa0;font-weight:700}
+    .d-str li:nth-child(3n){background:#fff3c4}
+    .d-str li:nth-child(-n+2){text-decoration:underline}
+    .d-str li:not(:last-child){border-bottom:1px solid var(--linha)}
+    .d-str li:last-child{color:#b3261e}
+    /* 9 pseudo-elementos */
+    .d-pe .obrigatorio::after{content:" *";color:#c62828}
+    .d-pe a[href$=".pdf"]::before{content:"PDF ";font-weight:700;font-size:.75rem;background:#b3261e;color:#fff;padding:1px 4px;border-radius:3px}
+    .d-pe .citacao{position:relative;padding-left:34px;font-style:italic}
+    .d-pe .citacao::before{content:"\201C";position:absolute;left:0;top:-14px;font-size:3rem;color:#ff6f00}
+    .d-pe .capitular::first-letter{font-size:2.6em;float:left;line-height:1;margin-right:6px;color:#1a237e;font-family:Georgia,serif}
+    .d-pe input::placeholder{color:#90a4ae;font-style:italic}
+    .d-pe ::selection{background:#ff6f00;color:#fff}
+    /* 10-12 flex */
+    .flex-demo{display:flex;gap:8px;background:var(--papel);border:1px dashed var(--linha);padding:8px;min-height:90px;margin-bottom:8px}
+    .flex-demo > div{background:#ff6f00;color:#fff;padding:8px 12px;border-radius:4px;font-size:.85rem}
+    .flex-demo > div:nth-child(2){padding-top:22px}
+    .flex-ctrl{display:flex;flex-wrap:wrap;gap:8px;font-size:.85rem}
+    .flex-ctrl select{font:inherit}
+    .d-grow > div{flex:1}
+    .d-grow > .dois{flex:2;background:#1a237e}
+    .d-push > .sair{margin-left:auto;background:#1a237e}
+    .d-centro{display:flex;justify-content:center;align-items:center;height:110px;background:var(--papel);border:1px dashed var(--linha)}
+    .d-centro span{background:#1a237e;color:#fff;padding:8px 14px;border-radius:4px}
+    .d-cab{display:flex;justify-content:space-between;align-items:center;background:#1a237e;color:#fff;padding:10px 14px;border-radius:6px}
+    .d-cab ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    /* 13-15 grid */
+    .grid-demo{display:grid;gap:8px;background:var(--papel);border:1px dashed var(--linha);padding:8px;margin-bottom:8px}
+    .grid-demo > div{background:#1a237e;color:#fff;padding:10px;border-radius:4px;font-size:.85rem;text-align:center}
+    .grid-demo > div:nth-child(even){background:#ff6f00}
+    .d-g3{grid-template-columns:1fr 1fr 1fr}
+    .d-gfix{grid-template-columns:120px 1fr 2fr}
+    .d-gauto{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));resize:horizontal;overflow:auto;min-width:160px}
+    .d-gpos{grid-template-columns:repeat(4,1fr)}
+    .d-gpos .destaque{grid-column:1 / 3;grid-row:1 / 3;background:#2e7d32 !important}
+    .d-gpos .banner{grid-column:1 / -1;background:#6a1b9a !important}
+    .d-areas{grid-template-columns:110px 1fr;grid-template-areas:"cab cab" "lat cont" "rod rod"}
+    .d-areas .a1{grid-area:cab}.d-areas .a2{grid-area:lat;background:#f57f17 !important}.d-areas .a3{grid-area:cont;background:#2e7d32 !important;min-height:70px}.d-areas .a4{grid-area:rod;background:#37474f !important}
+
+  </style>
+</head>
+<body>
+
+<header class="topo">
+  <h1>Referencia de CSS &mdash; conteudo, pseudo-seletores, flexbox e grid</h1>
+  <p>Desenvolvimento Front-end para Web &nbsp;|&nbsp; CEUNSP &nbsp;|&nbsp; Aula 07 &nbsp;|&nbsp; Prof. Alvaro Augusto Pereira</p>
+</header>
+
+<nav class="indice" aria-label="Indice dos grupos">
+  <ul>
+    <li><a href="#g1">1. Texto</a></li>
+    <li><a href="#g2">2. Links</a></li>
+    <li><a href="#g3">3. Listas</a></li>
+    <li><a href="#g4">4. Tabelas</a></li>
+    <li><a href="#g5">5. Bordas e sombras</a></li>
+    <li><a href="#g6">6. Fundo</a></li>
+    <li><a href="#g7">7. Estados</a></li>
+    <li><a href="#g8">8. Estruturais</a></li>
+    <li><a href="#g9">9. Pseudo-elementos</a></li>
+    <li><a href="#g10">10. Flex: container</a></li>
+    <li><a href="#g11">11. Flex: itens</a></li>
+    <li><a href="#g12">12. Flex: receitas</a></li>
+    <li><a href="#g13">13. Grid: trilhas</a></li>
+    <li><a href="#g14">14. Grid: posicionar</a></li>
+    <li><a href="#g15">15. Grid: areas</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ==================== 1 ==================== -->
+<section class="grupo" id="g1">
+  <h2>1. Texto e tipografia</h2>
+  <p class="dica">Pilha de fontes, tamanho, peso, altura de linha e transformacao.</p>
+
+  <article class="tag">
+    <h3><span class="nome">line-height</span> <span class="sentido">o respiro entre as linhas</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.apertado { line-height: 1; }
+.confortavel { line-height: 1.6; }  /* sem unidade */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p class="d-lh1">Com line-height 1, as linhas quase se tocam e o olho se perde ao pular de uma linha para a outra num paragrafo longo como este.</p>
+        <p class="d-lh16">Com line-height 1.6, o mesmo paragrafo respira, e o olho encontra o comeco da linha seguinte sem esforco nenhum.</p>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">font-*  text-*</span> <span class="sentido">peso, espacamento e caixa</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>h4 {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.selo {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-tipo"><span class="selo">novidade</span><h4>Titulo com Georgia</h4></div>
+      </div>
+    </div>
+    <p class="nota">text-transform muda so a aparencia: o leitor de tela le o texto original, em minusculas.</p>
+  </article>
+</section>
+
+<!-- ==================== 2 ==================== -->
+<section class="grupo" id="g2">
+  <h2>2. Links e seus estados</h2>
+  <p class="dica">Ordem LVHFA: link, visited, hover, focus, active. Navegue com Tab para ver o foco.</p>
+
+  <article class="tag">
+    <h3><span class="nome">a:hover  a:focus-visible</span> <span class="sentido">os cinco estados</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>a         { color: #1A237E; }
+a:visited { color: #6A1B9A; }
+a:hover   { color: #FF6F00; }
+a:focus-visible { outline: 3px solid #FF6F00; outline-offset: 2px; }
+a:active  { color: #C62828; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <p class="d-link"><a href="#g2">Link com foco visivel</a> &middot; <a href="#g2" class="sem-foco">link com outline: none (tente achar com Tab)</a></p>
+      </div>
+    </div>
+    <p class="nota"><strong>Nunca</strong> outline: none sem outro indicador de foco. Quem navega por teclado fica perdido.</p>
+  </article>
+</section>
+
+<!-- ==================== 3 ==================== -->
+<section class="grupo" id="g3">
+  <h2>3. Listas</h2>
+  <p class="dica">Marcador, numeracao, ::marker e a lista que vira menu.</p>
+
+  <article class="tag">
+    <h3><span class="nome">list-style  ::marker</span> <span class="sentido">marcadores sob controle</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>ul.check  { list-style-type: square; }
+ol        { list-style-type: upper-roman; }
+li::marker { color: #FF6F00; font-weight: 700; }
+.menu { list-style: none; margin: 0; padding: 0; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-lista">
+          <ul class="check"><li>Quadrado laranja</li><li>So o marcador muda</li></ul>
+          <ol><li>Primeiro</li><li>Segundo</li></ol>
+          <ul class="menu"><li>Lista sem marcador e sem recuo</li><li>Pronta para virar menu</li></ul>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 4 ==================== -->
+<section class="grupo" id="g4">
+  <h2>4. Tabelas</h2>
+  <p class="dica">Borda unica, cabecalho escuro, zebra, linha viva e numeros alinhados. E a solucao da pratica 1.</p>
+
+  <article class="tag">
+    <h3><span class="nome">border-collapse  :nth-child</span> <span class="sentido">a tabela de notas</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #DFE3EA; padding: 6px 10px; }
+thead th { background: #1A237E; color: #FFF; }
+tbody tr:nth-child(even) { background: #F5F5F5; }
+tbody tr:hover { background: #FFF3E0; }
+td + td { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:last-child { font-weight: 700; }
+.aprovado::after { content: " \2713"; color: #2E7D32; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <table class="d-tab">
+          <caption>Notas do bimestre</caption>
+          <thead><tr><th>Aluno</th><th>A1</th><th>A2</th></tr></thead>
+          <tbody>
+            <tr><td class="aprovado">Ana</td><td>8.5</td><td>9.0</td></tr>
+            <tr><td>Bruno</td><td>5.0</td><td>6.5</td></tr>
+            <tr><td class="aprovado">Carla</td><td>7.0</td><td>8.0</td></tr>
+            <tr><td>Media</td><td>6.8</td><td>7.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="nota">Nenhuma classe no HTML alem de .aprovado: zebra, alinhamento e negrito vem de pseudo-classes e combinadores.</p>
+  </article>
+</section>
+
+<!-- ==================== 5 ==================== -->
+<section class="grupo" id="g5">
+  <h2>5. Bordas, cantos e sombras</h2>
+  <p class="dica">Profundidade sem imagem nenhuma.</p>
+
+  <article class="tag">
+    <h3><span class="nome">border-radius  box-shadow</span> <span class="sentido">card e avatar</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.card {
+  border: 1px solid #DFE3EA;
+  border-left: 4px solid #FF6F00;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+.avatar { border-radius: 50%; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-card">Card com borda lateral, cantos arredondados e sombra discreta.</div>
+        <p><span class="d-quadrado"></span><span class="d-avatar"></span></p>
+      </div>
+    </div>
+    <p class="nota">O mesmo quadrado com border-radius: 50% vira circulo.</p>
+  </article>
+</section>
+
+<!-- ==================== 6 ==================== -->
+<section class="grupo" id="g6">
+  <h2>6. Fundo e gradiente</h2>
+  <p class="dica">Cor, imagem, gradiente e o truque da camada escura para o texto sobre imagem.</p>
+
+  <article class="tag">
+    <h3><span class="nome">linear-gradient  radial-gradient</span> <span class="sentido">fundo sem arquivo de imagem</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.faixa  { background: linear-gradient(90deg, #1A237E, #FF6F00); }
+.radial { background: radial-gradient(circle, #FFD54F, #FF6F00); }
+.banner {
+  background:
+    linear-gradient(rgb(0 0 0 / 55%), rgb(0 0 0 / 55%)),
+    url("../img/foto.jpg") center / cover;
+  color: white;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-grad"></div>
+        <div class="d-radial"></div>
+        <div class="d-banner">Texto branco legivel sobre fundo claro e agitado, gracas a camada escura</div>
+      </div>
+    </div>
+    <p class="nota">Na demo, a foto foi trocada por um listrado claro para mostrar o efeito sem depender de arquivo.</p>
+  </article>
+</section>
+
+<!-- ==================== 7 ==================== -->
+<section class="grupo" id="g7">
+  <h2>7. Pseudo-classes de estado</h2>
+  <p class="dica">O elemento reage ao usuario e ao formulario.</p>
+
+  <article class="tag">
+    <h3><span class="nome">:hover :focus-visible :active :user-invalid :checked</span> <span class="sentido">reagindo ao usuario</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>button:hover         { background: #E8EFFA; }
+button:focus-visible { outline: 3px solid #FF6F00; }
+button:active        { transform: translateY(1px); }
+input:user-invalid   { border-color: #C62828; }
+input:valid          { border-color: #2E7D32; }
+input:checked + span { text-decoration: line-through; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-est">
+          <button type="button">Passe o mouse, clique, use Tab</button>
+          <input type="email" placeholder="digite um e-mail" required>
+          <label><input type="checkbox" style="display:inline;margin:0 6px 0 0"><span>Tarefa concluida</span></label>
+        </div>
+      </div>
+    </div>
+    <p class="nota"><strong>:user-invalid</strong> so pinta de vermelho depois que o usuario interage; o :invalid pintaria antes de digitar.</p>
+  </article>
+</section>
+
+<!-- ==================== 8 ==================== -->
+<section class="grupo" id="g8">
+  <h2>8. Pseudo-classes estruturais</h2>
+  <p class="dica">Selecionar pela posicao entre os irmaos.</p>
+
+  <article class="tag">
+    <h3><span class="nome">:first-child :nth-child :not</span> <span class="sentido">posicao na lista</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>li:first-child        { color: #1B4FA0; font-weight: 700; }
+li:nth-child(3n)      { background: #FFF3C4; }     /* 3, 6, 9 */
+li:nth-child(-n+2)    { text-decoration: underline; } /* os 2 primeiros */
+li:not(:last-child)   { border-bottom: 1px solid #DFE3EA; }
+li:last-child         { color: #B3261E; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-str"><ul><li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li><li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li></ul></div>
+      </div>
+    </div>
+    <p class="nota">p:first-child nao e "o primeiro p": e um p que e o primeiro filho. Para o primeiro p, use p:first-of-type.</p>
+  </article>
+</section>
+
+<!-- ==================== 9 ==================== -->
+<section class="grupo" id="g9">
+  <h2>9. Pseudo-elementos</h2>
+  <p class="dica">::before e ::after exigem content. Selecione um texto desta caixa para ver o ::selection.</p>
+
+  <article class="tag">
+    <h3><span class="nome">::before ::after ::first-letter ::placeholder</span> <span class="sentido">partes e conteudo gerado</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.obrigatorio::after { content: " *"; color: #C62828; }
+a[href$=".pdf"]::before { content: "PDF "; }
+.citacao::before { content: "\201C"; font-size: 3rem; }
+.capitular::first-letter { font-size: 2.6em; float: left; }
+input::placeholder { color: #90A4AE; }
+::selection { background: #FF6F00; color: #FFF; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-pe">
+          <p><label class="obrigatorio">Nome</label> &middot; <a href="#manual.pdf">Manual do aluno</a></p>
+          <p class="citacao">Codigo e lido muito mais vezes do que e escrito.</p>
+          <p class="capitular">Era uma vez uma pagina sem CSS nenhum, que ganhou uma capitular com uma linha so de codigo.</p>
+          <input type="text" placeholder="placeholder estilizado" style="font:inherit;padding:4px">
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="grupo" id="g10">
+  <h2>10. Flexbox: o container</h2>
+  <p class="dica">Mude as opcoes e veja os itens se reorganizarem. display: flex vai no PAI.</p>
+
+  <article class="tag">
+    <h3><span class="nome">display: flex</span> <span class="sentido">direcao, quebra e alinhamento</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 8px;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="flex-demo" id="flexDemo"><div>item 1</div><div>item 2 mais alto</div><div>item 3</div></div>
+        <div class="flex-ctrl">
+          <label>direction <select data-p="flexDirection"><option>row</option><option>column</option><option>row-reverse</option></select></label>
+          <label>justify <select data-p="justifyContent"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option><option>space-evenly</option></select></label>
+          <label>align <select data-p="alignItems"><option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option></select></label>
+        </div>
+      </div>
+    </div>
+    <p class="nota">Em column, os eixos trocam: justify passa a agir na vertical e align, na horizontal.</p>
+  </article>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="grupo" id="g11">
+  <h2>11. Flexbox: os itens</h2>
+  <p class="dica">flex, margin auto e order.</p>
+
+  <article class="tag">
+    <h3><span class="nome">flex: 1  flex: 2</span> <span class="sentido">divisao da sobra</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.item      { flex: 1; }
+.item.dois { flex: 2; }   /* ganha o dobro da SOBRA */</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="flex-demo d-grow"><div>flex 1</div><div class="dois">flex 2</div><div>flex 1</div></div>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">margin-left: auto</span> <span class="sentido">empurra para o fim</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.sair { margin-left: auto; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="flex-demo d-push"><div>Inicio</div><div>Cursos</div><div class="sair">Sair</div></div>
+      </div>
+    </div>
+    <p class="nota">order muda so a ordem visual. A ordem do Tab continua a do HTML.</p>
+  </article>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="grupo" id="g12">
+  <h2>12. Receitas de flexbox</h2>
+  <p class="dica">Centralizar e o cabecalho logo + menu.</p>
+
+  <article class="tag">
+    <h3><span class="nome">justify-content + align-items: center</span> <span class="sentido">centro nos dois eixos</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.pai {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-centro"><span>centralizado</span></div>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">space-between</span> <span class="sentido">logo a esquerda, menu a direita</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cabecalho ul { display: flex; gap: 12px; list-style: none; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="d-cab"><strong>Logo</strong><ul><li>Inicio</li><li>Cursos</li><li>Contato</li></ul></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="grupo" id="g13">
+  <h2>13. Grid: colunas e fr</h2>
+  <p class="dica">A grade decide o tamanho; fr e fracao do espaco que sobra.</p>
+
+  <article class="tag">
+    <h3><span class="nome">1fr 1fr 1fr</span> <span class="sentido">tres colunas iguais</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.grade { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="grid-demo d-g3"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div></div>
+      </div>
+    </div>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">120px 1fr 2fr</span> <span class="sentido">fixa + fracoes</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.grade { grid-template-columns: 120px 1fr 2fr; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="grid-demo d-gfix"><div>120px</div><div>1fr</div><div>2fr</div></div>
+      </div>
+    </div>
+    <p class="nota">Primeiro saem os 120px; a sobra e dividida em 3 partes: 1 para a segunda coluna, 2 para a terceira.</p>
+  </article>
+  <article class="tag">
+    <h3><span class="nome">repeat(auto-fit, minmax(120px, 1fr))</span> <span class="sentido">responsivo sem media query</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="grid-demo d-gauto"><div>card 1</div><div>card 2</div><div>card 3</div><div>card 4</div><div>card 5</div><div>card 6</div></div>
+      </div>
+    </div>
+    <p class="nota">Arraste o canto inferior direito da caixa cinza para estreitar e ver as colunas se reorganizarem.</p>
+  </article>
+</section>
+
+<!-- ==================== 14 ==================== -->
+<section class="grupo" id="g14">
+  <h2>14. Grid: posicionando pelas linhas</h2>
+  <p class="dica">grid-column: inicio / fim conta LINHAS de grade, nao colunas.</p>
+
+  <article class="tag">
+    <h3><span class="nome">grid-column: 1 / 3   1 / -1</span> <span class="sentido">ocupar varias celulas</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>.grade { grid-template-columns: repeat(4, 1fr); }
+.destaque { grid-column: 1 / 3; grid-row: 1 / 3; }
+.banner   { grid-column: 1 / -1; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="grid-demo d-gpos"><div class="destaque">destaque</div><div>a</div><div>b</div><div>c</div><div>d</div><div class="banner">banner 1 / -1</div></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ==================== 15 ==================== -->
+<section class="grupo" id="g15">
+  <h2>15. grid-template-areas</h2>
+  <p class="dica">O layout desenhado em texto: cada string e uma linha, cada palavra uma coluna.</p>
+
+  <article class="tag">
+    <h3><span class="nome">grid-template-areas</span> <span class="sentido">o esqueleto da pagina</span></h3>
+    <div class="corpo">
+      <div class="codigo">
+        <span class="rotulo">Codigo</span>
+<pre>body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "cab cab"
+    "lat cont"
+    "rod rod";
+}
+header { grid-area: cab; }
+aside  { grid-area: lat; }
+main   { grid-area: cont; }
+footer { grid-area: rod; }</pre>
+      </div>
+      <div class="resultado">
+        <span class="rotulo">Resultado</span>
+        <div class="grid-demo d-areas"><div class="a1">header</div><div class="a2">aside</div><div class="a3">main</div><div class="a4">footer</div></div>
+      </div>
+    </div>
+    <p class="nota">No celular, uma @media redefine as areas em uma coluna. O HTML nao muda. A pagina <code>02-cantina</code> faz exatamente isso.</p>
+  </article>
+</section>
+
+</main>
+
+<div class="barra-foco" role="group" aria-label="Navegacao cartao por cartao">
+  <button type="button" id="anterior" aria-label="Cartao anterior">&larr;</button>
+  <span id="contador">tag 0 / 0</span>
+  <button type="button" id="proxima" aria-label="Proximo cartao">&rarr;</button>
+</div>
+
+<footer class="rodape">
+  Desenvolvimento Front-end para Web &mdash; CEUNSP. Material de apoio da Aula 07. Treino: <a href="https://flexboxfroggy.com/#pt-br">Flexbox Froggy</a> &nbsp;|&nbsp; <a href="https://cssgridgarden.com/#pt-br">Grid Garden</a>
+</footer>
+
+<script>
+  // ---------- demo interativa do flex container ----------
+  (function () {
+    var demo = document.getElementById('flexDemo');
+    document.querySelectorAll('.flex-ctrl select').forEach(function (s) {
+      s.addEventListener('change', function () { demo.style[s.dataset.p] = s.value; });
+    });
+  })();
+
+  // ---------- navegacao tag por tag: setas do teclado ou botoes ----------
+  (function () {
+    var cartoes = Array.prototype.slice.call(document.querySelectorAll('article.tag'));
+    var contador = document.getElementById('contador');
+    var atual = -1;
+
+    function ir(passo) {
+      if (atual >= 0) cartoes[atual].classList.remove('destacada');
+      atual = Math.max(0, Math.min(cartoes.length - 1, atual + passo));
+      var alvo = cartoes[atual];
+      alvo.classList.add('destacada');
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      contador.textContent = 'tag ' + (atual + 1) + ' / ' + cartoes.length;
+    }
+
+    contador.textContent = 'tag 0 / ' + cartoes.length;
+    document.getElementById('proxima').addEventListener('click', function () { ir(1); });
+    document.getElementById('anterior').addEventListener('click', function () { ir(-1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); ir(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); ir(-1); }
+    });
+  })();
+</script>
+
+</body>
+</html>

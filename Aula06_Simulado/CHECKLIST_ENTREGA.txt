@@ -1,0 +1,399 @@
+================================================================================
+CHECKLIST DE ENTREGA — PORTFÓLIO DE DESENVOLVEDOR
+================================================================================
+
+Nome: _________________________ Data: _______________ Turma: _______
+
+Este checklist guia você na revisão antes de enviar seu trabalho.
+
+================================================================================
+1. ESTRUTURA E ORGANIZAÇÃO
+================================================================================
+
+[ ] Pasta portfolio/ ou seu-nome-portfolio/ criada
+[ ] Subpastas corretas:
+    [ ] css/
+    [ ] css/base/
+    [ ] css/layout/
+    [ ] css/componentes/
+    [ ] img/
+    [ ] svg/
+
+[ ] Arquivos CSS corretos:
+    [ ] css/main.css (com @import)
+    [ ] css/base/reset.css
+    [ ] css/base/variaveis.css
+    [ ] css/base/tipografia.css
+    [ ] css/layout/cabecalho.css
+    [ ] css/layout/secoes.css
+    [ ] css/layout/responsividade.css
+    [ ] css/componentes/botao.css
+    [ ] css/componentes/formulario.css
+    [ ] css/componentes/card.css
+
+[ ] Arquivos de mídia:
+    [ ] img/avatar.png (fornecido ou sua versão)
+    [ ] svg/icone-codigo.svg ou seu próprio ícone
+
+[ ] Arquivo principal: index.html na raiz
+
+
+================================================================================
+2. HTML SEMÂNTICO (Aulas 02-03)
+================================================================================
+
+[ ] DOCTYPE está na primeira linha
+[ ] <html lang="pt-BR">
+[ ] <meta charset="UTF-8">
+[ ] <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+[ ] <header> com:
+    [ ] <h1> (um só em toda a página)
+    [ ] <nav> com <ul> e <li>
+
+[ ] <main> contendo:
+    [ ] <section id="inicio"> (sobre)
+    [ ] <section id="projetos"> (projetos)
+    [ ] <section id="contato"> (contato)
+
+[ ] <footer> com:
+    [ ] <address> com email ou telefone
+
+[ ] Nenhuma <div> sem justificativa
+    (As que existem têm motivo, ex: .sobre__conteudo para flex)
+
+[ ] Validação W3C: ZERO ERROS
+    (Já testou em validator.w3.org? Sim ☐ Não ☐)
+
+
+================================================================================
+3. FORMULÁRIO COM VALIDAÇÃO (Aula 04)
+================================================================================
+
+[ ] <form> com method="POST" action="#"
+
+[ ] Campos obrigatórios:
+    [ ] Nome (text, required)
+    [ ] E-mail (email, required)
+    [ ] Telefone (tel)
+    [ ] Mensagem (textarea, maxlength="500")
+
+[ ] Cada campo tem:
+    [ ] <label for="ID"> correto
+    [ ] id=" " no input correspondente
+    [ ] Você consegue clicar no rótulo e o foco vai para o campo? Sim ☐ Não ☐
+
+[ ] <fieldset> e <legend> agrupando campos
+
+[ ] <button type="submit">Enviar mensagem</button>
+
+[ ] TESTE NO NAVEGADOR:
+    [ ] Deixe campos vazios e clique "Enviar"
+    [ ] O navegador barra? Sim ☐ Não ☐
+    [ ] Escreva um email inválido (sem @) e pressione Tab
+    [ ] Aparece mensagem de validação? Sim ☐ Não ☐
+
+
+================================================================================
+4. IMAGENS E MÍDIA (Aula 05)
+================================================================================
+
+[ ] <figure> com:
+    [ ] <img src="..." alt="...">
+    [ ] <figcaption> com descrição
+
+[ ] Imagem tem width e height (reserva espaço)
+    [ ] width="200" height="200" ou similar
+
+[ ] alt obrigatório (descritivo, não vazio)
+
+[ ] SVG ou ícone em pelo menos 2 lugares
+
+[ ] Imagem responsiva (<picture> ou srcset bonus)
+
+
+================================================================================
+5. CSS EXTERNO E MODULAR (Aula 06)
+================================================================================
+
+[ ] Arquivo css/main.css existe
+    [ ] E tem @import de todos os módulos
+    [ ] Na ordem: base → layout → componentes → responsividade
+
+[ ] Arquivo css/base/variaveis.css com:
+    [ ] --cor-primaria
+    [ ] --cor-destaque
+    [ ] --cor-texto
+    [ ] --cor-fundo
+    [ ] --cor-borda
+    [ ] --fonte-texto
+    [ ] --fonte-titulo
+    [ ] --espaco
+    [ ] --raio
+
+[ ] Nenhuma cor hardcoded (todas usam var(...))
+    [ ] Teste: mude --cor-primaria → site inteiro muda? Sim ☐ Não ☐
+
+[ ] Seletores bem usados:
+    [ ] Tipo (.cabecalho)
+    [ ] Classe (.botao, .card)
+    [ ] Combinador (nav > ul, article + article)
+    [ ] Atributo (input[type="email"])
+
+[ ] DevTools Styles: nenhuma linha riscada com alerta ⚠️
+
+
+================================================================================
+6. BOX MODEL E LAYOUTS (Aula 06-07)
+================================================================================
+
+[ ] Reset com box-sizing: border-box
+[ ] Margin: 0 no body
+
+[ ] Espaçamentos em rem (não px para fonte)
+    Exemplo: margin: 1rem, padding: var(--espaco)
+
+[ ] Header em display: flex:
+    [ ] Logo à esquerda
+    [ ] Menu à direita
+    [ ] space-between alinhamento
+
+[ ] Galeria de cards:
+    [ ] display: grid ou flex
+    [ ] auto-fit ou repeat
+    [ ] minmax(220px, 1fr) ou similar
+    [ ] 3 cards lado a lado? (desktop) Sim ☐ Não ☐
+
+[ ] Formulário:
+    [ ] Campos ocupam largura total
+    [ ] Botão estilizado
+
+[ ] Footer:
+    [ ] Fica no fim da página (com min-height: 100vh) Sim ☐ Não ☐
+
+
+================================================================================
+7. PSEUDO-CLASSES E PSEUDO-ELEMENTOS (Aula 07)
+================================================================================
+
+[ ] Links têm estados:
+    [ ] a:hover (cor muda)
+    [ ] a:focus-visible (outline visível)
+    [ ] Sublinhado mantido (WCAG AA)
+
+[ ] Pseudo-classes:
+    [ ] :hover em .botao (sombra, cor)
+    [ ] :focus-visible em inputs
+    [ ] :nth-child ou :last-child em algum lugar
+
+[ ] Pseudo-elementos:
+    [ ] ::after em pelo menos 1 lugar (ex: ::after com content)
+    [ ] ::before bonus se houver
+
+[ ] Ordem correta LVHFA (Link, Visited, Hover, Focus, Active)
+
+
+================================================================================
+8. RESPONSIVIDADE (Aula 07)
+================================================================================
+
+[ ] <meta name="viewport"> presente
+
+[ ] Mínimo 1 @media query:
+    [ ] @media (min-width: 768px) ou similar
+    [ ] Grid/Flexbox se reorganiza
+
+[ ] Teste redimensionando:
+    [ ] 375px (mobile): 1 coluna ☐
+    [ ] 768px (tablet): 2 colunas ☐
+    [ ] 1200px (desktop): 3 colunas ☐
+
+[ ] Fonte mínima: 16px ☐
+
+
+================================================================================
+9. VALIDAÇÃO FINAL
+================================================================================
+
+Abra DevTools (F12) e verifique:
+
+[ ] Console (aba Console):
+    [ ] Nenhum erro vermelho
+    [ ] Nenhum "404 not found" para CSS
+
+[ ] Network (aba Network):
+    [ ] Recarregue a página (Ctrl+R)
+    [ ] Todos os arquivos têm status 200 (verde)
+    [ ] Nenhum 404
+
+[ ] Styles (aba Styles ao inspecionar elemento):
+    [ ] Nenhuma propriedade riscada com ⚠️
+    [ ] As cores têm o valor correto
+
+[ ] Computed (aba Computed):
+    [ ] display: flex (em header)
+    [ ] display: grid (em galeria)
+    [ ] Propriedades calculadas corretas
+
+W3C Validator (validator.w3.org):
+    [ ] Copie o HTML
+    [ ] Cole no validador
+    [ ] Resultado: ✓ 0 erros, 0 avisos
+
+HeadingsMap (extensão Chrome):
+    [ ] Instale
+    [ ] Abra seu site
+    [ ] Veja a hierarquia: h1 → h2 → h2 (sem pulos)
+    [ ] Resultado: ✓ Estrutura correta
+
+
+================================================================================
+10. TESTES DE INTERAÇÃO
+================================================================================
+
+Abra o site e teste:
+
+[ ] Formulário:
+    [ ] Deixe campos vazios → "Enviar" é bloqueado
+    [ ] Escreva email inválido → campo fica vermelho
+    [ ] Escreva email correto → campo fica verde
+
+[ ] Links:
+    [ ] Passe mouse em links → mudam de cor
+    [ ] Pressione Tab → foco visível em links
+    [ ] Clique em links do menu → rolam para as seções
+
+[ ] Cards:
+    [ ] Passe mouse → sombra aumenta, cores mudam
+    [ ] Botão "Ver projeto" funciona (href="#")
+
+[ ] Responsividade:
+    [ ] Abra DevTools (F12)
+    [ ] Ctrl+Shift+M (device mode)
+    [ ] Mude tamanho da tela:
+        [ ] 375px → 1 coluna
+        [ ] 768px → 2 colunas
+        [ ] 1200px → 3 colunas
+
+
+================================================================================
+11. ORGANIZAÇÃO DO CÓDIGO
+================================================================================
+
+[ ] Código limpo:
+    [ ] Indentação consistente (2 espaços)
+    [ ] Nenhuma linha vazia extra
+    [ ] Nomes de classe claros
+
+[ ] Comentários:
+    [ ] Uma linha no topo de cada arquivo CSS
+    [ ] Exemplo: /* cabecalho.css: header com logo e navegação */
+
+[ ] Nomes de classe pelo papel:
+    [ ] ✓ .botao, .card, .formulario
+    [ ] ✗ .azul, .grande, .rodape-inferior
+
+[ ] Especificidade baixa:
+    [ ] Nenhum #id no CSS
+    [ ] Nenhum !important
+
+
+================================================================================
+12. CHECKLIST FINAL
+================================================================================
+
+Antes de enviar, marque tudo:
+
+ESTRUTURA
+[ ] Pasta organizada com subpastas corretas
+[ ] Todos os 10 arquivos CSS existem
+[ ] index.html na raiz
+
+HTML SEMÂNTICO
+[ ] DOCTYPE, lang, meta charset, viewport
+[ ] header > h1 + nav > ul > li
+[ ] main com 3 sections (sobre, projetos, contato)
+[ ] footer > address
+[ ] Sem <div> desnecessárias
+[ ] W3C: 0 erros
+
+FORMULÁRIO
+[ ] <form> method="POST"
+[ ] 4 campos com <label> correto
+[ ] <fieldset> + <legend>
+[ ] <button type="submit">
+[ ] Navegador barra vazio (required)
+
+IMAGENS
+[ ] <figure> + <img alt> + <figcaption>
+[ ] width e height reservam espaço
+[ ] SVG em 2+ lugares
+
+CSS
+[ ] main.css com @import de todos
+[ ] variaveis.css com cores, fontes, espaços
+[ ] Nenhuma cor hardcoded
+[ ] DevTools: nenhuma linha riscada
+
+BOX MODEL
+[ ] box-sizing: border-box
+[ ] Espaçamentos em rem
+[ ] Header em flex
+[ ] Galeria em grid/flex com auto-fit
+
+PSEUDO-CLASSES
+[ ] Links com a:hover, a:focus-visible
+[ ] .botao:hover com efeito
+[ ] Ordem LVHFA
+
+RESPONSIVIDADE
+[ ] @media (min-width: 768px)
+[ ] Layout se reorganiza
+[ ] 1, 2, 3 colunas em breakpoints
+
+VALIDAÇÃO
+[ ] Console sem erros
+[ ] Network: todos status 200
+[ ] Styles sem ⚠️
+[ ] W3C: 0 erros
+[ ] Formulário bloqueia vazio
+[ ] Cards e links funcionam
+
+
+================================================================================
+13. ONDE ENVIAR
+================================================================================
+
+Quando tudo estiver pronto:
+
+[ ] Comprima a pasta portfolio/ como portfolio.zip
+[ ] Envie para: ________________________ (verifique com seu professor)
+[ ] Ou entregue no dia da aula em: ________________________
+
+Prazo: ________________________
+
+
+================================================================================
+14. AUTOSSAVALIAÇÃO
+================================================================================
+
+Eu compreendi:
+
+[ ] Por que HTML semântico é importante
+[ ] Como Flexbox funciona
+[ ] Como Grid funciona
+[ ] O que é cascata e especificidade
+[ ] Como organizar CSS em módulos
+[ ] Por que usar variáveis CSS
+[ ] Como a validação nativa de formulários funciona
+
+Se não compreendi algo, o professor pode ajudar em: ________________________
+
+
+================================================================================
+
+✓ Seu trabalho está pronto para entrega!
+
+Boa sorte! 🎉
+
+================================================================================

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        Nome: <input type="text"><br>
+        E-mail: <input type="text"><br>
+        Idade: <input type="text"><br>
+        Nascimento: <input type="text" placeholder="dd/mm/aaaa"><br>
+        Senha: <input type="password"><br>
+        Curso: <input type="text"><br>
+        <div class="botao" onclick="enviar()">Enviar</div>
+    </div>
+</br>
+    <form action="/cadastro" method="post">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome">
+        <button type="submit">Cadastrar</button>
+    </form>
+    <form action="/cadastro" method="get">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome">
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <form action="/busca" method="get">
+        <input type="text">
+        <button>Buscar</button>
+    </form>
+    <form action="/busca" method="get">
+        <input type="text" name="termo">
+        <button>Buscar</button>
+    </form>
+    
+    <form action="/busca" method="get">
+        <!-- 1. for + id (a mais usada) -->
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email">
+
+        <!-- 2. label envolvendo o campo -->
+        <label>
+        E-mail
+        <input type="email" name="email">
+        </label>
+    </form>
+</br>
+<hr>
+    <form action="/cadastro" method="post">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome">
+
+        <fieldset>
+            <legend>Turno</legend>
+            <input type="radio" id="m" name="turno" value="manha">
+            <label for="m">Manha</label>
+            <input type="radio" id="n" name="turno" value="noite" checked>
+            <label for="n">Noite</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Interesses</legend>
+            <input type="checkbox" id="a" name="int" value="html">
+            <label for="a">HTML</label>
+            <input type="checkbox" id="b" name="int" value="css">
+            <label for="b">CSS</label>
+        </fieldset>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+
+
+
+<h1>Inscricao no evento</h1>
+
+<form action="/inscricao" method="post">
+
+  <fieldset>
+    <legend>Dados pessoais</legend>
+
+    <label for="nome">Nome completo</label>
+    <input type="text" id="nome" name="nome"
+           maxlength="80" required autocomplete="name">
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email"
+           required autocomplete="email">
+
+    <label for="idade">Idade</label>
+    <input type="number" id="idade" name="idade"
+           min="16" max="99" step="1" required>
+
+    <label for="nasc">Data de nascimento</label>
+    <input type="date" id="nasc" name="nasc"
+           min="1920-01-01" max="2010-12-31" required>
+
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" name="senha"
+           minlength="8" required autocomplete="new-password">
+  </fieldset>
+
+  <fieldset>
+    <legend>Curso e observacoes</legend>
+
+    <label for="curso">Curso</label>
+    <select id="curso" name="curso" required>
+      <option value="">Selecione...</option>
+      <option value="ads">Analise e Desenvolvimento de Sistemas</option>
+      <option value="eng">Engenharia de Software</option>
+      <option value="cc">Ciencia da Computacao</option>
+    </select>
+
+    <label for="obs">Observacoes</label>
+    <textarea id="obs" name="obs" rows="4" maxlength="500"
+              placeholder="Ate 500 caracteres"></textarea>
+  </fieldset>
+
+  <button type="submit">Enviar inscricao</button>
+  <button type="reset">Limpar</button>
+
+</form>
+
+
+
+
+</body>
+</html>

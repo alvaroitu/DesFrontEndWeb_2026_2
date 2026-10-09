@@ -1,0 +1,71 @@
+================================================================================
+TEXTOS DO PROJETO — COPIE E COLE NAS TAGS HTML
+================================================================================
+
+[HEADER - TÍTULO]
+João Silva — Desenvolvedor Front-End
+
+[HEADER - NAVEGAÇÃO]
+Início
+Projetos
+Contato
+
+[SEÇÃO SOBRE - TÍTULO]
+Sobre mim
+
+[SEÇÃO SOBRE - TEXTO 1]
+Sou um desenvolvedor front-end apaixonado por criar interfaces acessíveis e responsivas. Com experiência em HTML5, CSS3 e JavaScript, trabalho para transformar ideias em realidade na web.
+
+[SEÇÃO SOBRE - TEXTO 2]
+Minhas habilidades incluem semântica HTML, CSS modular, Flexbox e Grid, formulários acessíveis e otimização para performance.
+
+[SEÇÃO PROJETOS]
+Meus Projetos
+
+[CARD PROJETO 1]
+Portfólio Pessoal
+
+Site responsivo com design limpo e navegação intuitiva.
+
+Ver projeto
+
+[CARD PROJETO 2]
+E-commerce
+
+Plataforma de vendas com carrinho funcional e busca de produtos.
+
+Ver projeto
+
+[CARD PROJETO 3]
+Blog Técnico
+
+Blog sobre desenvolvimento web com artigos bem estruturados.
+
+Ver projeto
+
+[SEÇÃO CONTATO]
+Entre em contato
+
+Preencha o formulário abaixo e entrarei em contato em breve.
+
+[FORMULÁRIO - LABELS E PLACEHOLDERS]
+Nome completo
+seu-nome@email.com
+(11) 98765-4321
+Sua mensagem aqui (máximo 500 caracteres)
+Enviar mensagem
+
+[FOOTER]
+© 2026 João Silva. Todos os direitos reservados.
+Entre em contato: joao@email.com
+
+================================================================================
+INSTRUÇÕES DE USO
+================================================================================
+
+1. Copie o texto exato (sem aspas) entre [ e ] para o local indicado no HTML
+2. Não adicione acentos extras ou mude o texto
+3. Foque em estruturar o HTML e estilizar com CSS
+4. Ignore este arquivo após copiar os textos
+
+================================================================================

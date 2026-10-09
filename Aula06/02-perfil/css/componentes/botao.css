@@ -1,0 +1,17 @@
+/* botao.css: botao primario e variacao secundaria (BEM) */
+.botao {
+  display: inline-block;
+  padding: calc(var(--espaco) * 0.6) calc(var(--espaco) * 1.4);
+  margin: 0 calc(var(--espaco) / 2) calc(var(--espaco) / 2) 0;
+  border: 2px solid var(--cor-primaria);
+  border-radius: var(--raio);
+  background: var(--cor-primaria);
+  color: var(--cor-superficie);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.botao--secundario {
+  background: transparent;
+  color: var(--cor-primaria);
+}

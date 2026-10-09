@@ -1,0 +1,58 @@
+/* Estilo mínimo da página de exemplo.
+   Só o suficiente para mostrar o efeito do <link>, do id e da class. */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 15px;
+    line-height: 1.6;
+    color: #222;
+}
+
+h1 {
+    border-bottom: 3px solid #004080;
+    padding-bottom: 8px;
+}
+
+h2 {
+    color: #004080;
+}
+
+/* id: um único elemento na página */
+#notas {
+    border-left: 6px solid #004080;
+    padding-left: 10px;
+}
+
+/* class: reaproveitada em vários elementos */
+.aviso {
+    background-color: #fff6d5;
+    border-left: 4px solid #e0a800;
+    padding: 10px;
+}
+
+.rodape {
+    text-align: center;
+    color: #666;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+figure {
+    margin: 20px 0;
+}
+
+figcaption {
+    font-style: italic;
+    color: #555;
+}
